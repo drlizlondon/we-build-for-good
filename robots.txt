@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://webuildforgood.com/sitemap.xml
