@@ -1180,13 +1180,9 @@
         } else {
           throw new Error('Submission failed');
         }
-      } catch (err) {
         // Fallback gracefully to mailto so visitor inquiry is never lost
-        window.location.href = `mailto:hello@webuildforgood.com?subject=${encodeURIComponent('Inquiry from ' + name)}&body=${encodeURIComponent('Name: ' + name + '
-Organisation: ' + org + '
-Email: ' + email + '
-
-' + message)}`;
+        const mailBody = `Name: ${name}\nOrganisation: ${org}\nEmail: ${email}\n\n${message}`;
+        window.location.href = `mailto:hello@webuildforgood.com?subject=${encodeURIComponent('Inquiry from ' + (name || 'Visitor'))}&body=${encodeURIComponent(mailBody)}`;
         form.reset();
         if (success) {
           success.textContent = 'Opening your email client to send to hello@webuildforgood.com...';
@@ -1629,6 +1625,12 @@ Email: ' + email + '
     });
 
     function initNavigation() {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      if (!location.hash || location.hash === '#hero-experience') {
+        window.scrollTo(0, 0);
+      }
       startTypographicScroll();
       updateActiveNav(getActiveSection());
     }
