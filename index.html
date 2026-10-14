@@ -737,7 +737,7 @@
           </p>
         </div>
 
-        <!-- Carousel Subheader & Nav Controls -->
+        <!-- Carousel Subheader -->
         <div class="flex flex-col sm:flex-row sm:items-end justify-between pt-4 border-t border-black/[0.06] gap-3">
           <div>
             <p class="text-base sm:text-lg font-medium text-[#111215]">
@@ -745,22 +745,22 @@
             </p>
           </div>
           
-          <div class="flex items-center gap-3">
-            <span class="font-mono-code text-xs text-[#86868B] hidden sm:inline">Scroll or swipe to explore</span>
-            <div class="flex items-center gap-1.5">
-              <button onclick="scrollWorkCarousel(-1)" aria-label="Previous project" class="w-9 h-9 rounded-full border border-black/10 hover:border-black bg-white flex items-center justify-center text-xs font-mono-code transition-all shadow-sm active:scale-95">
-                ←
-              </button>
-              <button onclick="scrollWorkCarousel(1)" aria-label="Next project" class="w-9 h-9 rounded-full border border-black/10 hover:border-black bg-white flex items-center justify-center text-xs font-mono-code transition-all shadow-sm active:scale-95">
-                →
-              </button>
-            </div>
+          <div class="flex items-center gap-2 font-mono-code text-xs text-[#86868B]">
+            <span class="hidden sm:inline">Scroll or swipe to explore</span>
+            <span class="hidden sm:inline">→</span>
           </div>
         </div>
       </div>
 
-      <!-- Horizontal Scrolling Carousel Track -->
-      <div id="work-carousel" class="reveal-rise delay-100 flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory py-2 no-scrollbar cursor-grab">
+      <!-- Carousel Track Container with Outside Flanking Navigation Arrows -->
+      <div class="relative group/carousel">
+        <!-- Left Flanking Arrow (positioned outside cards margin) -->
+        <button id="work-carousel-prev" onclick="scrollWorkCarousel(-1)" aria-label="Previous project" class="absolute -left-3 sm:-left-5 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 backdrop-blur border border-black/10 hover:border-black text-[#111215] shadow-md hover:shadow-lg flex items-center justify-center transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black opacity-30 pointer-events-none">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+
+        <!-- Horizontal Scrolling Carousel Track -->
+        <div id="work-carousel" class="reveal-rise delay-100 flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory py-2 no-scrollbar cursor-grab">
         
         <!-- Project 01: Rainbow Shape Art -->
         <a href="https://rainbowshapeart.com" target="_blank" rel="noopener noreferrer" draggable="false" class="group flex-shrink-0 w-[240px] sm:w-[270px] p-5 rounded-2xl bg-white border border-black/[0.08] hover:border-black/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 snap-start flex flex-col justify-between h-[270px] select-none">
@@ -907,7 +907,13 @@
         </a>
 
       </div>
-    </section>
+
+      <!-- Right Flanking Arrow (positioned outside cards margin) -->
+      <button id="work-carousel-next" onclick="scrollWorkCarousel(1)" aria-label="Next project" class="absolute -right-3 sm:-right-5 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 backdrop-blur border border-black/10 hover:border-black text-[#111215] shadow-md hover:shadow-lg flex items-center justify-center transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </section>
 
     <!-- ========================================================= -->
     <!-- ACT 4: EXPLORATION (PEOPLE & AI TOGETHER)                 -->
@@ -1475,12 +1481,39 @@
     // ========================================================
     // OUR WORK CAROUSEL INTERACTION (Desktop & Mobile)
     // ========================================================
+    function updateWorkCarouselButtons() {
+      const carousel = document.getElementById('work-carousel');
+      const prevBtn = document.getElementById('work-carousel-prev');
+      const nextBtn = document.getElementById('work-carousel-next');
+      if (!carousel || !prevBtn || !nextBtn) return;
+
+      const atStart = carousel.scrollLeft <= 6;
+      const atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 8;
+
+      if (atStart) {
+        prevBtn.classList.add('opacity-25', 'pointer-events-none');
+        prevBtn.classList.remove('opacity-100', 'hover:border-black', 'hover:shadow-lg');
+      } else {
+        prevBtn.classList.remove('opacity-25', 'pointer-events-none');
+        prevBtn.classList.add('opacity-100', 'hover:border-black', 'hover:shadow-lg');
+      }
+
+      if (atEnd) {
+        nextBtn.classList.add('opacity-25', 'pointer-events-none');
+        nextBtn.classList.remove('opacity-100', 'hover:border-black', 'hover:shadow-lg');
+      } else {
+        nextBtn.classList.remove('opacity-25', 'pointer-events-none');
+        nextBtn.classList.add('opacity-100', 'hover:border-black', 'hover:shadow-lg');
+      }
+    }
+
     function scrollWorkCarousel(direction) {
       const carousel = document.getElementById('work-carousel');
       if (!carousel) return;
       const firstCard = carousel.querySelector('a');
       const cardWidth = firstCard ? firstCard.offsetWidth + 20 : 290; // card width + gap-5 (20px)
       carousel.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+      setTimeout(updateWorkCarouselButtons, 350);
     }
 
     // Touch and drag-to-scroll ergonomics on desktop
@@ -1530,6 +1563,11 @@
           hasDragged = false;
         }
       }, true);
+
+      // Keep flanking arrow button visibility in sync with scroll position
+      workCarouselEl.addEventListener('scroll', updateWorkCarouselButtons, { passive: true });
+      window.addEventListener('resize', updateWorkCarouselButtons, { passive: true });
+      setTimeout(updateWorkCarouselButtons, 120);
     }
 
     // ========================================================
