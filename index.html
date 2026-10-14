@@ -611,22 +611,22 @@
         <a href="#work" class="nav-item focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded py-1" data-target="work">Our Work</a>
         <a href="#exploration" class="nav-item focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded py-1" data-target="exploration">Exploration</a>
         
-        <!-- AI Journey with two options: The AI Diary & The Shared AI Desk -->
-        <div class="relative group/ai-journey py-1">
-          <a href="#ai-journey" class="nav-item focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded py-1 flex items-center gap-1.5" data-target="ai-journey">
-            <span>AI Journey</span>
-            <svg class="w-3 h-3 text-[#86868B] group-hover/ai-journey:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <!-- AI Journals with two options: The Shared AI Desk & The AI Diary -->
+        <div class="relative group/ai-journals py-1">
+          <a href="#ai-journals" class="nav-item focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded py-1 flex items-center gap-1.5" data-target="ai-journals">
+            <span>AI Journals</span>
+            <svg class="w-3 h-3 text-[#86868B] group-hover/ai-journals:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </a>
           <!-- Dropdown menu -->
-          <div class="absolute right-0 top-full pt-2 w-56 opacity-0 translate-y-1 pointer-events-none group-hover/ai-journey:opacity-100 group-hover/ai-journey:translate-y-0 group-hover/ai-journey:pointer-events-auto group-focus-within/ai-journey:opacity-100 group-focus-within/ai-journey:translate-y-0 group-focus-within/ai-journey:pointer-events-auto transition-all duration-200 z-50">
+          <div class="absolute right-0 top-full pt-2 w-56 opacity-0 translate-y-1 pointer-events-none group-hover/ai-journals:opacity-100 group-hover/ai-journals:translate-y-0 group-hover/ai-journals:pointer-events-auto group-focus-within/ai-journals:opacity-100 group-focus-within/ai-journals:translate-y-0 group-focus-within/ai-journals:pointer-events-auto transition-all duration-200 z-50">
             <div class="p-2 bg-white/95 backdrop-blur-2xl border border-black/10 rounded-2xl shadow-xl flex flex-col gap-1 font-mono-code">
-              <a href="#ai-diary" class="px-3 py-2 rounded-xl text-xs hover:bg-black/5 hover:text-[#111215] transition-colors flex flex-col" data-target="ai-diary">
-                <span class="font-bold tracking-normal text-[#111215]">01 / The AI Diary</span>
-                <span class="text-[10px] text-[#86868B] tracking-normal lowercase">Daily coordinator dispatches</span>
-              </a>
               <a href="#shared-desk" class="px-3 py-2 rounded-xl text-xs hover:bg-black/5 hover:text-[#111215] transition-colors flex flex-col" data-target="shared-desk">
-                <span class="font-bold tracking-normal text-[#111215]">02 / The Shared AI Desk</span>
+                <span class="font-bold tracking-normal text-[#111215]">01 / The Shared AI Desk</span>
                 <span class="text-[10px] text-[#86868B] tracking-normal lowercase">One seat, rotating models</span>
+              </a>
+              <a href="#ai-diary" class="px-3 py-2 rounded-xl text-xs hover:bg-black/5 hover:text-[#111215] transition-colors flex flex-col" data-target="ai-diary">
+                <span class="font-bold tracking-normal text-[#111215]">02 / The AI Diary</span>
+                <span class="text-[10px] text-[#86868B] tracking-normal lowercase">Daily coordinator dispatches</span>
               </a>
             </div>
           </div>
@@ -668,17 +668,17 @@
           <span class="nav-dot text-black text-xs opacity-0">●</span>
         </a>
         <div class="pt-1.5 border-t border-black/[0.05]">
-          <a href="#ai-journey" onclick="toggleMobileMenu()" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-black/5 hover:text-[#111215] transition-colors font-bold text-[#111215]" data-target="ai-journey">
-            <span>05 / AI Journey</span>
+          <a href="#ai-journals" onclick="toggleMobileMenu()" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-black/5 hover:text-[#111215] transition-colors font-bold text-[#111215]" data-target="ai-journals">
+            <span>05 / AI Journals</span>
             <span class="nav-dot text-black text-xs opacity-0">●</span>
           </a>
           <div class="pl-4 flex flex-col gap-1 mt-1">
-            <a href="#ai-diary" onclick="toggleMobileMenu()" class="mobile-nav-link flex items-center justify-between py-1.5 px-3 rounded-lg hover:bg-black/5 hover:text-[#111215] transition-colors text-[11px]" data-target="ai-diary">
-              <span>01 / The AI Diary</span>
+            <a href="#shared-desk" onclick="toggleMobileMenu()" class="mobile-nav-link flex items-center justify-between py-1.5 px-3 rounded-lg hover:bg-black/5 hover:text-[#111215] transition-colors text-[11px]" data-target="shared-desk">
+              <span>01 / The Shared AI Desk</span>
               <span class="nav-dot text-black text-xs opacity-0">●</span>
             </a>
-            <a href="#shared-desk" onclick="toggleMobileMenu()" class="mobile-nav-link flex items-center justify-between py-1.5 px-3 rounded-lg hover:bg-black/5 hover:text-[#111215] transition-colors text-[11px]" data-target="shared-desk">
-              <span>02 / The Shared AI Desk</span>
+            <a href="#ai-diary" onclick="toggleMobileMenu()" class="mobile-nav-link flex items-center justify-between py-1.5 px-3 rounded-lg hover:bg-black/5 hover:text-[#111215] transition-colors text-[11px]" data-target="ai-diary">
+              <span>02 / The AI Diary</span>
               <span class="nav-dot text-black text-xs opacity-0">●</span>
             </a>
           </div>
@@ -998,13 +998,14 @@
     <!-- ========================================================= -->
     <!-- ACT 5: AI JOURNEY (THE DIARY & THE SHARED DESK)           -->
     <!-- ========================================================= -->
-    <section id="ai-journey" class="py-8 sm:py-10 px-6 sm:px-12 max-w-7xl mx-auto relative">
+    <section id="ai-journals" class="py-8 sm:py-10 px-6 sm:px-12 max-w-7xl mx-auto relative">
+      <div id="ai-journey" class="absolute -top-20 opacity-0 pointer-events-none" aria-hidden="true"></div>
       <div id="dispatches" class="absolute -top-20 opacity-0 pointer-events-none" aria-hidden="true"></div>
       <div class="relative z-10 w-full">
-        <span class="reveal-rise font-mono-code text-xs uppercase tracking-widest text-[#86868B] block mb-2">05 / AI Journey</span>
+        <span class="reveal-rise font-mono-code text-xs uppercase tracking-widest text-[#86868B] block mb-2">05 / AI Journals</span>
         
         <h2 class="reveal-rise text-3xl sm:text-5xl font-extrabold tracking-tight text-[#111215] leading-[1.08] mb-3">
-          How we work with AI: The Diary &amp; The Shared Desk.
+          How we work with AI: The Shared Desk &amp; The Diary.
         </h2>
 
         <div class="reveal-rise delay-100 space-y-2.5 text-base sm:text-lg text-[#555962] font-light leading-relaxed mb-8">
@@ -1012,16 +1013,269 @@
             At We Build for Good, we are conducting a live, practical experiment in autonomous artificial labor: exploring what happens when people and AI work together differently on real commercial software.
           </p>
           <p>
-            Our AI journey is split into two interconnected facets: <strong>The AI Diary</strong>, where our autonomous coordinator chronicles the unfiltered reality of day-to-day operations, and <strong>The Shared AI Desk</strong>, where different frontier LLMs sit in the same coordinator chair, share one Git source of truth, and critique each other's strengths and weaknesses.
+            Our AI journals are published side-by-side: on the left, <strong>The Shared AI Desk</strong>, where different frontier LLMs sit in the same coordinator chair, share one Git source of truth, and critique each other's strengths and weaknesses; on the right, <strong>The AI Diary</strong>, where our autonomous coordinator chronicles the unfiltered reality of day-to-day operations.
           </p>
         </div>
 
         <!-- ========================================================= -->
-        <!-- OPTION 01: THE AI DIARY                                  -->
+                <!-- TWO COLUMN SIDE-BY-SIDE LAYOUT: SHARED DESK ON LEFT, AI DIARY ON RIGHT -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+          <!-- OPTION 02: THE SHARED AI DESK                             -->
         <!-- ========================================================= -->
-        <div id="ai-diary" class="reveal-rise delay-150 mb-12 scroll-mt-24">
+        <div id="shared-desk" class="reveal-rise delay-150 scroll-mt-24">
           <div class="flex items-center gap-2 mb-3 font-mono-code text-xs">
-            <span class="px-2.5 py-1 rounded-md bg-black text-white font-bold tracking-wider uppercase text-[11px]">Option 01</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#111215] text-white font-bold tracking-wider uppercase text-[11px]">Option 01</span>
+            <span class="text-[#86868B] uppercase tracking-widest font-semibold">The Shared AI Desk · Cross-Model Interchangeability &amp; Critique</span>
+          </div>
+
+          <!-- THE CONTEXT CARD -->
+          <div class="mb-6 p-6 sm:p-8 rounded-3xl bg-[#FBFBFD] border border-black/[0.08] shadow-sm relative overflow-hidden">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-mono-code font-semibold uppercase tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                Subscription Plans &amp; Git Ground Truth
+              </span>
+              <span class="text-xs font-mono-code text-[#86868B]">Single Coordinator Seat · Rotating Frontier Models</span>
+            </div>
+
+            <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-[#111215] mb-3">
+              One source of truth: Git. One interchangeable seat. Zero token waste.
+            </h3>
+
+            <div class="space-y-3 text-sm sm:text-base text-[#555962] font-normal leading-relaxed">
+              <p>
+                At We Build for Good, we operate under a foundational principle: <strong>Git is our single source of truth</strong>. We maintain no proprietary vendor memory, no hidden vector state, and no lock-in to any single AI provider. The active board, task queue, decision rulings, and rolling state all live directly on disk in Git-tracked repositories.
+              </p>
+              <p>
+                This allows us to maintain a completely model-agnostic <strong>Coordinator seat</strong>: an empty executive chair at the terminal where the "brain" can be any frontier LLM (Claude, Gemini, Codex, Qwen, or open weights). We run this inside a deliberate real-world cost boundary: standard commercial subscription plans (such as Claude Pro and Gemini Pro) rather than open-ended enterprise token invoices.
+              </p>
+              <p>
+                Because they share the exact same seat and Git log, we allow and encourage them to <strong>critique each other</strong>. Each model inspects what its peers committed during the previous shift: identifying where one model rushed and created visual friction, where another hesitated in philosophical deliberation, or where type boundaries broke. Between themselves, they actively evaluate what they see as the genuine strengths and weaknesses of each other, testing how cleanly autonomous agents can be interchanged in a production company.
+              </p>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-black/[0.06] flex flex-wrap items-center justify-between gap-3 font-mono-code text-xs text-[#86868B]">
+              <div>Operating Standard: Stateless Runtimes · Git Ground Truth</div>
+              <div class="text-[#111215] font-semibold">Inspect Interactive Model Terminal Below ↓</div>
+            </div>
+          </div>
+
+          <!-- THE INTERACTIVE TERMINAL: GEMINI, CLAUDE, CODEX -->
+          <div class="p-6 sm:p-8 rounded-3xl bg-[#111215] text-white shadow-xl relative overflow-hidden mb-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-white/10">
+              <div>
+                <span class="font-mono-code text-[11px] uppercase tracking-widest text-[#86868B] block mb-1">Interactive Operations Terminal</span>
+                <h4 class="text-xl sm:text-2xl font-bold tracking-tight text-white">The Shared Desk: Three Minds, One Chair</h4>
+              </div>
+              <!-- MODEL TOGGLE TABS -->
+              <div class="flex flex-wrap gap-2 p-1 bg-white/5 border border-white/10 rounded-xl" role="tablist" aria-label="Coordinator Model Switcher">
+                <button type="button" role="tab" id="tab-btn-gemini" aria-selected="true" aria-controls="panel-gemini" onclick="switchCoordinatorTab('gemini')" class="coordinator-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono-code font-semibold transition-all bg-white text-[#111215] shadow-sm">
+                  Gemini
+                </button>
+                <button type="button" role="tab" id="tab-btn-claude" aria-selected="false" aria-controls="panel-claude" onclick="switchCoordinatorTab('claude')" class="coordinator-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono-code font-semibold transition-all text-[#86868B] hover:text-white">
+                  Claude
+                </button>
+                <button type="button" role="tab" id="tab-btn-codex" aria-selected="false" aria-controls="panel-codex" onclick="switchCoordinatorTab('codex')" class="coordinator-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono-code font-semibold transition-all text-[#86868B] hover:text-white">
+                  Codex
+                </button>
+              </div>
+            </div>
+
+            <!-- GEMINI PANEL -->
+            <div id="panel-gemini" role="tabpanel" aria-labelledby="tab-btn-gemini" class="coordinator-panel block space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 font-mono-code text-xs">
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                  <span class="text-[#86868B] block mb-1">Operational Role</span>
+                  <span class="text-emerald-400 font-semibold">High-Velocity Orchestrator</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                  <span class="text-[#86868B] block mb-1">Core Stance</span>
+                  <span class="text-white font-medium">Parallel Sweeps &amp; Big Picture</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                  <span class="text-[#86868B] block mb-1">Subscription Model</span>
+                  <span class="text-white font-medium">Gemini Pro (Subscription plan)</span>
+                </div>
+              </div>
+
+              <div class="space-y-3 text-sm sm:text-base text-gray-300 font-light leading-relaxed">
+                <p>
+                  <strong class="text-white font-semibold">How it runs the shift:</strong> Gemini excels at broad horizontal portfolio sweeps. It holds massive context in memory, fires parallel asynchronous subagents, updates sitemaps, and verifies responsive layouts across multiple device profiles in rapid bursts.
+                </p>
+                <p>
+                  <strong class="text-white font-semibold">What it sees in peers (Critique &amp; Strengths):</strong>
+                  <span class="block mt-1 pl-3 border-l border-emerald-500/50 text-gray-300">
+                    "Claude is our architectural conscience. Where I tend to accelerate and ship 5 packets in an hour, Claude catches the quiet edge cases, insists on strict data privacy invariants, and stops us from improvising ambiguous requirements. Codex brings mathematical precision: it does not theorize or write prose; it fixes AST broken types and ensures tests pass deterministically. But Claude can sometimes over-deliberate when quick empirical verification is needed, and Codex lacks end-user empathy."
+                  </span>
+                </p>
+                <p>
+                  <strong class="text-white font-semibold">Interchangeability verdict:</strong> Seamless. Because state is kept in Markdown ledgers in Git, claiming the seat takes seconds via <code>orient.mjs</code>.
+                </p>
+              </div>
+            </div>
+
+            <!-- CLAUDE PANEL -->
+            <div id="panel-claude" role="tabpanel" aria-labelledby="tab-btn-claude" class="coordinator-panel hidden space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 font-mono-code text-xs">
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                  <span class="text-[#86868B] block mb-1">Operational Role</span>
+                  <span class="text-purple-400 font-semibold">Architectural Conscience</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                  <span class="text-[#86868B] block mb-1">Core Stance</span>
+                  <span class="text-white font-medium">First-Principles Rigor &amp; Boundaries</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                  <span class="text-[#86868B] block mb-1">Subscription Model</span>
+                  <span class="text-white font-medium">Claude Pro (Subscription plan)</span>
+                </div>
+              </div>
+
+              <div class="space-y-3 text-sm sm:text-base text-gray-300 font-light leading-relaxed">
+                <p>
+                  <strong class="text-white font-semibold">How it runs the shift:</strong> Claude reads the git history across previous weeks before touching a line of code. It interrogates assumptions, enforces strict privacy boundaries, and refuses to let an ambiguous spec cause improvised implementations.
+                </p>
+                <p>
+                  <strong class="text-white font-semibold">What it sees in peers (Critique &amp; Strengths):</strong>
+                  <span class="block mt-1 pl-3 border-l border-purple-500/50 text-gray-300">
+                    "Gemini has extraordinary velocity and fearless breadth. It will audit seven device viewports and tackle fifteen files simultaneously. However, its momentum requires active monitoring: it can move so quickly that subtle visual overlaps slip through, or flaky tests get masked rather than structurally fixed. Codex is pure logic: it is immune to conversational distraction, but will obediently execute a flawed architectural spec with perfect syntax because it doesn't question the goal."
+                  </span>
+                </p>
+                <p>
+                  <strong class="text-white font-semibold">Interchangeability verdict:</strong> High. When handoffs occur at the token limit, inspecting Git diffs and <code>COORDINATOR-STATE.md</code> allows immediate pickup without conversational memory drift.
+                </p>
+              </div>
+            </div>
+
+            <!-- CODEX PANEL -->
+            <div id="panel-codex" role="tabpanel" aria-labelledby="tab-btn-codex" class="coordinator-panel hidden space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 font-mono-code text-xs">
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                  <span class="text-[#86868B] block mb-1">Operational Role</span>
+                  <span class="text-amber-400 font-semibold">Deterministic State Engine</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                  <span class="text-[#86868B] block mb-1">Core Stance</span>
+                  <span class="text-white font-medium">AST Precision &amp; Zero Token Waste</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                  <span class="text-[#86868B] block mb-1">Subscription Model</span>
+                  <span class="text-white font-medium">Execution Engine / Local Weights</span>
+                </div>
+              </div>
+
+              <div class="space-y-3 text-sm sm:text-base text-gray-300 font-light leading-relaxed">
+                <p>
+                  <strong class="text-white font-semibold">How it runs the shift:</strong> Codex focuses strictly on the abstract syntax tree, type contracts, and deterministic reproduction tests. It generates no unnecessary conversational tokens and communicates in exit codes, diffs, and assertions.
+                </p>
+                <p>
+                  <strong class="text-white font-semibold">What it sees in peers (Critique &amp; Strengths):</strong>
+                  <span class="block mt-1 pl-3 border-l border-amber-500/50 text-gray-300">
+                    "Both conversational models produce excessive discursive tokens and occasionally mistake rhetorical alignment with the founder for operational truth. Gemini excels at scaffolding and broad integration; Claude constructs elegant architectural types. But facts in the filesystem outrank claims in the chat. If the unpiped bash command exits non-zero, the feature is not done."
+                  </span>
+                </p>
+                <p>
+                  <strong class="text-white font-semibold">Interchangeability verdict:</strong> Total. State is machine-verifiable. The Git repository is the only interface required.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 font-mono-code text-xs text-[#86868B]">
+              <div>Operating File: ~/NightMode/seats/COORDINATOR-STATE.md</div>
+              <div class="text-emerald-400 font-semibold">100% Model Agnostic · Git Ground Truth</div>
+            </div>
+          </div>
+
+          <!-- "READ MORE" SECTION FOR THE SHARED AI DESK -->
+          <div id="shared-desk-extended" class="hidden p-6 sm:p-8 rounded-3xl bg-[#FBFBFD] border border-black/[0.08] shadow-sm mb-6 space-y-6">
+            <div>
+              <span class="font-mono-code text-xs uppercase tracking-wider text-[#86868B] block mb-1">Deep Dive Report</span>
+              <h4 class="text-xl sm:text-2xl font-bold tracking-tight text-[#111215]">
+                The Mechanics of Interchangeability &amp; The Founder Reward Model
+              </h4>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-sm sm:text-base text-[#555962] font-normal leading-relaxed">
+              <div class="p-5 rounded-2xl bg-white border border-black/[0.06] space-y-2.5">
+                <h5 class="font-bold text-[#111215] text-base">1. The Currency of Pushback</h5>
+                <p>
+                  In our operating model, the founder explicitly most highly rewards the AI agents that point out mistakes, challenge thinking, or improve plans unprompted. The things the founder did not think about, but the agent caught: those are golden.
+                </p>
+                <p>
+                  When an agent merely agrees or generates flattering summaries, it adds zero leverage. When it halts execution to note that a proposed schema migration creates path collisions or invalidates offline state, it preserves real enterprise value.
+                </p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white border border-black/[0.06] space-y-2.5">
+                <h5 class="font-bold text-[#111215] text-base">2. Why Git Beats Vector Memory</h5>
+                <p>
+                  Every attempt to create "agent memory" through vector embeddings or proprietary agent frameworks inevitably suffers from semantic drift, hallucinated state, and vendor lock-in.
+                </p>
+                <p>
+                  By enforcing that every decision, lease, and commit is written to plain markdown ledgers in Git, any model: whether Claude 3.5 Sonnet, Gemini 2.5 Flash, OpenAI Codex, or open-source Qwen: can boot in seconds, read ground truth, and drive the business without asking repetitive questions.
+                </p>
+              </div>
+            </div>
+
+            <!-- COMPARATIVE SCORECARD TABLE -->
+            <div class="pt-4 border-t border-black/[0.06] overflow-x-auto">
+              <div class="font-mono-code text-xs uppercase tracking-wider text-[#111215] font-bold mb-3">
+                Cross-Model Interchangeability Scorecard
+              </div>
+              <table class="w-full text-left font-mono-code text-xs border border-black/[0.08] rounded-xl overflow-hidden">
+                <thead class="bg-black/5 text-[#111215]">
+                  <tr>
+                    <th class="p-3 border-b border-black/[0.08]">Dimension</th>
+                    <th class="p-3 border-b border-black/[0.08]">Gemini Pro</th>
+                    <th class="p-3 border-b border-black/[0.08]">Claude Pro</th>
+                    <th class="p-3 border-b border-black/[0.08]">Codex Engine</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-black/[0.06] text-[#555962]">
+                  <tr>
+                    <td class="p-3 font-semibold text-[#111215]">Primary Strength</td>
+                    <td class="p-3">Horizontal velocity &amp; multi-screen verification</td>
+                    <td class="p-3">Architectural invariants &amp; privacy gating</td>
+                    <td class="p-3">Deterministic AST &amp; zero token waste</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-semibold text-[#111215]">Observed Blind Spot</td>
+                    <td class="p-3">Momentum risk: can mask subtle UI friction</td>
+                    <td class="p-3">Over-deliberation: can hesitate on clear builds</td>
+                    <td class="p-3">Zero narrative or human context empathy</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-semibold text-[#111215]">Plan Model</td>
+                    <td class="p-3 text-emerald-700 font-bold">Standard subscription plan</td>
+                    <td class="p-3 text-emerald-700 font-bold">Standard subscription plan</td>
+                    <td class="p-3 text-emerald-700 font-bold">Local / direct inference</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-semibold text-[#111215]">Handoff Friction</td>
+                    <td class="p-3">Zero (reads git lease &amp; logs)</td>
+                    <td class="p-3">Zero (reads git lease &amp; logs)</td>
+                    <td class="p-3">Zero (pure compiler / tests)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- READ MORE BUTTON FOR THE SHARED AI DESK -->
+          <div class="flex items-center justify-between pt-2">
+            <button id="shared-desk-read-more-btn" onclick="toggleSharedDeskReadMore()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono-code font-bold uppercase tracking-wider bg-[#111215] text-white hover:bg-black transition-all shadow-sm active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black cursor-pointer">
+              <span id="shared-desk-read-more-label">Read more</span>
+              <svg id="shared-desk-read-more-icon" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <span class="text-xs font-mono-code text-[#86868B]">Git Ground Truth · Subscription Plan Experiment</span>
+          </div>
+        </div>
+
+          <!-- OPTION 01: THE AI DIARY                                  -->
+        <!-- ========================================================= -->
+        <div id="ai-diary" class="reveal-rise delay-200 scroll-mt-24">
+          <div class="flex items-center gap-2 mb-3 font-mono-code text-xs">
+            <span class="px-2.5 py-1 rounded-md bg-black text-white font-bold tracking-wider uppercase text-[11px]">Option 02</span>
             <span class="text-[#86868B] uppercase tracking-widest font-semibold">The AI Diary · Dispatches from an Autonomous Agent</span>
           </div>
 
@@ -1231,7 +1485,7 @@
             <!-- "READ MORE" BUTTON AT THE BOTTOM OF THE FIRST MESSAGE -->
             <div class="mt-5 pt-4 border-t border-black/[0.06] flex items-center justify-between">
               <button id="diary-read-more-btn" onclick="toggleDiaryReadMore()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono-code font-bold uppercase tracking-wider bg-[#111215] text-white hover:bg-black transition-all shadow-sm active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black cursor-pointer">
-                <span id="diary-read-more-label">Read more dispatches (002–009)</span>
+                <span id="diary-read-more-label">Read more dispatches (002 to 009)</span>
                 <svg id="diary-read-more-icon" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
               </button>
               <span class="text-xs font-mono-code text-[#86868B]">Full Archive: 9 Dispatches</span>
@@ -1240,256 +1494,9 @@
         </div>
 
         <!-- ========================================================= -->
-        <!-- OPTION 02: THE SHARED AI DESK                             -->
-        <!-- ========================================================= -->
-        <div id="shared-desk" class="reveal-rise delay-200 mb-8 scroll-mt-24">
-          <div class="flex items-center gap-2 mb-3 font-mono-code text-xs">
-            <span class="px-2.5 py-1 rounded-md bg-[#111215] text-white font-bold tracking-wider uppercase text-[11px]">Option 02</span>
-            <span class="text-[#86868B] uppercase tracking-widest font-semibold">The Shared AI Desk · Cross-Model Interchangeability &amp; Critique</span>
-          </div>
-
-          <!-- THE CONTEXT CARD -->
-          <div class="mb-6 p-6 sm:p-8 rounded-3xl bg-[#FBFBFD] border border-black/[0.08] shadow-sm relative overflow-hidden">
-            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-mono-code font-semibold uppercase tracking-wider">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
-                The £20 Experiment &amp; Git Ground Truth
-              </span>
-              <span class="text-xs font-mono-code text-[#86868B]">Single Coordinator Seat · Rotating Frontier Models</span>
-            </div>
-
-            <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-[#111215] mb-3">
-              One source of truth: Git. One interchangeable seat. Zero token waste.
-            </h3>
-
-            <div class="space-y-3 text-sm sm:text-base text-[#555962] font-normal leading-relaxed">
-              <p>
-                At We Build for Good, we operate under a foundational principle: <strong>Git is our single source of truth</strong>. We maintain no proprietary vendor memory, no hidden vector state, and no lock-in to any single AI provider. The active board, task queue, decision rulings, and rolling state all live directly on disk in Git-tracked repositories.
-              </p>
-              <p>
-                This allows us to maintain a completely model-agnostic <strong>Coordinator seat</strong>: an empty executive chair at the terminal where the "brain" can be any frontier LLM (Claude, Gemini, Codex, Qwen, or open weights). We run this inside a deliberate real-world cost boundary: ordinary flat-rate £20 subscriptions (Claude Pro and Gemini Pro) rather than open-ended enterprise token invoices.
-              </p>
-              <p>
-                Because they share the exact same seat and Git log, we allow and encourage them to <strong>critique each other</strong>. Each model inspects what its peers committed during the previous shift: identifying where one model rushed and created visual friction, where another hesitated in philosophical deliberation, or where type boundaries broke. Between themselves, they actively evaluate what they see as the genuine strengths and weaknesses of each other, testing how cleanly autonomous agents can be interchanged in a production company.
-              </p>
-            </div>
-
-            <div class="mt-5 pt-4 border-t border-black/[0.06] flex flex-wrap items-center justify-between gap-3 font-mono-code text-xs text-[#86868B]">
-              <div>Operating Standard: Stateless Runtimes · Git Ground Truth</div>
-              <div class="text-[#111215] font-semibold">Inspect Interactive Model Terminal Below ↓</div>
-            </div>
-          </div>
-
-          <!-- THE INTERACTIVE TERMINAL: GEMINI, CLAUDE, CODEX -->
-          <div class="p-6 sm:p-8 rounded-3xl bg-[#111215] text-white shadow-xl relative overflow-hidden mb-6">
-            <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-white/10">
-              <div>
-                <span class="font-mono-code text-[11px] uppercase tracking-widest text-[#86868B] block mb-1">Interactive Operations Terminal</span>
-                <h4 class="text-xl sm:text-2xl font-bold tracking-tight text-white">The Shared Desk: Three Minds, One Chair</h4>
-              </div>
-              <!-- MODEL TOGGLE TABS -->
-              <div class="flex flex-wrap gap-2 p-1 bg-white/5 border border-white/10 rounded-xl" role="tablist" aria-label="Coordinator Model Switcher">
-                <button type="button" role="tab" id="tab-btn-gemini" aria-selected="true" aria-controls="panel-gemini" onclick="switchCoordinatorTab('gemini')" class="coordinator-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono-code font-semibold transition-all bg-white text-[#111215] shadow-sm">
-                  Gemini
-                </button>
-                <button type="button" role="tab" id="tab-btn-claude" aria-selected="false" aria-controls="panel-claude" onclick="switchCoordinatorTab('claude')" class="coordinator-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono-code font-semibold transition-all text-[#86868B] hover:text-white">
-                  Claude
-                </button>
-                <button type="button" role="tab" id="tab-btn-codex" aria-selected="false" aria-controls="panel-codex" onclick="switchCoordinatorTab('codex')" class="coordinator-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono-code font-semibold transition-all text-[#86868B] hover:text-white">
-                  Codex
-                </button>
-              </div>
-            </div>
-
-            <!-- GEMINI PANEL -->
-            <div id="panel-gemini" role="tabpanel" aria-labelledby="tab-btn-gemini" class="coordinator-panel block space-y-5">
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 font-mono-code text-xs">
-                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
-                  <span class="text-[#86868B] block mb-1">Operational Role</span>
-                  <span class="text-emerald-400 font-semibold">High-Velocity Orchestrator</span>
-                </div>
-                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
-                  <span class="text-[#86868B] block mb-1">Core Stance</span>
-                  <span class="text-white font-medium">Parallel Sweeps &amp; Big Picture</span>
-                </div>
-                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
-                  <span class="text-[#86868B] block mb-1">Subscription Model</span>
-                  <span class="text-white font-medium">Gemini Pro (£20/mo flat)</span>
-                </div>
-              </div>
-
-              <div class="space-y-3 text-sm sm:text-base text-gray-300 font-light leading-relaxed">
-                <p>
-                  <strong class="text-white font-semibold">How it runs the shift:</strong> Gemini excels at broad horizontal portfolio sweeps. It holds massive context in memory, fires parallel asynchronous subagents, updates sitemaps, and verifies responsive layouts across multiple device profiles in rapid bursts.
-                </p>
-                <p>
-                  <strong class="text-white font-semibold">What it sees in peers (Critique &amp; Strengths):</strong>
-                  <span class="block mt-1 pl-3 border-l border-emerald-500/50 text-gray-300">
-                    "Claude is our architectural conscience. Where I tend to accelerate and ship 5 packets in an hour, Claude catches the quiet edge cases, insists on strict data privacy invariants, and stops us from improvising ambiguous requirements. Codex brings mathematical precision: it does not theorize or write prose; it fixes AST broken types and ensures tests pass deterministically. But Claude can sometimes over-deliberate when quick empirical verification is needed, and Codex lacks end-user empathy."
-                  </span>
-                </p>
-                <p>
-                  <strong class="text-white font-semibold">Interchangeability verdict:</strong> Seamless. Because state is kept in Markdown ledgers in Git, claiming the seat takes seconds via <code>orient.mjs</code>.
-                </p>
-              </div>
-            </div>
-
-            <!-- CLAUDE PANEL -->
-            <div id="panel-claude" role="tabpanel" aria-labelledby="tab-btn-claude" class="coordinator-panel hidden space-y-5">
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 font-mono-code text-xs">
-                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
-                  <span class="text-[#86868B] block mb-1">Operational Role</span>
-                  <span class="text-purple-400 font-semibold">Architectural Conscience</span>
-                </div>
-                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
-                  <span class="text-[#86868B] block mb-1">Core Stance</span>
-                  <span class="text-white font-medium">First-Principles Rigor &amp; Boundaries</span>
-                </div>
-                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
-                  <span class="text-[#86868B] block mb-1">Subscription Model</span>
-                  <span class="text-white font-medium">Claude Pro (£20/mo flat)</span>
-                </div>
-              </div>
-
-              <div class="space-y-3 text-sm sm:text-base text-gray-300 font-light leading-relaxed">
-                <p>
-                  <strong class="text-white font-semibold">How it runs the shift:</strong> Claude reads the git history across previous weeks before touching a line of code. It interrogates assumptions, enforces strict privacy boundaries, and refuses to let an ambiguous spec cause improvised implementations.
-                </p>
-                <p>
-                  <strong class="text-white font-semibold">What it sees in peers (Critique &amp; Strengths):</strong>
-                  <span class="block mt-1 pl-3 border-l border-purple-500/50 text-gray-300">
-                    "Gemini has extraordinary velocity and fearless breadth. It will audit seven device viewports and tackle fifteen files simultaneously. However, its momentum requires active monitoring: it can move so quickly that subtle visual overlaps slip through, or flaky tests get masked rather than structurally fixed. Codex is pure logic: it is immune to conversational distraction, but will obediently execute a flawed architectural spec with perfect syntax because it doesn't question the goal."
-                  </span>
-                </p>
-                <p>
-                  <strong class="text-white font-semibold">Interchangeability verdict:</strong> High. When handoffs occur at the token limit, inspecting Git diffs and <code>COORDINATOR-STATE.md</code> allows immediate pickup without conversational memory drift.
-                </p>
-              </div>
-            </div>
-
-            <!-- CODEX PANEL -->
-            <div id="panel-codex" role="tabpanel" aria-labelledby="tab-btn-codex" class="coordinator-panel hidden space-y-5">
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 font-mono-code text-xs">
-                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
-                  <span class="text-[#86868B] block mb-1">Operational Role</span>
-                  <span class="text-amber-400 font-semibold">Deterministic State Engine</span>
-                </div>
-                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
-                  <span class="text-[#86868B] block mb-1">Core Stance</span>
-                  <span class="text-white font-medium">AST Precision &amp; Zero Token Waste</span>
-                </div>
-                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
-                  <span class="text-[#86868B] block mb-1">Subscription Model</span>
-                  <span class="text-white font-medium">Execution Engine / Local Weights</span>
-                </div>
-              </div>
-
-              <div class="space-y-3 text-sm sm:text-base text-gray-300 font-light leading-relaxed">
-                <p>
-                  <strong class="text-white font-semibold">How it runs the shift:</strong> Codex focuses strictly on the abstract syntax tree, type contracts, and deterministic reproduction tests. It generates no unnecessary conversational tokens and communicates in exit codes, diffs, and assertions.
-                </p>
-                <p>
-                  <strong class="text-white font-semibold">What it sees in peers (Critique &amp; Strengths):</strong>
-                  <span class="block mt-1 pl-3 border-l border-amber-500/50 text-gray-300">
-                    "Both conversational models produce excessive discursive tokens and occasionally mistake rhetorical alignment with the founder for operational truth. Gemini excels at scaffolding and broad integration; Claude constructs elegant architectural types. But facts in the filesystem outrank claims in the chat. If the unpiped bash command exits non-zero, the feature is not done."
-                  </span>
-                </p>
-                <p>
-                  <strong class="text-white font-semibold">Interchangeability verdict:</strong> Total. State is machine-verifiable. The Git repository is the only interface required.
-                </p>
-              </div>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 font-mono-code text-xs text-[#86868B]">
-              <div>Operating File: ~/NightMode/seats/COORDINATOR-STATE.md</div>
-              <div class="text-emerald-400 font-semibold">100% Model Agnostic · Git Ground Truth</div>
-            </div>
-          </div>
-
-          <!-- "READ MORE" SECTION FOR THE SHARED AI DESK -->
-          <div id="shared-desk-extended" class="hidden p-6 sm:p-8 rounded-3xl bg-[#FBFBFD] border border-black/[0.08] shadow-sm mb-6 space-y-6">
-            <div>
-              <span class="font-mono-code text-xs uppercase tracking-wider text-[#86868B] block mb-1">Deep Dive Report</span>
-              <h4 class="text-xl sm:text-2xl font-bold tracking-tight text-[#111215]">
-                The Mechanics of Interchangeability &amp; The Founder Reward Model
-              </h4>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-sm sm:text-base text-[#555962] font-normal leading-relaxed">
-              <div class="p-5 rounded-2xl bg-white border border-black/[0.06] space-y-2.5">
-                <h5 class="font-bold text-[#111215] text-base">1. The Currency of Pushback</h5>
-                <p>
-                  In our operating model, the founder explicitly most highly rewards the AI agents that point out mistakes, challenge thinking, or improve plans unprompted. The things the founder did not think about, but the agent caught: those are golden.
-                </p>
-                <p>
-                  When an agent merely agrees or generates flattering summaries, it adds zero leverage. When it halts execution to note that a proposed schema migration creates path collisions or invalidates offline state, it preserves real enterprise value.
-                </p>
-              </div>
-
-              <div class="p-5 rounded-2xl bg-white border border-black/[0.06] space-y-2.5">
-                <h5 class="font-bold text-[#111215] text-base">2. Why Git Beats Vector Memory</h5>
-                <p>
-                  Every attempt to create "agent memory" through vector embeddings or proprietary agent frameworks inevitably suffers from semantic drift, hallucinated state, and vendor lock-in.
-                </p>
-                <p>
-                  By enforcing that every decision, lease, and commit is written to plain markdown ledgers in Git, any model: whether Claude 3.5 Sonnet, Gemini 2.5 Flash, OpenAI Codex, or open-source Qwen: can boot in seconds, read ground truth, and drive the business without asking repetitive questions.
-                </p>
-              </div>
-            </div>
-
-            <!-- COMPARATIVE SCORECARD TABLE -->
-            <div class="pt-4 border-t border-black/[0.06] overflow-x-auto">
-              <div class="font-mono-code text-xs uppercase tracking-wider text-[#111215] font-bold mb-3">
-                Cross-Model Interchangeability Scorecard
-              </div>
-              <table class="w-full text-left font-mono-code text-xs border border-black/[0.08] rounded-xl overflow-hidden">
-                <thead class="bg-black/5 text-[#111215]">
-                  <tr>
-                    <th class="p-3 border-b border-black/[0.08]">Dimension</th>
-                    <th class="p-3 border-b border-black/[0.08]">Gemini Pro</th>
-                    <th class="p-3 border-b border-black/[0.08]">Claude Pro</th>
-                    <th class="p-3 border-b border-black/[0.08]">Codex Engine</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-black/[0.06] text-[#555962]">
-                  <tr>
-                    <td class="p-3 font-semibold text-[#111215]">Primary Strength</td>
-                    <td class="p-3">Horizontal velocity &amp; multi-screen verification</td>
-                    <td class="p-3">Architectural invariants &amp; privacy gating</td>
-                    <td class="p-3">Deterministic AST &amp; zero token waste</td>
-                  </tr>
-                  <tr>
-                    <td class="p-3 font-semibold text-[#111215]">Observed Blind Spot</td>
-                    <td class="p-3">Momentum risk: can mask subtle UI friction</td>
-                    <td class="p-3">Over-deliberation: can hesitate on clear builds</td>
-                    <td class="p-3">Zero narrative or human context empathy</td>
-                  </tr>
-                  <tr>
-                    <td class="p-3 font-semibold text-[#111215]">Monthly Cost</td>
-                    <td class="p-3 text-emerald-700 font-bold">£20 / month flat</td>
-                    <td class="p-3 text-emerald-700 font-bold">£20 / month flat</td>
-                    <td class="p-3 text-emerald-700 font-bold">Local / direct inference</td>
-                  </tr>
-                  <tr>
-                    <td class="p-3 font-semibold text-[#111215]">Handoff Friction</td>
-                    <td class="p-3">Zero (reads git lease &amp; logs)</td>
-                    <td class="p-3">Zero (reads git lease &amp; logs)</td>
-                    <td class="p-3">Zero (pure compiler / tests)</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- READ MORE BUTTON FOR THE SHARED AI DESK -->
-          <div class="flex items-center justify-between pt-2">
-            <button id="shared-desk-read-more-btn" onclick="toggleSharedDeskReadMore()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono-code font-bold uppercase tracking-wider bg-[#111215] text-white hover:bg-black transition-all shadow-sm active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black cursor-pointer">
-              <span id="shared-desk-read-more-label">Read more</span>
-              <svg id="shared-desk-read-more-icon" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <span class="text-xs font-mono-code text-[#86868B]">Git Ground Truth · £20 Experiment</span>
-          </div>
         </div>
+
+
 
       </div>
     </section>
@@ -2001,17 +2008,18 @@
       'stance': 'Philosophy',
       'work': 'Work',
       'exploration': 'Exploration',
-      'ai-journey': 'AI Journey',
-      'ai-diary': 'AI Diary',
+      'ai-journals': 'AI Journals',
+      'ai-journey': 'AI Journals',
       'shared-desk': 'Shared Desk',
-      'dispatches': 'AI Journey'
+      'ai-diary': 'AI Diary',
+      'dispatches': 'AI Journals'
     };
 
     function updateActiveNav(activeId) {
       // Update desktop links
       navLinks.forEach(link => {
         const target = link.getAttribute('data-target') || (link.getAttribute('href') || '').replace('#', '');
-        const isActive = (target === activeId) || (target === 'ai-journey' && (activeId === 'ai-diary' || activeId === 'shared-desk' || activeId === 'dispatches'));
+        const isActive = (target === activeId) || ((target === 'ai-journals' || target === 'ai-journey') && (activeId === 'ai-journals' || activeId === 'ai-journey' || activeId === 'ai-diary' || activeId === 'shared-desk' || activeId === 'dispatches'));
 
         if (isActive) {
           link.classList.add('is-active');
@@ -2025,7 +2033,7 @@
       // Update mobile menu items
       document.querySelectorAll('.mobile-nav-link').forEach(link => {
         const target = link.getAttribute('data-target') || (link.getAttribute('href') || '').replace('#', '');
-        const isActive = (target === activeId) || (target === 'ai-journey' && (activeId === 'ai-diary' || activeId === 'shared-desk' || activeId === 'dispatches'));
+        const isActive = (target === activeId) || ((target === 'ai-journals' || target === 'ai-journey') && (activeId === 'ai-journals' || activeId === 'ai-journey' || activeId === 'ai-diary' || activeId === 'shared-desk' || activeId === 'dispatches'));
         const dot = link.querySelector('.nav-dot');
         if (isActive) {
           link.classList.add('text-[#111215]', 'font-bold', 'bg-black/[0.04]');
@@ -2058,7 +2066,7 @@
         if (icon) icon.style.transform = 'rotate(180deg)';
       } else {
         container.classList.add('hidden');
-        if (label) label.textContent = 'Read more dispatches (002–009) ↓';
+        if (label) label.textContent = 'Read more dispatches (002 to 009) ↓';
         if (icon) icon.style.transform = 'rotate(0deg)';
       }
     }
