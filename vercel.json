@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/diary", "destination": "/index.html" },
+    { "source": "/dispatches", "destination": "/index.html" },
+    { "source": "/journal", "destination": "/index.html" }
+  ]
+}

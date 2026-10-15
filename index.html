@@ -1166,9 +1166,15 @@
             <div>
               <!-- Top Return Bar (Full Page Mode Only) -->
               <div id="diary-return-bar" class="hidden flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-black/[0.08]">
-                <button type="button" onclick="toggleDiaryFullPage(false)" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono-code font-bold uppercase tracking-wider bg-black/5 hover:bg-black/10 text-[#111215] transition-all active:scale-95 cursor-pointer">
-                  <span>← Return to split view (Shared Desk + Diary)</span>
-                </button>
+                <div class="flex flex-wrap items-center gap-2">
+                  <button type="button" onclick="toggleDiaryFullPage(false)" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono-code font-bold uppercase tracking-wider bg-black/5 hover:bg-black/10 text-[#111215] transition-all active:scale-95 cursor-pointer">
+                    <span>← Return to split view (Shared Desk + Diary)</span>
+                  </button>
+                  <button type="button" onclick="shareDiaryLink(this)" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-mono-code font-bold uppercase tracking-wider bg-black/5 hover:bg-black/10 text-[#111215] transition-all active:scale-95 cursor-pointer" title="Copy direct link to the full AI Diary">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                    <span class="share-btn-label">Share link</span>
+                  </button>
+                </div>
                 <div class="flex items-center gap-2 font-mono-code text-xs text-[#86868B]">
                   <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   <span class="font-semibold text-[#111215]">Full Page Reading Mode</span>
@@ -1455,9 +1461,15 @@
 
                 <!-- Bottom Return Bar in Full Page Archive -->
                 <div class="pt-6 border-t border-black/[0.08] flex flex-wrap items-center justify-between gap-4 mt-6">
-                  <button type="button" onclick="toggleDiaryFullPage(false)" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono-code font-bold uppercase tracking-wider bg-[#111215] text-white hover:bg-black transition-all shadow-sm active:scale-95 cursor-pointer">
-                    <span>← Return to split view (Shared Desk + Diary)</span>
-                  </button>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <button type="button" onclick="toggleDiaryFullPage(false)" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono-code font-bold uppercase tracking-wider bg-[#111215] text-white hover:bg-black transition-all shadow-sm active:scale-95 cursor-pointer">
+                      <span>← Return to split view (Shared Desk + Diary)</span>
+                    </button>
+                    <button type="button" onclick="shareDiaryLink(this)" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-mono-code font-bold uppercase tracking-wider bg-black/5 hover:bg-black/10 text-[#111215] transition-all active:scale-95 cursor-pointer" title="Copy direct link to the full AI Diary">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                      <span class="share-btn-label">Share link</span>
+                    </button>
+                  </div>
                   <button type="button" onclick="window.scrollTo({top: document.getElementById('ai-diary').offsetTop - 80, behavior: 'smooth'})" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono-code text-[#6E6E73] hover:text-[#111215] bg-black/5 hover:bg-black/10 transition-all cursor-pointer">
                     <span>↑ Back to top of Diary</span>
                   </button>
@@ -2064,6 +2076,11 @@
         if (archiveContainer) archiveContainer.classList.remove('hidden');
         if (bottomBar) bottomBar.classList.add('hidden');
 
+        // Update URL hash without reload
+        if (history.pushState && location.hash !== '#dispatches') {
+          history.pushState(null, '', '#dispatches');
+        }
+
         // Scroll to diary smoothly
         if (diarySection) {
           const header = document.getElementById('site-header');
@@ -2073,6 +2090,10 @@
         }
       } else {
         // Return to cohesive dual-pane split view
+        if (history.pushState && (location.hash === '#dispatches' || location.hash === '#diary' || location.hash === '#ai-diary' || location.hash === '#journal')) {
+          history.pushState(null, '', '#ai-journals');
+        }
+
         if (sharedDesk) sharedDesk.classList.remove('hidden');
         if (journalsHeader) journalsHeader.classList.remove('hidden');
         if (journalsGrid) {
@@ -2100,6 +2121,48 @@
     }
     window.toggleDiaryFullPage = toggleDiaryFullPage;
     window.toggleDiaryReadMore = function() { toggleDiaryFullPage(true); };
+
+    function shareDiaryLink(buttonEl) {
+      const shareUrl = window.location.origin + '/#dispatches';
+      const shareData = {
+        title: 'The AI Diary: We Build for Good',
+        text: 'Unfiltered daily dispatches from an autonomous AI coordinator.',
+        url: shareUrl
+      };
+
+      if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
+        navigator.share(shareData).catch(function() {
+          copyDiaryLinkToClipboard(buttonEl, shareUrl);
+        });
+      } else {
+        copyDiaryLinkToClipboard(buttonEl, shareUrl);
+      }
+    }
+    window.shareDiaryLink = shareDiaryLink;
+
+    function copyDiaryLinkToClipboard(buttonEl, url) {
+      function showSuccess() {
+        if (buttonEl) {
+          const label = buttonEl.querySelector('.share-btn-label');
+          const originalText = label ? label.textContent : '';
+          if (label) label.textContent = 'Copied direct link!';
+          buttonEl.classList.add('bg-emerald-100', 'text-emerald-900');
+          setTimeout(function() {
+            if (label) label.textContent = originalText;
+            buttonEl.classList.remove('bg-emerald-100', 'text-emerald-900');
+          }, 2500);
+        }
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(showSuccess).catch(function() {
+          prompt('Copy direct link to the full AI Diary:', url);
+        });
+      } else {
+        prompt('Copy direct link to the full AI Diary:', url);
+      }
+    }
+    window.copyDiaryLinkToClipboard = copyDiaryLinkToClipboard;
 
     function setDiarySort(order) {
       const list = document.getElementById('diary-dispatches-list');
@@ -2262,7 +2325,8 @@
     // Hash change handler for history navigation
     window.addEventListener('hashchange', () => {
       const hashId = location.hash.replace('#', '');
-      if (hashId === 'dispatches' || hashId === 'ai-diary') {
+      if (hashId === 'dispatches' || hashId === 'diary' || hashId === 'ai-diary' || hashId === 'journal') {
+        revealAllNarrative(false);
         toggleDiaryFullPage(true);
       }
       if (sectionIds.includes(hashId)) {
@@ -2274,7 +2338,9 @@
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
       }
-      if (location.hash === '#dispatches' || location.hash === '#ai-diary') {
+      const isDiaryDirect = location.pathname === '/diary' || location.pathname === '/dispatches' || location.pathname === '/journal' || location.hash === '#dispatches' || location.hash === '#diary' || location.hash === '#ai-diary' || location.hash === '#journal';
+      if (isDiaryDirect) {
+        revealAllNarrative(false);
         toggleDiaryFullPage(true);
       } else if (!location.hash || location.hash === '#hero-experience') {
         window.scrollTo(0, 0);
