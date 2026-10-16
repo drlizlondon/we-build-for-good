@@ -1,4 +1,4 @@
-# We Build For Good — Digital Flagship
+# We Build For Good: Digital Flagship
 
 > *"We build with AI, for ourselves and for others."*
 
