@@ -8,6 +8,7 @@
   <meta name="keywords" content="We Build For Good, AI-First Agency, AI Studio London, AI Advisory, Autonomous AI, Frontier AI, Venture Engineering, Digital Systems">
   <meta name="author" content="We Build For Good Limited">
   <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="" />
   <link rel="canonical" href="https://webuildforgood.com/">
 
   <!-- Open Graph / Facebook / LinkedIn / iMessage -->
@@ -171,6 +172,70 @@
     ]
   }
   </script>
+
+  <!-- Privacy-First Consent Gate & Google Analytics 4 (Zero tracking before explicit opt-in) -->
+  <script>
+    window.GA_MEASUREMENT_ID = 'G-KPX3RQ80V1';
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    function initAnalytics() {
+      if (window.__gaInitialized) return;
+      window.__gaInitialized = true;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_MEASUREMENT_ID;
+      document.head.appendChild(script);
+
+      gtag('js', new Date());
+      gtag('config', window.GA_MEASUREMENT_ID, {
+        anonymize_ip: true,
+        cookie_flags: 'SameSite=None;Secure'
+      });
+    }
+
+    // Auto-init only if user has previously granted consent
+    if (localStorage.getItem('wb4g_consent') === 'granted') {
+      initAnalytics();
+    }
+
+    function acceptConsent() {
+      localStorage.setItem('wb4g_consent', 'granted');
+      initAnalytics();
+      const banner = document.getElementById('consent-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+      trackEvent('consent_choice', { choice: 'granted' });
+    }
+
+    function declineConsent() {
+      localStorage.setItem('wb4g_consent', 'denied');
+      const banner = document.getElementById('consent-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    function openConsentSettings() {
+      const banner = document.getElementById('consent-banner');
+      if (banner) {
+        banner.style.display = 'block';
+      }
+    }
+
+    function trackEvent(eventName, eventParams) {
+      if (localStorage.getItem('wb4g_consent') === 'granted' && typeof gtag === 'function') {
+        gtag('event', eventName, eventParams || {});
+      }
+    }
+
+    window.acceptConsent = acceptConsent;
+    window.declineConsent = declineConsent;
+    window.openConsentSettings = openConsentSettings;
+    window.trackEvent = trackEvent;
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -932,18 +997,18 @@
         <span class="reveal-rise font-mono-code text-xs uppercase tracking-widest text-[#86868B] block mb-2 sm:mb-2.5">04 / Exploration</span>
         
         <h2 class="reveal-rise delay-100 text-3xl sm:text-5xl font-bold tracking-tight text-[#111215] leading-[1.08] mb-4 sm:mb-5">
-          We’re exploring what happens when people and AI work together differently.
+          We are proving what people and autonomous AI can achieve together.
         </h2>
 
         <div class="reveal-rise delay-200 space-y-3.5 text-base sm:text-lg text-[#555962] font-light leading-relaxed mb-6 sm:mb-7">
           <p>
-            From AI agents and automated workflows to large-scale coordination across portfolios, we’re experimenting, building and finding new ways to get things done.
+            From multi-agent coordination to rapid venture engineering, we do not just theorise about AI: we build, test, and ship working software every single day.
           </p>
           <p>
-            The more we do, the more we’re questioning old assumptions about work, education and what people need to know to succeed.
+            By combining human taste and architectural rigor with an autonomous multi-model workforce, we deliver in weeks what traditional agencies spend months debating.
           </p>
           <p class="font-medium text-[#111215]">
-            What should humans focus on when AI can do more? How do we build teams that achieve more together? How do we help people flourish in a world where the possibilities are changing faster than ever?
+            What should people focus on when AI handles the boilerplate? High-leverage judgment, creative conviction, and building systems that endure.
           </p>
         </div>
 
@@ -1756,8 +1821,9 @@
           <div class="w-2.5 h-2.5 rounded-full bg-black"></div>
           <span class="font-bold uppercase tracking-tight text-[#111215]">WE BUILD FOR GOOD</span>
         </div>
-        <div class="text-[#86868B]">
-          London, United Kingdom
+        <div class="flex items-center gap-4 text-[#86868B]">
+          <button type="button" onclick="openConsentSettings()" class="hover:text-[#111215] transition-colors underline decoration-dotted underline-offset-4 cursor-pointer">Privacy Preferences</button>
+          <span>London, United Kingdom</span>
         </div>
       </div>
     </footer>
@@ -2641,6 +2707,9 @@
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(function() {
           if (label) label.textContent = 'Copied!';
+          if (typeof trackEvent === 'function') {
+            trackEvent('install_command_copied', { command: text });
+          }
           setTimeout(function() {
             if (label) label.textContent = 'Copy command';
           }, 2000);
@@ -2655,6 +2724,37 @@
     } else {
       initNavigation();
     }
+  </script>
+
+  <!-- Consent Gate Privacy Banner -->
+  <aside id="consent-banner" aria-label="Privacy settings" class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-2xl transition-all duration-300" style="display: none;">
+    <div class="flex items-start gap-3">
+      <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 mt-1.5 shrink-0 animate-pulse"></div>
+      <div class="flex-1">
+        <div class="text-xs font-bold text-[#111215] uppercase tracking-wider font-mono-code mb-1">Privacy &amp; Analytics</div>
+        <p class="text-xs text-[#555962] leading-relaxed mb-3 font-sans">
+          We use privacy-first analytics to understand how our open-source tools and studio products are used. Zero tracking requests fire without your consent.
+        </p>
+        <div class="flex items-center gap-2 font-mono-code">
+          <button type="button" onclick="acceptConsent()" class="px-3.5 py-1.5 rounded-full bg-[#111215] hover:bg-black text-white text-xs font-semibold transition-all shadow-sm active:scale-95 cursor-pointer">
+            Accept
+          </button>
+          <button type="button" onclick="declineConsent()" class="px-3.5 py-1.5 rounded-full bg-black/5 hover:bg-black/10 text-[#555962] text-xs font-semibold transition-all active:scale-95 cursor-pointer">
+            Decline
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    // Reveal banner only if no consent decision is recorded
+    (function() {
+      if (!localStorage.getItem('wb4g_consent')) {
+        const banner = document.getElementById('consent-banner');
+        if (banner) banner.style.display = 'block';
+      }
+    })();
   </script>
 </body>
 </html>
