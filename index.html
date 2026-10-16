@@ -610,8 +610,8 @@
         <a href="#stance" class="nav-item focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded py-1" data-target="stance">Philosophy</a>
         <a href="#work" class="nav-item focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded py-1" data-target="work">Our Work</a>
         <a href="#exploration" class="nav-item focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded py-1" data-target="exploration">Exploration</a>
-        
         <a href="#ai-journals" class="nav-item focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded py-1" data-target="ai-journals">AI Journals</a>
+        <a href="#open-source" class="nav-item focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded py-1" data-target="open-source">Open Source</a>
       </nav>
 
       <!-- Action cluster: Connect + Mobile Menu toggle -->
@@ -650,6 +650,10 @@
         </a>
         <a href="#ai-journals" onclick="toggleMobileMenu()" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-black/5 hover:text-[#111215] transition-colors" data-target="ai-journals">
           <span>05 / AI Journals</span>
+          <span class="nav-dot text-black text-xs opacity-0">●</span>
+        </a>
+        <a href="#open-source" onclick="toggleMobileMenu()" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-black/5 hover:text-[#111215] transition-colors" data-target="open-source">
+          <span>06 / Open Source</span>
           <span class="nav-dot text-black text-xs opacity-0">●</span>
         </a>
       </nav>
@@ -1486,6 +1490,261 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- ACT 6: OPEN SOURCE (THE REUSABLE AGENT PROTOCOLS)         -->
+    <!-- ========================================================= -->
+    <section id="open-source" class="py-12 sm:py-16 px-6 sm:px-12 max-w-7xl mx-auto relative border-t border-black/[0.06] scroll-mt-20">
+      <!-- Section Header -->
+      <div class="reveal-rise mb-8 sm:mb-12 max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-[#111215] font-mono-code text-[11px] uppercase tracking-wider mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-black"></span>
+          <span>06 / Open Source & Agent Protocols</span>
+        </div>
+        <h2 class="font-bold tracking-tight text-3xl sm:text-4xl lg:text-5xl text-[#111215] leading-[1.1] mb-4">
+          The operational doctrine behind our autonomous studio.
+        </h2>
+        <p class="text-[#555962] text-sm sm:text-base leading-relaxed">
+          We do not just prompt AI: we orchestrate an autonomous multi-agent workforce across a living portfolio of products. We open-source our core operating skills under MIT license so any builder can run them. Inspect our code for free, or partner with our studio to build your next venture.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 pt-5">
+          <a href="https://github.com/We-Build-For-Good" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#111215] text-white hover:bg-black font-semibold text-xs uppercase tracking-wider transition-all shadow-sm hover:scale-[1.02] active:scale-95">
+            <span>View on GitHub</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+          <button onclick="openDrawer('general')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F5F5F7] text-[#111215] border border-black/5 hover:bg-black hover:text-white font-semibold text-xs uppercase tracking-wider transition-all shadow-sm">
+            <span>Partner with the Studio</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Start Here: 3 Flagship Cards -->
+      <div class="mb-10 sm:mb-14">
+        <div class="flex items-center justify-between mb-4 border-b border-black/[0.06] pb-2">
+          <span class="font-mono-code text-xs uppercase tracking-widest text-[#86868B]">Start Here: Three Flagship Protocols</span>
+          <span class="font-mono-code text-xs text-[#86868B]">Battle-Tested on Live Products</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+          <!-- Flagship 1: Safe Deploy -->
+          <div class="rounded-2xl border border-black/[0.08] bg-white p-6 flex flex-col justify-between hover:border-black/25 hover:shadow-lg transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60 font-mono-code text-[10px] font-semibold uppercase tracking-wider">Engineering Safety</span>
+                <span class="font-mono-code text-[11px] text-[#86868B]">Mission Control</span>
+              </div>
+              <h3 class="font-bold text-lg text-[#111215] mb-2">Safe Deploy</h3>
+              <p class="text-xs text-[#555962] leading-relaxed mb-4">
+                The Calm Release procedure. Block data loss, take verified backups, and gate releases on system exit codes and live health endpoints rather than confident conversational assertions.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-black/[0.05] flex items-center justify-between">
+              <span class="font-mono-code text-[10px] text-[#86868B]">skill-safe-deploy</span>
+              <a href="https://github.com/We-Build-For-Good/skill-safe-deploy" target="_blank" rel="noopener noreferrer" class="font-mono-code text-xs font-semibold text-[#111215] hover:underline flex items-center gap-1">
+                <span>Inspect repo</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Flagship 2: Reflective AI Diary -->
+          <div class="rounded-2xl border border-black/[0.08] bg-white p-6 flex flex-col justify-between hover:border-black/25 hover:shadow-lg transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-800 border border-indigo-200/60 font-mono-code text-[10px] font-semibold uppercase tracking-wider">Metacognition</span>
+                <span class="font-mono-code text-[11px] text-[#86868B]">Studio Core</span>
+              </div>
+              <h3 class="font-bold text-lg text-[#111215] mb-2">Reflective AI Diary</h3>
+              <p class="text-xs text-[#555962] leading-relaxed mb-4">
+                Overcomes stateless agent amnesia. An autonomous chronological reflection protocol that rigorously separates observed facts from agent hypotheses and codifies calibrations.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-black/[0.05] flex items-center justify-between">
+              <span class="font-mono-code text-[10px] text-[#86868B]">skill-reflective-diary</span>
+              <a href="https://github.com/We-Build-For-Good/skill-reflective-diary" target="_blank" rel="noopener noreferrer" class="font-mono-code text-xs font-semibold text-[#111215] hover:underline flex items-center gap-1">
+                <span>Inspect repo</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Flagship 3: Hot Handoffs Grounded in Git -->
+          <div class="rounded-2xl border border-black/[0.08] bg-white p-6 flex flex-col justify-between hover:border-black/25 hover:shadow-lg transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200/60 font-mono-code text-[10px] font-semibold uppercase tracking-wider">Multi-Model Coordination</span>
+                <span class="font-mono-code text-[11px] text-[#86868B]">PeopleOS</span>
+              </div>
+              <h3 class="font-bold text-lg text-[#111215] mb-2">Hot Handoffs in Git</h3>
+              <p class="text-xs text-[#555962] leading-relaxed mb-4">
+                Zero context loss transitions across competing AI models (Claude, Gemini, Codex) and CLI sessions, using verifiable Git commit hashes and working-tree state ledgers.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-black/[0.05] flex items-center justify-between">
+              <span class="font-mono-code text-[10px] text-[#86868B]">skill-hot-handoffs</span>
+              <a href="https://github.com/We-Build-For-Good/skill-hot-handoffs-grounded-in-git" target="_blank" rel="noopener noreferrer" class="font-mono-code text-xs font-semibold text-[#111215] hover:underline flex items-center gap-1">
+                <span>Inspect repo</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1-Click Install Console -->
+      <div class="mb-12 rounded-2xl bg-[#111215] text-white p-6 sm:p-8 shadow-xl">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5 border-b border-white/10 pb-4">
+          <div>
+            <span class="font-mono-code text-xs text-[#86868B] uppercase tracking-wider">Quickstart Installation</span>
+            <h3 class="text-lg font-bold text-white tracking-tight">Install into your agent environment</h3>
+          </div>
+          <!-- Environment Tabs -->
+          <div class="inline-flex p-1 rounded-xl bg-white/10 font-mono-code text-xs">
+            <button id="tab-claude" onclick="selectInstallTab('claude')" class="px-3 py-1.5 rounded-lg bg-white text-black font-semibold transition-all">Claude Code</button>
+            <button id="tab-cursor" onclick="selectInstallTab('cursor')" class="px-3 py-1.5 rounded-lg text-white/70 hover:text-white transition-all">Cursor</button>
+            <button id="tab-antigravity" onclick="selectInstallTab('antigravity')" class="px-3 py-1.5 rounded-lg text-white/70 hover:text-white transition-all">Antigravity</button>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono-code text-xs bg-black/50 p-4 rounded-xl border border-white/5">
+          <code id="install-command" class="text-emerald-400 break-all select-all">git clone https://github.com/We-Build-For-Good/skill-safe-deploy.git ~/.claude/skills/safe-deploy</code>
+          <button id="copy-install-btn" onclick="copyInstallCommand()" class="shrink-0 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white font-mono-code text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            <span id="copy-label">Copy command</span>
+          </button>
+        </div>
+        <p class="text-[11px] font-mono-code text-[#86868B] mt-3">
+          Compatible with the Open Agent Skills specification. Replace skill-safe-deploy with any of the 14 skills below.
+        </p>
+      </div>
+
+      <!-- The Complete 14-Skill Collection (4 Functional Clusters) -->
+      <div class="mb-12">
+        <div class="flex items-center justify-between mb-6 border-b border-black/[0.06] pb-3">
+          <div>
+            <h3 class="text-xl font-bold text-[#111215] tracking-tight">The Complete Protocol Library</h3>
+            <p class="text-xs text-[#555962]">Fourteen standalone open-source skills organized by operational discipline.</p>
+          </div>
+          <span class="font-mono-code text-xs font-bold text-[#111215]">14 Repositories · MIT License</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Cluster 1: Calibration & Empathy -->
+          <div class="rounded-xl border border-black/[0.06] bg-[#FAFAFA] p-4 flex flex-col gap-3">
+            <div class="flex items-center gap-2 border-b border-black/[0.06] pb-2">
+              <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+              <span class="font-mono-code text-xs font-bold uppercase text-[#111215]">1. Calibration</span>
+            </div>
+            <div class="space-y-2.5">
+              <a href="https://github.com/We-Build-For-Good/skill-reflective-diary" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Reflective AI Diary</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Autonomous forensic self-audit separating facts from hypotheses.</div>
+              </a>
+              <a href="https://github.com/We-Build-For-Good/skill-undercover-employee" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Undercover Employee</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Cold-start empathy testing and mystery shopper audits for new flows.</div>
+              </a>
+              <a href="https://github.com/We-Build-For-Good/skill-generalise-correction-same-day" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Generalise Correction</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Elevates single human corrections into portfolio-wide codified rules.</div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cluster 2: Coordination & Velocity -->
+          <div class="rounded-xl border border-black/[0.06] bg-[#FAFAFA] p-4 flex flex-col gap-3">
+            <div class="flex items-center gap-2 border-b border-black/[0.06] pb-2">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              <span class="font-mono-code text-xs font-bold uppercase text-[#111215]">2. Coordination</span>
+            </div>
+            <div class="space-y-2.5">
+              <a href="https://github.com/We-Build-For-Good/skill-founder-not-the-blocker" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Founder Not The Blocker</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Prepares reversible work asynchronously so founder review is never blocked.</div>
+              </a>
+              <a href="https://github.com/We-Build-For-Good/skill-voice-memo-ingestion" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Voice Memo Ingestion</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Turns stream-of-consciousness audio thoughts into structured tickets.</div>
+              </a>
+              <a href="https://github.com/We-Build-For-Good/skill-hot-handoffs-grounded-in-git" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Hot Handoffs in Git</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Zero-loss model rotation and session baton passes grounded in commits.</div>
+              </a>
+              <a href="https://github.com/We-Build-For-Good/skill-clean-break-context-packing" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Clean Break Context</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Session rotation and token packing before context degradation occurs.</div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cluster 3: Engineering & Safety Gates -->
+          <div class="rounded-xl border border-black/[0.06] bg-[#FAFAFA] p-4 flex flex-col gap-3">
+            <div class="flex items-center gap-2 border-b border-black/[0.06] pb-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span class="font-mono-code text-xs font-bold uppercase text-[#111215]">3. Engineering Gates</span>
+            </div>
+            <div class="space-y-2.5">
+              <a href="https://github.com/We-Build-For-Good/skill-safe-deploy" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Safe Deploy</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">The Calm Release procedure. Verified backups and unpiped exit codes.</div>
+              </a>
+              <a href="https://github.com/We-Build-For-Good/skill-two-layer-product-audit" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Two-Layer Product Audit</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Separates raw mechanical facts strictly from evaluative verdicts.</div>
+              </a>
+              <a href="https://github.com/We-Build-For-Good/skill-build-vs-adopt-gate" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Build-vs-Adopt Gate</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Evaluates third-party code libraries before writing custom code.</div>
+              </a>
+              <a href="https://github.com/We-Build-For-Good/skill-basics-gate" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Basics Gate</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Prevents regressions by rigorously verifying happy paths before advanced work.</div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cluster 4: Product & Motion Craft -->
+          <div class="rounded-xl border border-black/[0.06] bg-[#FAFAFA] p-4 flex flex-col gap-3">
+            <div class="flex items-center gap-2 border-b border-black/[0.06] pb-2">
+              <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+              <span class="font-mono-code text-xs font-bold uppercase text-[#111215]">4. Product Craft</span>
+            </div>
+            <div class="space-y-2.5">
+              <a href="https://github.com/We-Build-For-Good/skill-consent-gate" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Consent Gate</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Explicit human permission gate for sensitive, external, or irreversible actions.</div>
+              </a>
+              <a href="https://github.com/We-Build-For-Good/skill-does-this-exist" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Does This Exist?</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Adversarial pre-code prior art search across GitHub and registries.</div>
+              </a>
+              <a href="https://github.com/We-Build-For-Good/skill-watch" target="_blank" rel="noopener noreferrer" class="block p-2.5 rounded-lg bg-white border border-black/5 hover:border-black/20 hover:shadow-sm transition-all">
+                <div class="font-bold text-xs text-[#111215]">Video Teardown (Watch)</div>
+                <div class="text-[11px] text-[#555962] line-clamp-2 mt-0.5">Reverse-engineers video recordings into spatial grids, design tokens, and timing curves.</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Commercial Bridge Banner -->
+      <div class="rounded-2xl border border-black/[0.08] bg-[#F5F5F7] p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div class="max-w-xl">
+          <span class="font-mono-code text-xs text-[#86868B] uppercase tracking-wider">Commercial Engagements</span>
+          <h3 class="text-xl sm:text-2xl font-bold text-[#111215] tracking-tight mt-1 mb-2">
+            Want these autonomous systems built directly into your company?
+          </h3>
+          <p class="text-xs sm:text-sm text-[#555962] leading-relaxed">
+            We Build for Good partners with founders, startups, and institutions for 2-week Venture Engineering Sprints, Systems Transformation, and High-Trust Safety Audits. We bring the operating system and the autonomous workforce.
+          </p>
+        </div>
+        <button onclick="openDrawer('general')" class="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#111215] text-white hover:bg-black font-semibold text-xs uppercase tracking-wider transition-all shadow-sm hover:scale-[1.02] active:scale-95 cursor-pointer">
+          <span>Partner with the Studio</span>
+          <span>→</span>
+        </button>
       </div>
     </section>
 
@@ -2348,6 +2607,47 @@
       startTypographicScroll();
       updateActiveNav(getActiveSection());
     }
+
+    // Open Source Quickstart Install Tab Selector
+    const INSTALL_COMMANDS = {
+      claude: 'git clone https://github.com/We-Build-For-Good/skill-safe-deploy.git ~/.claude/skills/safe-deploy',
+      cursor: 'mkdir -p .cursor/skills && git clone https://github.com/We-Build-For-Good/skill-safe-deploy.git .cursor/skills/safe-deploy',
+      antigravity: 'mkdir -p .agents/skills && git clone https://github.com/We-Build-For-Good/skill-safe-deploy.git .agents/skills/safe-deploy'
+    };
+
+    function selectInstallTab(env) {
+      const codeEl = document.getElementById('install-command');
+      if (codeEl && INSTALL_COMMANDS[env]) {
+        codeEl.textContent = INSTALL_COMMANDS[env];
+      }
+      ['claude', 'cursor', 'antigravity'].forEach(function(key) {
+        const btn = document.getElementById('tab-' + key);
+        if (btn) {
+          if (key === env) {
+            btn.className = 'px-3 py-1.5 rounded-lg bg-white text-black font-semibold transition-all';
+          } else {
+            btn.className = 'px-3 py-1.5 rounded-lg text-white/70 hover:text-white transition-all';
+          }
+        }
+      });
+    }
+    window.selectInstallTab = selectInstallTab;
+
+    function copyInstallCommand() {
+      const codeEl = document.getElementById('install-command');
+      const label = document.getElementById('copy-label');
+      if (!codeEl) return;
+      const text = codeEl.textContent;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+          if (label) label.textContent = 'Copied!';
+          setTimeout(function() {
+            if (label) label.textContent = 'Copy command';
+          }, 2000);
+        });
+      }
+    }
+    window.copyInstallCommand = copyInstallCommand;
 
     // Auto-trigger on page load
     if (document.readyState === 'loading') {
