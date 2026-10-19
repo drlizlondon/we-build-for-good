@@ -1,2230 +1,2408 @@
 <!doctype html>
 <html lang="en-GB">
-<head>
-<meta charset="utf-8">
-<script src="da-consent.js" defer></script>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#5a0b77">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Departure Alarm">
-<meta name="description" content="The gamified, forgiving departure timer built for the ADHD brain. Beat time blindness with live countdown bounties, grace buffers, and zero shame.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Departure Alarm: Leave on time without the panic">
-<meta property="og:description" content="The gamified, forgiving departure timer built for the ADHD brain. Beat time blindness with live countdown bounties, grace buffers, and zero shame.">
-<meta property="og:url" content="https://webuildforgood.com/departure-alarm/landing.html">
-<link rel="canonical" href="https://webuildforgood.com/departure-alarm/landing.html">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Departure Alarm: Leave on time without the panic">
-<meta name="twitter:description" content="The gamified, forgiving departure timer built for the ADHD brain. Beat time blindness with live countdown bounties, grace buffers, and zero shame.">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="icon" type="image/svg+xml" href="icon.svg">
-<title>Departure Alarm: Leave on time without the panic</title>
-<style>
-:root {
-  --ink: #ffffff;
-  --muted: #ead8f3;
-  --muted-soft: #cbb4db;
-  --pink: #ff2f9b;
-  --pink-deep: #ca076a;
-  --purple: #7a19c9;
-  --purple-dark: #4a005b;
-  --deep: #24002f;
-  --deeper: #1c0027;
-  --yellow: #ffd84c;
-  --gold: #ffb830;
-  --green: #56ef49;
-  --green-deep: #12931d;
-  --line: rgba(255, 255, 255, 0.16);
-  --glass: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.22);
-  --font: Inter, ui-rounded, "SF Pro Rounded", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-*, *::before, *::after { box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-  font-family: var(--font);
-  background: var(--deeper);
-  color: var(--ink);
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255, 47, 155, 0.32), transparent 42%),
-    radial-gradient(circle at 90% 20%, rgba(122, 25, 201, 0.25), transparent 38%),
-    radial-gradient(circle at 10% 60%, rgba(255, 47, 155, 0.18), transparent 35%),
-    linear-gradient(180deg, #3d004d 0%, #24002f 30%, #1c0027 75%, #14001c 100%);
-  min-height: 100vh;
-  overflow-x: hidden;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── Typography & Links ────────────────────────────────────────── */
-h1, h2, h3, h4 {
-  color: var(--ink);
-  font-weight: 900;
-  line-height: 1.15;
-  margin: 0 0 16px;
-  letter-spacing: -0.025em;
-}
-
-p {
-  margin: 0 0 18px;
-  color: var(--muted);
-}
-
-a {
-  color: var(--yellow);
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-a:hover {
-  color: #fff;
-}
-
-/* ── Utility Classes ───────────────────────────────────────────── */
-.container {
-  width: 100%;
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #ffd84c 50%, #ff5bb2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline;
-}
-
-.gradient-gold {
-  background: linear-gradient(135deg, #fff4b8 0%, #ffd84c 45%, #ff9e2b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline;
-}
-
-/* ── 3D Buttons ─────────────────────────────────────────────────── */
-.btn-3d {
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  border-radius: 20px;
-  padding: 16px 28px;
-  color: #fff;
-  font-weight: 900;
-  font-size: 17px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  cursor: pointer;
-  background: linear-gradient(180deg, #ff58b3, #ff1c91 54%, #ca076a);
-  box-shadow: 0 8px 0 #850047, 0 16px 26px rgba(0, 0, 0, 0.35), inset 0 3px 0 rgba(255, 255, 255, 0.45);
-  text-shadow: 0 2px 0 rgba(74, 0, 39, 0.45);
-  transition: transform 0.08s ease, box-shadow 0.08s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  text-decoration: none;
-}
-
-.btn-3d:hover {
-  color: #fff;
-  filter: brightness(1.05);
-}
-
-.btn-3d:active {
-  transform: translateY(6px);
-  box-shadow: 0 2px 0 #850047, 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.btn-green {
-  background: linear-gradient(180deg, #7aff5e, #34df30 55%, #12931d);
-  box-shadow: 0 8px 0 #087317, 0 0 24px rgba(83, 255, 63, 0.35), 0 16px 26px rgba(0, 0, 0, 0.38), inset 0 3px 0 rgba(255, 255, 255, 0.5);
-  text-shadow: 0 2px 0 rgba(0, 88, 17, 0.5);
-}
-
-.btn-green:active {
-  transform: translateY(6px);
-  box-shadow: 0 2px 0 #087317, 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.btn-glass {
-  border: 1.5px solid rgba(255, 255, 255, 0.28);
-  border-radius: 20px;
-  padding: 16px 26px;
-  color: #fff;
-  font-weight: 850;
-  font-size: 16px;
-  background: rgba(255, 255, 255, 0.09);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 6px 0 rgba(40, 0, 70, 0.6), 0 12px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.btn-glass:hover {
-  background: rgba(255, 255, 255, 0.16);
-  color: #fff;
-}
-
-.btn-glass:active {
-  transform: translateY(4px);
-  box-shadow: 0 2px 0 rgba(40, 0, 70, 0.6);
-}
-
-/* ── Pill Badges ────────────────────────────────────────────────── */
-.badge-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 850;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  background: rgba(255, 216, 76, 0.15);
-  border: 1.5px solid rgba(255, 216, 76, 0.4);
-  color: #fff3a8;
-  box-shadow: 0 4px 14px rgba(255, 216, 76, 0.15);
-  margin-bottom: 20px;
-}
-
-.badge-pill .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--yellow);
-  box-shadow: 0 0 10px var(--yellow);
-  animation: pulse-dot 2s infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
-}
-
-/* ── Navbar ─────────────────────────────────────────────────────── */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(36, 0, 47, 0.88);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
-  padding: 12px 0;
-}
-
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #fff;
-  font-weight: 900;
-  font-size: 20px;
-  letter-spacing: -0.02em;
-}
-
-.brand:hover {
-  color: #fff;
-}
-
-.brand-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(255, 47, 155, 0.35);
-  flex-shrink: 0;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links a {
-  color: var(--muted);
-  font-weight: 750;
-  font-size: 14.5px;
-  transition: color 0.15s ease;
-}
-
-.nav-links a:hover {
-  color: #fff;
-}
-
-.nav-cta {
-  padding: 10px 18px;
-  font-size: 14px;
-  border-radius: 14px;
-}
-
-/* ── Hero Section ───────────────────────────────────────────────── */
-.hero {
-  padding: 56px 0 64px;
-  position: relative;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  align-items: center;
-  gap: 48px;
-}
-
-.hero-copy {
-  max-width: 620px;
-}
-
-.hero-title {
-  font-size: clamp(38px, 5.2vw, 56px);
-  font-weight: 1000;
-  line-height: 1.05;
-  letter-spacing: -0.035em;
-  margin-bottom: 18px;
-}
-
-.hero-tagline {
-  font-size: clamp(18px, 2.2vw, 22px);
-  font-weight: 800;
-  color: var(--yellow);
-  margin-bottom: 16px;
-  line-height: 1.35;
-}
-
-.hero-description {
-  font-size: 17px;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 28px;
-}
-
-.hero-ctas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 34px;
-}
-
-.trust-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-}
-
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13.5px;
-  font-weight: 750;
-  color: var(--muted);
-}
-
-.trust-item span.icon {
-  font-size: 16px;
-}
-
-/* ── Phone Mockup / Live Preview ────────────────────────────────── */
-.phone-wrapper {
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.phone-card {
-  width: 100%;
-  max-width: 375px;
-  border-radius: 44px;
-  background: #14001c;
-  padding: 14px;
-  border: 4px solid rgba(255, 255, 255, 0.22);
-  box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.65),
-    0 0 50px rgba(255, 47, 155, 0.25),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
-  position: relative;
-  user-select: none;
-}
-
-.phone-notch {
-  width: 120px;
-  height: 20px;
-  background: #000;
-  border-radius: 0 0 14px 14px;
-  margin: -14px auto 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
-.phone-speaker {
-  width: 44px;
-  height: 4px;
-  background: #2b2b2b;
-  border-radius: 999px;
-}
-
-.phone-camera {
-  width: 7px;
-  height: 7px;
-  background: #1a1a2e;
-  border-radius: 50%;
-  border: 1px solid #333;
-}
-
-.phone-screen {
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255, 65, 170, 0.45), transparent 40%),
-    linear-gradient(180deg, #4a005b 0%, #22002d 64%, #16001e 100%);
-  border-radius: 32px;
-  padding: 16px 14px 18px;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.mock-topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.mock-round-btn {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-weight: 900;
-  font-size: 13px;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: linear-gradient(180deg, #a534df, #641091);
-  box-shadow: 0 3px 0 #36004f;
-}
-
-.mock-coin-pill {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 11px;
-  border-radius: 999px;
-  font-weight: 1000;
-  font-size: 13px;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: linear-gradient(180deg, #a534df, #641091);
-  box-shadow: 0 3px 0 #36004f;
-}
-
-.mock-coin {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  color: #8a4b00;
-  font-size: 10px;
-  background: radial-gradient(circle at 34% 27%, #fff8ae 0 8%, #ffd83e 10% 47%, #f3a600 49% 74%, #ad6100 76% 100%);
-  border: 1.5px solid #fff083;
-}
-
-.mock-go-title {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 1000;
-  line-height: 0.95;
-  margin: 4px 0 2px;
-  text-shadow: 0 3px 0 #8d064e, 0 0 14px rgba(255, 82, 173, 0.5);
-}
-
-.mock-leave-by {
-  text-align: center;
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--muted);
-  margin-bottom: 4px;
-}
-
-.mock-phase-pill {
-  display: table;
-  margin: 0 auto 8px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: rgba(255, 216, 76, 0.18);
-  border: 1px solid rgba(255, 235, 145, 0.4);
-  color: #fff3a5;
-  font-weight: 900;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-}
-
-.mock-ring {
-  width: 195px;
-  height: 195px;
-  margin: 4px auto 6px;
-  border-radius: 50%;
-  padding: 12px;
-  background: conic-gradient(var(--yellow) var(--mock-progress, 75%), #e7098a 0);
-  box-shadow: 0 0 24px rgba(255, 37, 144, 0.48), 0 6px 0 #650047, 0 12px 24px rgba(0, 0, 0, 0.4);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mock-ring-inner {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: #24002f;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 6px;
-}
-
-.mock-ring-label {
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #ffd6e9;
-}
-
-.mock-points-base {
-  font-size: 14px;
-  font-weight: 900;
-  color: #fff;
-  line-height: 1.1;
-}
-
-.mock-bonus-block {
-  margin-top: 2px;
-}
-
-.mock-bonus-lbl {
-  color: var(--yellow);
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.mock-points-big {
-  font-size: 20px;
-  font-weight: 1000;
-  color: var(--yellow);
-  line-height: 1;
-  text-shadow: 0 0 10px rgba(255, 216, 76, 0.45);
-}
-
-.mock-sum-line {
-  font-size: 9.5px;
-  font-weight: 900;
-  color: #fff;
-  margin-top: 3px;
-}
-
-.mock-countdown {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 1000;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  color: #fff;
-  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
-  margin-bottom: 6px;
-}
-
-/* ── Grab List Preview ─────────────────────────────────────────── */
-.mock-grab-label {
-  text-align: center;
-  font-size: 9.5px;
-  font-weight: 900;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: #ffd6e9;
-  margin-bottom: 4px;
-}
-
-.mock-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  justify-content: center;
-  margin-bottom: 8px;
-}
-
-.mock-chip {
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 999px;
-  padding: 4px 8px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: all 0.12s ease;
-  user-select: none;
-}
-
-.mock-chip:hover {
-  background: rgba(255, 255, 255, 0.16);
-  color: #fff;
-}
-
-.mock-chip.checked {
-  background: linear-gradient(180deg, #ffd84c, #ff9e2b);
-  color: #4a2200;
-  border-color: #fff19e;
-  box-shadow: 0 2px 0 #9f5400;
-}
-
-/* ── Grace Buffer Row ──────────────────────────────────────────── */
-.mock-grace-row {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 8px;
-}
-
-.mock-grace-btn {
-  flex: 1;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 12px;
-  padding: 6px 4px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 900;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: transform 0.08s ease, background 0.15s ease;
-}
-
-.mock-grace-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.mock-grace-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
-}
-
-.mock-out-btn {
-  width: 100%;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  border-radius: 16px;
-  padding: 10px;
-  color: #fff;
-  font-weight: 1000;
-  font-size: 15px;
-  text-transform: uppercase;
-  cursor: pointer;
-  background: linear-gradient(180deg, #7aff5e, #34df30 55%, #12931d);
-  box-shadow: 0 6px 0 #087317, 0 0 18px rgba(83, 255, 63, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.5);
-  text-shadow: 0 2px 0 rgba(0, 88, 17, 0.5);
-  transition: transform 0.08s ease;
-}
-
-.mock-out-btn:active {
-  transform: translateY(4px);
-  box-shadow: 0 2px 0 #087317;
-}
-
-/* ── Result Modal Overlay (Interactive Demo) ────────────────────── */
-.mock-result-modal {
-  position: absolute;
-  inset: 0;
-  background: rgba(28, 0, 39, 0.95);
-  backdrop-filter: blur(8px);
-  border-radius: 32px;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
-  z-index: 10;
-  animation: modal-fade 0.25s ease-out;
-}
-
-.mock-result-modal.active {
-  display: flex;
-}
-
-@keyframes modal-fade {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.modal-kicker {
-  font-size: 11px;
-  font-weight: 1000;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--yellow);
-  margin-bottom: 2px;
-}
-
-.modal-title {
-  font-size: 24px;
-  font-weight: 1000;
-  margin-bottom: 8px;
-  color: #fff;
-}
-
-.modal-badge {
-  background: linear-gradient(180deg, #ffd84c, #ff9e2b);
-  color: #4a2200;
-  font-weight: 1000;
-  font-size: 13px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  margin-bottom: 12px;
-  box-shadow: 0 3px 0 #9f5400;
-}
-
-.modal-coins-box {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 16px;
-  padding: 10px 18px;
-  margin-bottom: 14px;
-  width: 100%;
-}
-
-.modal-coins-val {
-  font-size: 26px;
-  font-weight: 1000;
-  color: var(--yellow);
-  line-height: 1.1;
-}
-
-.modal-coins-sub {
-  font-size: 11px;
-  color: var(--muted);
-  font-weight: 750;
-}
-
-.modal-reset-btn {
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
-  border-radius: 14px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 900;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-
-.modal-reset-btn:hover {
-  background: rgba(255, 255, 255, 0.22);
-}
-
-.mock-toast {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  right: 14px;
-  background: #ffd84c;
-  color: #4a2200;
-  padding: 8px 12px;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: 900;
-  text-align: center;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-  z-index: 20;
-  opacity: 0;
-  transform: translateY(-8px);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.mock-toast.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.preview-hint {
-  text-align: center;
-  font-size: 13px;
-  font-weight: 750;
-  color: var(--muted-soft);
-  margin-top: 14px;
-}
-
-.preview-hint strong {
-  color: var(--yellow);
-}
-
-/* ── Section Header Component ───────────────────────────────────── */
-.section-header {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 54px;
-}
-
-.section-title {
-  font-size: clamp(30px, 4vw, 44px);
-  margin-bottom: 14px;
-}
-
-.section-subtitle {
-  font-size: 17px;
-  color: var(--muted);
-  line-height: 1.55;
-  margin: 0;
-}
-
-/* ── Contrast Section: Traditional vs Departure Alarm ───────────── */
-.contrast-section {
-  padding: 72px 0;
-  background: rgba(0, 0, 0, 0.22);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.contrast-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-}
-
-.contrast-card {
-  border-radius: 28px;
-  padding: 34px 28px;
-  position: relative;
-  overflow: hidden;
-}
-
-.card-trap {
-  background: linear-gradient(180deg, rgba(48, 12, 28, 0.85) 0%, rgba(28, 6, 18, 0.95) 100%);
-  border: 1.5px solid rgba(255, 77, 106, 0.35);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
-}
-
-.card-solution {
-  background: linear-gradient(180deg, rgba(78, 14, 102, 0.9) 0%, rgba(36, 4, 52, 0.95) 100%);
-  border: 1.5px solid rgba(255, 216, 76, 0.45);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 47, 155, 0.18);
-}
-
-.contrast-badge {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 1000;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 999px;
-  margin-bottom: 14px;
-}
-
-.badge-trap {
-  background: rgba(255, 77, 106, 0.18);
-  border: 1px solid rgba(255, 77, 106, 0.4);
-  color: #ff8097;
-}
-
-.badge-solution {
-  background: rgba(255, 216, 76, 0.18);
-  border: 1px solid rgba(255, 216, 76, 0.45);
-  color: #ffe07a;
-}
-
-.contrast-card h3 {
-  font-size: 25px;
-  margin-bottom: 12px;
-}
-
-.contrast-card p.card-intro {
-  font-size: 15px;
-  color: var(--muted);
-  margin-bottom: 22px;
-}
-
-.contrast-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.contrast-item {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  font-size: 14.5px;
-  line-height: 1.45;
-}
-
-.contrast-item .icon {
-  font-size: 18px;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.contrast-item strong {
-  display: block;
-  font-size: 15px;
-  margin-bottom: 2px;
-  color: #fff;
-}
-
-.contrast-item span.desc {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* ── 6 Core Mechanics Section ───────────────────────────────────── */
-.mechanics-section {
-  padding: 80px 0;
-}
-
-.mechanics-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.mech-card {
-  border-radius: 26px;
-  padding: 28px 24px;
-  background: linear-gradient(145deg, rgba(82, 14, 107, 0.5) 0%, rgba(36, 0, 47, 0.75) 100%);
-  border: 1.5px solid var(--line);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.mech-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 216, 76, 0.4);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 24px rgba(255, 47, 155, 0.2);
-}
-
-.mech-icon-wrap {
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255, 47, 155, 0.25), rgba(122, 25, 201, 0.35));
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  display: grid;
-  place-items: center;
-  font-size: 26px;
-  margin-bottom: 18px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-}
-
-.mech-pill {
-  display: inline-block;
-  align-self: flex-start;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--yellow);
-  margin-bottom: 8px;
-}
-
-.mech-card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-.mech-card p {
-  font-size: 14.5px;
-  color: var(--muted);
-  line-height: 1.55;
-  margin: 0;
-  flex-grow: 1;
-}
-
-/* ── Journey Milestones Section ─────────────────────────────────── */
-.journey-section {
-  padding: 80px 0;
-  background: radial-gradient(circle at 50% 50%, rgba(122, 25, 201, 0.2), transparent 70%);
-  border-top: 1px solid var(--line);
-}
-
-.journey-track-wrapper {
-  background: rgba(28, 0, 42, 0.7);
-  border: 1.5px solid var(--line);
-  border-radius: 30px;
-  padding: 34px 28px;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
-}
-
-.journey-summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--line);
-}
-
-.journey-stat {
-  display: flex;
-  flex-direction: column;
-}
-
-.journey-stat span.lbl {
-  font-size: 12px;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted-soft);
-}
-
-.journey-stat strong {
-  font-size: 26px;
-  font-weight: 1000;
-  color: var(--yellow);
-}
-
-.milestones-strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 14px;
-}
-
-.milestone-item {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 18px;
-  padding: 14px 12px;
-  text-align: center;
-  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-}
-
-.milestone-item:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.11);
-  border-color: rgba(255, 216, 76, 0.4);
-}
-
-.milestone-icon {
-  font-size: 32px;
-  margin-bottom: 6px;
-  display: block;
-}
-
-.milestone-name {
-  font-size: 13.5px;
-  font-weight: 900;
-  color: #fff;
-  margin-bottom: 2px;
-}
-
-.milestone-coins {
-  font-size: 11.5px;
-  font-weight: 850;
-  color: var(--yellow);
-}
-
-/* ── Privacy & Local-First Section ──────────────────────────────── */
-.privacy-section {
-  padding: 72px 0;
-  border-top: 1px solid var(--line);
-  background: rgba(0, 0, 0, 0.25);
-}
-
-.privacy-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.privacy-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 22px;
-  padding: 26px 22px;
-  text-align: center;
-}
-
-.privacy-icon {
-  font-size: 36px;
-  margin-bottom: 14px;
-  display: block;
-}
-
-.privacy-card h4 {
-  font-size: 18px;
-  margin-bottom: 8px;
-  color: #fff;
-}
-
-.privacy-card p {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* ── Add to Home Screen (PWA Guide) ─────────────────────────────── */
-.install-section {
-  padding: 80px 0;
-  border-top: 1px solid var(--line);
-}
-
-.install-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-}
-
-.install-card {
-  background: linear-gradient(145deg, rgba(68, 8, 92, 0.7) 0%, rgba(28, 0, 42, 0.9) 100%);
-  border: 1.5px solid var(--line);
-  border-radius: 28px;
-  padding: 32px 28px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
-}
-
-.install-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 22px;
-}
-
-.platform-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.1);
-  display: grid;
-  place-items: center;
-  font-size: 24px;
-}
-
-.install-header h3 {
-  margin: 0;
-  font-size: 22px;
-}
-
-.install-steps {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.install-step {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  font-size: 14.5px;
-  line-height: 1.45;
-}
-
-.step-num {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #ff5bb2, #ca076a);
-  color: #fff;
-  font-weight: 1000;
-  font-size: 13px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  margin-top: 1px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.install-step span.text {
-  color: var(--muted);
-}
-
-.install-step strong {
-  color: #fff;
-}
-
-/* ── FAQ Section ────────────────────────────────────────────────── */
-.faq-section {
-  padding: 72px 0;
-  border-top: 1px solid var(--line);
-}
-
-.faq-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.faq-item {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 20px;
-  padding: 24px 22px;
-}
-
-.faq-item h4 {
-  font-size: 17px;
-  margin-bottom: 10px;
-  color: #fff;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.faq-item h4 span.q {
-  color: var(--yellow);
-  font-weight: 1000;
-}
-
-.faq-item p {
-  font-size: 14.5px;
-  color: var(--muted);
-  line-height: 1.55;
-  margin: 0;
-}
-
-/* ── Final Call to Action ───────────────────────────────────────── */
-.final-cta {
-  padding: 84px 0 96px;
-  text-align: center;
-  position: relative;
-}
-
-.cta-box {
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255, 47, 155, 0.45), transparent 60%),
-    linear-gradient(180deg, #57006b 0%, #290036 100%);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 36px;
-  padding: 60px 28px;
-  box-shadow:
-    0 24px 64px rgba(0, 0, 0, 0.6),
-    0 0 50px rgba(255, 47, 155, 0.3);
-  max-width: 840px;
-  margin: 0 auto;
-}
-
-.cta-box h2 {
-  font-size: clamp(32px, 4.5vw, 48px);
-  margin-bottom: 16px;
-}
-
-.cta-box p {
-  font-size: 18px;
-  max-width: 580px;
-  margin: 0 auto 32px;
-  color: var(--muted);
-}
-
-/* ── Footer ─────────────────────────────────────────────────────── */
-.footer {
-  padding: 38px 0;
-  border-top: 1px solid var(--line);
-  background: #14001c;
-  font-size: 13.5px;
-  color: var(--muted-soft);
-}
-
-.footer-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.footer-copy {
-  margin: 0;
-}
-
-.footer-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.footer-links a {
-  color: var(--muted);
-}
-
-.footer-links a:hover {
-  color: #fff;
-}
-
-/* ── Mobile Sticky CTA Bar ──────────────────────────────────────── */
-.sticky-bar {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 99;
-  background: rgba(36, 0, 47, 0.95);
-  backdrop-filter: blur(14px);
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
-  padding: 10px 16px max(10px, env(safe-area-inset-bottom));
-  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4);
-}
-
-.sticky-bar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 440px;
-  margin: 0 auto;
-  gap: 12px;
-}
-
-.sticky-bar-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.sticky-bar-title {
-  font-weight: 1000;
-  font-size: 14px;
-  color: #fff;
-}
-
-.sticky-bar-sub {
-  font-size: 11px;
-  color: var(--yellow);
-  font-weight: 800;
-}
-
-.sticky-bar-btn {
-  padding: 10px 18px;
-  font-size: 13px;
-  border-radius: 14px;
-  white-space: nowrap;
-}
-
-/* ── Responsive Media Queries ───────────────────────────────────── */
-@media (max-width: 992px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 40px;
-  }
-  .hero-copy {
-    margin: 0 auto;
-  }
-  .hero-ctas {
-    justify-content: center;
-  }
-  .trust-row {
-    justify-content: center;
-  }
-  .mechanics-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .contrast-grid {
-    grid-template-columns: 1fr;
-  }
-  .privacy-grid {
-    grid-template-columns: 1fr;
-  }
-  .install-grid {
-    grid-template-columns: 1fr;
-  }
-  .faq-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-  .sticky-bar {
-    display: block;
-  }
-  body {
-    padding-bottom: 70px;
-  }
-  .mechanics-grid {
-    grid-template-columns: 1fr;
-  }
-  .cta-box {
-    padding: 40px 20px;
-  }
-  .milestones-strip {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .milestones-strip {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .btn-3d {
-    width: 100%;
-  }
-  .btn-glass {
-    width: 100%;
-  }
-}
-</style>
-</head>
-<body>
-
-<!-- ── Navigation ───────────────────────────────────────────────── -->
-<nav class="navbar">
-  <div class="container nav-container">
-    <a href="landing.html" class="brand" aria-label="Departure Alarm Home">
-      <img src="icon.svg" alt="Departure Alarm icon" class="brand-icon">
-      <span>Departure Alarm</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#demo">Interactive Demo</a></li>
-      <li><a href="#contrast">Why It Works</a></li>
-      <li><a href="#mechanics">6 Mechanics</a></li>
-      <li><a href="#journey">Journey</a></li>
-      <li><a href="#install">Install App</a></li>
-    </ul>
-    <a href="index.html" class="btn-3d nav-cta">Launch App</a>
-  </div>
-</nav>
-
-<!-- ── Hero Section ─────────────────────────────────────────────── -->
-<header class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <div class="badge-pill">
-        <span class="dot"></span>
-        <span>Built for the ADHD Brain</span>
-      </div>
-      <h1 class="hero-title">
-        Leave on time <br>
-        <span class="gradient-text">without the panic</span>.
-      </h1>
-      <p class="hero-tagline">
-        The gamified, forgiving departure timer built for ADHD executive function.
-      </p>
-      <p class="hero-description">
-        Traditional alarms create cortisol spikes, snooze spirals, and shame. Departure Alarm transforms leaving into a satisfying game with live ticking countdown bounties, a 5-minute pre-departure buzzer, instant grace buffers, and forgiving stepped rewards where you never lose a streak.
-      </p>
-      <div class="hero-ctas">
-        <a href="index.html" class="btn-3d btn-green">
-          <span>Launch Departure Alarm</span>
-          <span aria-hidden="true">🚀</span>
+  <head>
+    <meta charset="utf-8" />
+    <script src="da-consent.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#5a0b77" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Departure Alarm" />
+    <meta
+      name="description"
+      content="The gamified, forgiving departure timer built for the ADHD brain. Beat time blindness with live countdown bounties, grace buffers, and zero shame."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Departure Alarm: Leave on time without the panic" />
+    <meta
+      property="og:description"
+      content="The gamified, forgiving departure timer built for the ADHD brain. Beat time blindness with live countdown bounties, grace buffers, and zero shame."
+    />
+    <meta property="og:url" content="https://webuildforgood.com/departure-alarm/landing.html" />
+    <link rel="canonical" href="https://webuildforgood.com/departure-alarm/landing.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Departure Alarm: Leave on time without the panic" />
+    <meta
+      name="twitter:description"
+      content="The gamified, forgiving departure timer built for the ADHD brain. Beat time blindness with live countdown bounties, grace buffers, and zero shame."
+    />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
+    <title>Departure Alarm: Leave on time without the panic</title>
+    <style>
+      :root {
+        --ink: #ffffff;
+        --muted: #ead8f3;
+        --muted-soft: #cbb4db;
+        --pink: #ff2f9b;
+        --pink-deep: #ca076a;
+        --purple: #7a19c9;
+        --purple-dark: #4a005b;
+        --deep: #24002f;
+        --deeper: #1c0027;
+        --yellow: #ffd84c;
+        --gold: #ffb830;
+        --green: #56ef49;
+        --green-deep: #12931d;
+        --line: rgba(255, 255, 255, 0.16);
+        --glass: rgba(255, 255, 255, 0.08);
+        --glass-border: rgba(255, 255, 255, 0.22);
+        --font:
+          Inter, ui-rounded, "SF Pro Rounded", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-family: var(--font);
+        background: var(--deeper);
+        color: var(--ink);
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(255, 47, 155, 0.32), transparent 42%),
+          radial-gradient(circle at 90% 20%, rgba(122, 25, 201, 0.25), transparent 38%),
+          radial-gradient(circle at 10% 60%, rgba(255, 47, 155, 0.18), transparent 35%),
+          linear-gradient(180deg, #3d004d 0%, #24002f 30%, #1c0027 75%, #14001c 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── Typography & Links ────────────────────────────────────────── */
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--ink);
+        font-weight: 900;
+        line-height: 1.15;
+        margin: 0 0 16px;
+        letter-spacing: -0.025em;
+      }
+
+      p {
+        margin: 0 0 18px;
+        color: var(--muted);
+      }
+
+      a {
+        color: var(--yellow);
+        text-decoration: none;
+        transition: color 0.15s ease;
+      }
+
+      a:hover {
+        color: #fff;
+      }
+
+      /* ── Utility Classes ───────────────────────────────────────────── */
+      .container {
+        width: 100%;
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #ffffff 0%, #ffd84c 50%, #ff5bb2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline;
+      }
+
+      .gradient-gold {
+        background: linear-gradient(135deg, #fff4b8 0%, #ffd84c 45%, #ff9e2b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline;
+      }
+
+      /* ── 3D Buttons ─────────────────────────────────────────────────── */
+      .btn-3d {
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        border-radius: 20px;
+        padding: 16px 28px;
+        color: #fff;
+        font-weight: 900;
+        font-size: 17px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        cursor: pointer;
+        background: linear-gradient(180deg, #ff58b3, #ff1c91 54%, #ca076a);
+        box-shadow:
+          0 8px 0 #850047,
+          0 16px 26px rgba(0, 0, 0, 0.35),
+          inset 0 3px 0 rgba(255, 255, 255, 0.45);
+        text-shadow: 0 2px 0 rgba(74, 0, 39, 0.45);
+        transition:
+          transform 0.08s ease,
+          box-shadow 0.08s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .btn-3d:hover {
+        color: #fff;
+        filter: brightness(1.05);
+      }
+
+      .btn-3d:active {
+        transform: translateY(6px);
+        box-shadow:
+          0 2px 0 #850047,
+          0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-green {
+        background: linear-gradient(180deg, #7aff5e, #34df30 55%, #12931d);
+        box-shadow:
+          0 8px 0 #087317,
+          0 0 24px rgba(83, 255, 63, 0.35),
+          0 16px 26px rgba(0, 0, 0, 0.38),
+          inset 0 3px 0 rgba(255, 255, 255, 0.5);
+        text-shadow: 0 2px 0 rgba(0, 88, 17, 0.5);
+      }
+
+      .btn-green:active {
+        transform: translateY(6px);
+        box-shadow:
+          0 2px 0 #087317,
+          0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-glass {
+        border: 1.5px solid rgba(255, 255, 255, 0.28);
+        border-radius: 20px;
+        padding: 16px 26px;
+        color: #fff;
+        font-weight: 850;
+        font-size: 16px;
+        background: rgba(255, 255, 255, 0.09);
+        backdrop-filter: blur(12px);
+        box-shadow:
+          0 6px 0 rgba(40, 0, 70, 0.6),
+          0 12px 20px rgba(0, 0, 0, 0.25);
+        transition:
+          transform 0.08s ease,
+          box-shadow 0.08s ease,
+          background 0.15s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .btn-glass:hover {
+        background: rgba(255, 255, 255, 0.16);
+        color: #fff;
+      }
+
+      .btn-glass:active {
+        transform: translateY(4px);
+        box-shadow: 0 2px 0 rgba(40, 0, 70, 0.6);
+      }
+
+      /* ── Pill Badges ────────────────────────────────────────────────── */
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 850;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        background: rgba(255, 216, 76, 0.15);
+        border: 1.5px solid rgba(255, 216, 76, 0.4);
+        color: #fff3a8;
+        box-shadow: 0 4px 14px rgba(255, 216, 76, 0.15);
+        margin-bottom: 20px;
+      }
+
+      .badge-pill .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--yellow);
+        box-shadow: 0 0 10px var(--yellow);
+        animation: pulse-dot 2s infinite;
+      }
+
+      @keyframes pulse-dot {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.85);
+        }
+      }
+
+      /* ── Navbar ─────────────────────────────────────────────────────── */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(36, 0, 47, 0.88);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+        padding: 12px 0;
+      }
+
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #fff;
+        font-weight: 900;
+        font-size: 20px;
+        letter-spacing: -0.02em;
+      }
+
+      .brand:hover {
+        color: #fff;
+      }
+
+      .brand-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(255, 47, 155, 0.35);
+        flex-shrink: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        font-weight: 750;
+        font-size: 14.5px;
+        transition: color 0.15s ease;
+      }
+
+      .nav-links a:hover {
+        color: #fff;
+      }
+
+      .nav-cta {
+        padding: 10px 18px;
+        font-size: 14px;
+        border-radius: 14px;
+      }
+
+      /* ── Hero Section ───────────────────────────────────────────────── */
+      .hero {
+        padding: 56px 0 64px;
+        position: relative;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: center;
+        gap: 48px;
+      }
+
+      .hero-copy {
+        max-width: 620px;
+      }
+
+      .hero-title {
+        font-size: clamp(38px, 5.2vw, 56px);
+        font-weight: 1000;
+        line-height: 1.05;
+        letter-spacing: -0.035em;
+        margin-bottom: 18px;
+      }
+
+      .hero-tagline {
+        font-size: clamp(18px, 2.2vw, 22px);
+        font-weight: 800;
+        color: var(--yellow);
+        margin-bottom: 16px;
+        line-height: 1.35;
+      }
+
+      .hero-description {
+        font-size: 17px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-bottom: 28px;
+      }
+
+      .hero-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 34px;
+      }
+
+      .trust-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+      }
+
+      .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13.5px;
+        font-weight: 750;
+        color: var(--muted);
+      }
+
+      .trust-item span.icon {
+        font-size: 16px;
+      }
+
+      /* ── Phone Mockup / Live Preview ────────────────────────────────── */
+      .phone-wrapper {
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
+
+      .phone-card {
+        width: 100%;
+        max-width: 375px;
+        border-radius: 44px;
+        background: #14001c;
+        padding: 14px;
+        border: 4px solid rgba(255, 255, 255, 0.22);
+        box-shadow:
+          0 24px 60px rgba(0, 0, 0, 0.65),
+          0 0 50px rgba(255, 47, 155, 0.25),
+          inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+        position: relative;
+        user-select: none;
+      }
+
+      .phone-notch {
+        width: 120px;
+        height: 20px;
+        background: #000;
+        border-radius: 0 0 14px 14px;
+        margin: -14px auto 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .phone-speaker {
+        width: 44px;
+        height: 4px;
+        background: #2b2b2b;
+        border-radius: 999px;
+      }
+
+      .phone-camera {
+        width: 7px;
+        height: 7px;
+        background: #1a1a2e;
+        border-radius: 50%;
+        border: 1px solid #333;
+      }
+
+      .phone-screen {
+        background:
+          radial-gradient(circle at 50% 0%, rgba(255, 65, 170, 0.45), transparent 40%),
+          linear-gradient(180deg, #4a005b 0%, #22002d 64%, #16001e 100%);
+        border-radius: 32px;
+        padding: 16px 14px 18px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .mock-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+
+      .mock-round-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        font-size: 13px;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: linear-gradient(180deg, #a534df, #641091);
+        box-shadow: 0 3px 0 #36004f;
+      }
+
+      .mock-coin-pill {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 11px;
+        border-radius: 999px;
+        font-weight: 1000;
+        font-size: 13px;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: linear-gradient(180deg, #a534df, #641091);
+        box-shadow: 0 3px 0 #36004f;
+      }
+
+      .mock-coin {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #8a4b00;
+        font-size: 10px;
+        background: radial-gradient(
+          circle at 34% 27%,
+          #fff8ae 0 8%,
+          #ffd83e 10% 47%,
+          #f3a600 49% 74%,
+          #ad6100 76% 100%
+        );
+        border: 1.5px solid #fff083;
+      }
+
+      .mock-go-title {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 1000;
+        line-height: 0.95;
+        margin: 4px 0 2px;
+        text-shadow:
+          0 3px 0 #8d064e,
+          0 0 14px rgba(255, 82, 173, 0.5);
+      }
+
+      .mock-leave-by {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+
+      .mock-phase-pill {
+        display: table;
+        margin: 0 auto 8px;
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: rgba(255, 216, 76, 0.18);
+        border: 1px solid rgba(255, 235, 145, 0.4);
+        color: #fff3a5;
+        font-weight: 900;
+        font-size: 11px;
+        letter-spacing: 0.04em;
+      }
+
+      .mock-ring {
+        width: 195px;
+        height: 195px;
+        margin: 4px auto 6px;
+        border-radius: 50%;
+        padding: 12px;
+        background: conic-gradient(var(--yellow) var(--mock-progress, 75%), #e7098a 0);
+        box-shadow:
+          0 0 24px rgba(255, 37, 144, 0.48),
+          0 6px 0 #650047,
+          0 12px 24px rgba(0, 0, 0, 0.4);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mock-ring-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: #24002f;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 6px;
+      }
+
+      .mock-ring-label {
+        font-size: 8px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #ffd6e9;
+      }
+
+      .mock-points-base {
+        font-size: 14px;
+        font-weight: 900;
+        color: #fff;
+        line-height: 1.1;
+      }
+
+      .mock-bonus-block {
+        margin-top: 2px;
+      }
+
+      .mock-bonus-lbl {
+        color: var(--yellow);
+        font-size: 8px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .mock-points-big {
+        font-size: 20px;
+        font-weight: 1000;
+        color: var(--yellow);
+        line-height: 1;
+        text-shadow: 0 0 10px rgba(255, 216, 76, 0.45);
+      }
+
+      .mock-sum-line {
+        font-size: 9.5px;
+        font-weight: 900;
+        color: #fff;
+        margin-top: 3px;
+      }
+
+      .mock-countdown {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 1000;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        color: #fff;
+        text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+        margin-bottom: 6px;
+      }
+
+      /* ── Grab List Preview ─────────────────────────────────────────── */
+      .mock-grab-label {
+        text-align: center;
+        font-size: 9.5px;
+        font-weight: 900;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: #ffd6e9;
+        margin-bottom: 4px;
+      }
+
+      .mock-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        justify-content: center;
+        margin-bottom: 8px;
+      }
+
+      .mock-chip {
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 999px;
+        padding: 4px 8px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: all 0.12s ease;
+        user-select: none;
+      }
+
+      .mock-chip:hover {
+        background: rgba(255, 255, 255, 0.16);
+        color: #fff;
+      }
+
+      .mock-chip.checked {
+        background: linear-gradient(180deg, #ffd84c, #ff9e2b);
+        color: #4a2200;
+        border-color: #fff19e;
+        box-shadow: 0 2px 0 #9f5400;
+      }
+
+      /* ── Grace Buffer Row ──────────────────────────────────────────── */
+      .mock-grace-row {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 8px;
+      }
+
+      .mock-grace-btn {
+        flex: 1;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 12px;
+        padding: 6px 4px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 900;
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition:
+          transform 0.08s ease,
+          background 0.15s ease;
+      }
+
+      .mock-grace-btn:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .mock-grace-btn:active {
+        transform: translateY(2px);
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      }
+
+      .mock-out-btn {
+        width: 100%;
+        border: 1.5px solid rgba(255, 255, 255, 0.4);
+        border-radius: 16px;
+        padding: 10px;
+        color: #fff;
+        font-weight: 1000;
+        font-size: 15px;
+        text-transform: uppercase;
+        cursor: pointer;
+        background: linear-gradient(180deg, #7aff5e, #34df30 55%, #12931d);
+        box-shadow:
+          0 6px 0 #087317,
+          0 0 18px rgba(83, 255, 63, 0.35),
+          inset 0 2px 0 rgba(255, 255, 255, 0.5);
+        text-shadow: 0 2px 0 rgba(0, 88, 17, 0.5);
+        transition: transform 0.08s ease;
+      }
+
+      .mock-out-btn:active {
+        transform: translateY(4px);
+        box-shadow: 0 2px 0 #087317;
+      }
+
+      /* ── Result Modal Overlay (Interactive Demo) ────────────────────── */
+      .mock-result-modal {
+        position: absolute;
+        inset: 0;
+        background: rgba(28, 0, 39, 0.95);
+        backdrop-filter: blur(8px);
+        border-radius: 32px;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        z-index: 10;
+        animation: modal-fade 0.25s ease-out;
+      }
+
+      .mock-result-modal.active {
+        display: flex;
+      }
+
+      @keyframes modal-fade {
+        from {
+          opacity: 0;
+          transform: scale(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .modal-kicker {
+        font-size: 11px;
+        font-weight: 1000;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--yellow);
+        margin-bottom: 2px;
+      }
+
+      .modal-title {
+        font-size: 24px;
+        font-weight: 1000;
+        margin-bottom: 8px;
+        color: #fff;
+      }
+
+      .modal-badge {
+        background: linear-gradient(180deg, #ffd84c, #ff9e2b);
+        color: #4a2200;
+        font-weight: 1000;
+        font-size: 13px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+        box-shadow: 0 3px 0 #9f5400;
+      }
+
+      .modal-coins-box {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 16px;
+        padding: 10px 18px;
+        margin-bottom: 14px;
+        width: 100%;
+      }
+
+      .modal-coins-val {
+        font-size: 26px;
+        font-weight: 1000;
+        color: var(--yellow);
+        line-height: 1.1;
+      }
+
+      .modal-coins-sub {
+        font-size: 11px;
+        color: var(--muted);
+        font-weight: 750;
+      }
+
+      .modal-reset-btn {
+        border: 1.5px solid rgba(255, 255, 255, 0.35);
+        border-radius: 14px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 900;
+        cursor: pointer;
+        transition: background 0.15s ease;
+      }
+
+      .modal-reset-btn:hover {
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      .mock-toast {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        right: 14px;
+        background: #ffd84c;
+        color: #4a2200;
+        padding: 8px 12px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 900;
+        text-align: center;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        z-index: 20;
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .mock-toast.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .preview-hint {
+        text-align: center;
+        font-size: 13px;
+        font-weight: 750;
+        color: var(--muted-soft);
+        margin-top: 14px;
+      }
+
+      .preview-hint strong {
+        color: var(--yellow);
+      }
+
+      /* ── Section Header Component ───────────────────────────────────── */
+      .section-header {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 54px;
+      }
+
+      .section-title {
+        font-size: clamp(30px, 4vw, 44px);
+        margin-bottom: 14px;
+      }
+
+      .section-subtitle {
+        font-size: 17px;
+        color: var(--muted);
+        line-height: 1.55;
+        margin: 0;
+      }
+
+      /* ── Contrast Section: Traditional vs Departure Alarm ───────────── */
+      .contrast-section {
+        padding: 72px 0;
+        background: rgba(0, 0, 0, 0.22);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .contrast-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+
+      .contrast-card {
+        border-radius: 28px;
+        padding: 34px 28px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card-trap {
+        background: linear-gradient(180deg, rgba(48, 12, 28, 0.85) 0%, rgba(28, 6, 18, 0.95) 100%);
+        border: 1.5px solid rgba(255, 77, 106, 0.35);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+      }
+
+      .card-solution {
+        background: linear-gradient(180deg, rgba(78, 14, 102, 0.9) 0%, rgba(36, 4, 52, 0.95) 100%);
+        border: 1.5px solid rgba(255, 216, 76, 0.45);
+        box-shadow:
+          0 16px 36px rgba(0, 0, 0, 0.4),
+          0 0 40px rgba(255, 47, 155, 0.18);
+      }
+
+      .contrast-badge {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 1000;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        border-radius: 999px;
+        margin-bottom: 14px;
+      }
+
+      .badge-trap {
+        background: rgba(255, 77, 106, 0.18);
+        border: 1px solid rgba(255, 77, 106, 0.4);
+        color: #ff8097;
+      }
+
+      .badge-solution {
+        background: rgba(255, 216, 76, 0.18);
+        border: 1px solid rgba(255, 216, 76, 0.45);
+        color: #ffe07a;
+      }
+
+      .contrast-card h3 {
+        font-size: 25px;
+        margin-bottom: 12px;
+      }
+
+      .contrast-card p.card-intro {
+        font-size: 15px;
+        color: var(--muted);
+        margin-bottom: 22px;
+      }
+
+      .contrast-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .contrast-item {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        font-size: 14.5px;
+        line-height: 1.45;
+      }
+
+      .contrast-item .icon {
+        font-size: 18px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .contrast-item strong {
+        display: block;
+        font-size: 15px;
+        margin-bottom: 2px;
+        color: #fff;
+      }
+
+      .contrast-item span.desc {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      /* ── 6 Core Mechanics Section ───────────────────────────────────── */
+      .mechanics-section {
+        padding: 80px 0;
+      }
+
+      .mechanics-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .mech-card {
+        border-radius: 26px;
+        padding: 28px 24px;
+        background: linear-gradient(145deg, rgba(82, 14, 107, 0.5) 0%, rgba(36, 0, 47, 0.75) 100%);
+        border: 1.5px solid var(--line);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .mech-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 216, 76, 0.4);
+        box-shadow:
+          0 16px 36px rgba(0, 0, 0, 0.45),
+          0 0 24px rgba(255, 47, 155, 0.2);
+      }
+
+      .mech-icon-wrap {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(255, 47, 155, 0.25), rgba(122, 25, 201, 0.35));
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        display: grid;
+        place-items: center;
+        font-size: 26px;
+        margin-bottom: 18px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      }
+
+      .mech-pill {
+        display: inline-block;
+        align-self: flex-start;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--yellow);
+        margin-bottom: 8px;
+      }
+
+      .mech-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+
+      .mech-card p {
+        font-size: 14.5px;
+        color: var(--muted);
+        line-height: 1.55;
+        margin: 0;
+        flex-grow: 1;
+      }
+
+      /* ── Journey Milestones Section ─────────────────────────────────── */
+      .journey-section {
+        padding: 80px 0;
+        background: radial-gradient(circle at 50% 50%, rgba(122, 25, 201, 0.2), transparent 70%);
+        border-top: 1px solid var(--line);
+      }
+
+      .journey-track-wrapper {
+        background: rgba(28, 0, 42, 0.7);
+        border: 1.5px solid var(--line);
+        border-radius: 30px;
+        padding: 34px 28px;
+        box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+      }
+
+      .journey-summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .journey-stat {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .journey-stat span.lbl {
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted-soft);
+      }
+
+      .journey-stat strong {
+        font-size: 26px;
+        font-weight: 1000;
+        color: var(--yellow);
+      }
+
+      .milestones-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 14px;
+      }
+
+      .milestone-item {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 18px;
+        padding: 14px 12px;
+        text-align: center;
+        transition:
+          transform 0.15s ease,
+          background 0.15s ease,
+          border-color 0.15s ease;
+      }
+
+      .milestone-item:hover {
+        transform: translateY(-3px);
+        background: rgba(255, 255, 255, 0.11);
+        border-color: rgba(255, 216, 76, 0.4);
+      }
+
+      .milestone-icon {
+        font-size: 32px;
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      .milestone-name {
+        font-size: 13.5px;
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 2px;
+      }
+
+      .milestone-coins {
+        font-size: 11.5px;
+        font-weight: 850;
+        color: var(--yellow);
+      }
+
+      /* ── Privacy & Local-First Section ──────────────────────────────── */
+      .privacy-section {
+        padding: 72px 0;
+        border-top: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.25);
+      }
+
+      .privacy-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .privacy-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 22px;
+        padding: 26px 22px;
+        text-align: center;
+      }
+
+      .privacy-icon {
+        font-size: 36px;
+        margin-bottom: 14px;
+        display: block;
+      }
+
+      .privacy-card h4 {
+        font-size: 18px;
+        margin-bottom: 8px;
+        color: #fff;
+      }
+
+      .privacy-card p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* ── Add to Home Screen (PWA Guide) ─────────────────────────────── */
+      .install-section {
+        padding: 80px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .install-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+
+      .install-card {
+        background: linear-gradient(145deg, rgba(68, 8, 92, 0.7) 0%, rgba(28, 0, 42, 0.9) 100%);
+        border: 1.5px solid var(--line);
+        border-radius: 28px;
+        padding: 32px 28px;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      }
+
+      .install-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 22px;
+      }
+
+      .platform-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.1);
+        display: grid;
+        place-items: center;
+        font-size: 24px;
+      }
+
+      .install-header h3 {
+        margin: 0;
+        font-size: 22px;
+      }
+
+      .install-steps {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .install-step {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        font-size: 14.5px;
+        line-height: 1.45;
+      }
+
+      .step-num {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: linear-gradient(180deg, #ff5bb2, #ca076a);
+        color: #fff;
+        font-weight: 1000;
+        font-size: 13px;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        margin-top: 1px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .install-step span.text {
+        color: var(--muted);
+      }
+
+      .install-step strong {
+        color: #fff;
+      }
+
+      /* ── FAQ Section ────────────────────────────────────────────────── */
+      .faq-section {
+        padding: 72px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .faq-item {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 20px;
+        padding: 24px 22px;
+      }
+
+      .faq-item h4 {
+        font-size: 17px;
+        margin-bottom: 10px;
+        color: #fff;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .faq-item h4 span.q {
+        color: var(--yellow);
+        font-weight: 1000;
+      }
+
+      .faq-item p {
+        font-size: 14.5px;
+        color: var(--muted);
+        line-height: 1.55;
+        margin: 0;
+      }
+
+      /* ── Final Call to Action ───────────────────────────────────────── */
+      .final-cta {
+        padding: 84px 0 96px;
+        text-align: center;
+        position: relative;
+      }
+
+      .cta-box {
+        background:
+          radial-gradient(circle at 50% 0%, rgba(255, 47, 155, 0.45), transparent 60%),
+          linear-gradient(180deg, #57006b 0%, #290036 100%);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 36px;
+        padding: 60px 28px;
+        box-shadow:
+          0 24px 64px rgba(0, 0, 0, 0.6),
+          0 0 50px rgba(255, 47, 155, 0.3);
+        max-width: 840px;
+        margin: 0 auto;
+      }
+
+      .cta-box h2 {
+        font-size: clamp(32px, 4.5vw, 48px);
+        margin-bottom: 16px;
+      }
+
+      .cta-box p {
+        font-size: 18px;
+        max-width: 580px;
+        margin: 0 auto 32px;
+        color: var(--muted);
+      }
+
+      /* ── Footer ─────────────────────────────────────────────────────── */
+      .footer {
+        padding: 38px 0;
+        border-top: 1px solid var(--line);
+        background: #14001c;
+        font-size: 13.5px;
+        color: var(--muted-soft);
+      }
+
+      .footer-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .footer-copy {
+        margin: 0;
+      }
+
+      .footer-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .footer-links a {
+        color: var(--muted);
+      }
+
+      .footer-links a:hover {
+        color: #fff;
+      }
+
+      /* ── Mobile Sticky CTA Bar ──────────────────────────────────────── */
+      .sticky-bar {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        background: rgba(36, 0, 47, 0.95);
+        backdrop-filter: blur(14px);
+        border-top: 1px solid rgba(255, 255, 255, 0.22);
+        padding: 10px 16px max(10px, env(safe-area-inset-bottom));
+        box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4);
+      }
+
+      .sticky-bar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 440px;
+        margin: 0 auto;
+        gap: 12px;
+      }
+
+      .sticky-bar-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sticky-bar-title {
+        font-weight: 1000;
+        font-size: 14px;
+        color: #fff;
+      }
+
+      .sticky-bar-sub {
+        font-size: 11px;
+        color: var(--yellow);
+        font-weight: 800;
+      }
+
+      .sticky-bar-btn {
+        padding: 10px 18px;
+        font-size: 13px;
+        border-radius: 14px;
+        white-space: nowrap;
+      }
+
+      /* ── Responsive Media Queries ───────────────────────────────────── */
+      @media (max-width: 992px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 40px;
+        }
+        .hero-copy {
+          margin: 0 auto;
+        }
+        .hero-ctas {
+          justify-content: center;
+        }
+        .trust-row {
+          justify-content: center;
+        }
+        .mechanics-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .contrast-grid {
+          grid-template-columns: 1fr;
+        }
+        .privacy-grid {
+          grid-template-columns: 1fr;
+        }
+        .install-grid {
+          grid-template-columns: 1fr;
+        }
+        .faq-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .sticky-bar {
+          display: block;
+        }
+        body {
+          padding-bottom: 70px;
+        }
+        .mechanics-grid {
+          grid-template-columns: 1fr;
+        }
+        .cta-box {
+          padding: 40px 20px;
+        }
+        .milestones-strip {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .milestones-strip {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .btn-3d {
+          width: 100%;
+        }
+        .btn-glass {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ── Navigation ───────────────────────────────────────────────── -->
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="landing.html" class="brand" aria-label="Departure Alarm Home">
+          <img src="icon.svg" alt="Departure Alarm icon" class="brand-icon" />
+          <span>Departure Alarm</span>
         </a>
-        <a href="#demo" class="btn-glass">
-          <span>Try Live Demo</span>
-          <span aria-hidden="true">↓</span>
-        </a>
+        <ul class="nav-links">
+          <li><a href="#demo">Interactive Demo</a></li>
+          <li><a href="#contrast">Why It Works</a></li>
+          <li><a href="#mechanics">6 Mechanics</a></li>
+          <li><a href="#journey">Journey</a></li>
+          <li><a href="#install">Install App</a></li>
+        </ul>
+        <a href="index.html" class="btn-3d nav-cta">Launch App</a>
       </div>
-      <div class="trust-row">
-        <div class="trust-item"><span class="icon">🔒</span><span>100% Private & Local</span></div>
-        <div class="trust-item"><span class="icon">🧘</span><span>Zero Shame Guarantee</span></div>
-        <div class="trust-item"><span class="icon">⚡</span><span>No Account Needed</span></div>
-        <div class="trust-item"><span class="icon">✈️</span><span>Works Fully Offline</span></div>
-      </div>
-    </div>
+    </nav>
 
-    <!-- ── Interactive Phone Mockup Simulator ────────────────────── -->
-    <div class="phone-wrapper" id="demo">
-      <div class="phone-card">
-        <div class="phone-notch">
-          <div class="phone-speaker"></div>
-          <div class="phone-camera"></div>
-        </div>
-
-        <div class="phone-screen">
-          <!-- Notification Toast -->
-          <div id="mockToast" class="mock-toast">
-            +2 min buffer added! Take a breath: you're doing great.
+    <!-- ── Hero Section ─────────────────────────────────────────────── -->
+    <header class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="badge-pill">
+            <span class="dot"></span>
+            <span>Built for the ADHD Brain</span>
           </div>
-
-          <!-- Topbar -->
-          <div class="mock-topbar">
-            <div class="mock-round-btn" title="Sound test">♪</div>
-            <div class="mock-round-btn" title="Progress">▥</div>
-            <div class="mock-coin-pill">
-              <span class="mock-coin">★</span>
-              <span id="mockCoinTotal">1,420</span>
+          <h1 class="hero-title">
+            Leave on time <br />
+            <span class="gradient-text">without the panic</span>.
+          </h1>
+          <p class="hero-tagline">
+            The gamified, forgiving departure timer built for ADHD executive function.
+          </p>
+          <p class="hero-description">
+            Traditional alarms create cortisol spikes, snooze spirals, and shame. Departure Alarm
+            transforms leaving into a satisfying game with live ticking countdown bounties, a
+            5-minute pre-departure buzzer, instant grace buffers, and forgiving stepped rewards
+            where you never lose a streak.
+          </p>
+          <div class="hero-ctas">
+            <a href="index.html" class="btn-3d btn-green">
+              <span>Launch Departure Alarm</span>
+              <span aria-hidden="true">🚀</span>
+            </a>
+            <a href="#demo" class="btn-glass">
+              <span>Try Live Demo</span>
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+          <div class="trust-row">
+            <div class="trust-item">
+              <span class="icon">🔒</span><span>100% Private & Local</span>
+            </div>
+            <div class="trust-item">
+              <span class="icon">🧘</span><span>Zero Shame Guarantee</span>
+            </div>
+            <div class="trust-item"><span class="icon">⚡</span><span>No Account Needed</span></div>
+            <div class="trust-item">
+              <span class="icon">✈️</span><span>Works Fully Offline</span>
             </div>
           </div>
+        </div>
 
-          <!-- Title & Phase -->
-          <div class="mock-go-title">TIME TO GO!</div>
-          <div class="mock-leave-by" id="mockLeaveBy">Leave by 10:00 AM</div>
-          <div class="mock-phase-pill" id="mockPhasePill">⚡ BONUS ACTIVE · +64 COINS</div>
+        <!-- ── Interactive Phone Mockup Simulator ────────────────────── -->
+        <div class="phone-wrapper" id="demo">
+          <div class="phone-card">
+            <div class="phone-notch">
+              <div class="phone-speaker"></div>
+              <div class="phone-camera"></div>
+            </div>
 
-          <!-- Ring Countdown Stage -->
-          <div class="mock-ring" id="mockRing" style="--mock-progress: 75%;">
-            <div class="mock-ring-inner">
-              <div class="mock-ring-label">✓ ON-TIME POINTS</div>
-              <div class="mock-points-base">4,000</div>
-              <div class="mock-bonus-block">
-                <div class="mock-bonus-lbl">EARLY BONUS</div>
-                <div class="mock-points-big" id="mockBonusNow">+2,400</div>
+            <div class="phone-screen">
+              <!-- Notification Toast -->
+              <div id="mockToast" class="mock-toast">
+                +2 min buffer added! Take a breath: you're doing great.
               </div>
-              <div class="mock-sum-line" id="mockSumLine">= 64 coins if you leave now</div>
+
+              <!-- Topbar -->
+              <div class="mock-topbar">
+                <div class="mock-round-btn" title="Sound test">♪</div>
+                <div class="mock-round-btn" title="Progress">▥</div>
+                <div class="mock-coin-pill">
+                  <span class="mock-coin">★</span>
+                  <span id="mockCoinTotal">1,420</span>
+                </div>
+              </div>
+
+              <!-- Title & Phase -->
+              <div class="mock-go-title">TIME TO GO!</div>
+              <div class="mock-leave-by" id="mockLeaveBy">Leave by 10:00 AM</div>
+              <div class="mock-phase-pill" id="mockPhasePill">⚡ BONUS ACTIVE · +64 COINS</div>
+
+              <!-- Ring Countdown Stage -->
+              <div class="mock-ring" id="mockRing" style="--mock-progress: 75%">
+                <div class="mock-ring-inner">
+                  <div class="mock-ring-label">✓ ON-TIME POINTS</div>
+                  <div class="mock-points-base">4,000</div>
+                  <div class="mock-bonus-block">
+                    <div class="mock-bonus-lbl">EARLY BONUS</div>
+                    <div class="mock-points-big" id="mockBonusNow">+2,400</div>
+                  </div>
+                  <div class="mock-sum-line" id="mockSumLine">= 64 coins if you leave now</div>
+                </div>
+              </div>
+
+              <!-- Live Clock -->
+              <div class="mock-countdown" id="mockCountdown">04:32</div>
+
+              <!-- Interactive Grab List -->
+              <div class="mock-grab-label">Tap to check off essentials</div>
+              <div class="mock-chips" id="mockChipsContainer">
+                <button type="button" class="mock-chip" data-item="Keys">🔑 Keys</button>
+                <button type="button" class="mock-chip" data-item="Phone">📱 Phone</button>
+                <button type="button" class="mock-chip" data-item="Wallet">👛 Wallet</button>
+                <button type="button" class="mock-chip" data-item="Meds">💊 Meds</button>
+                <button type="button" class="mock-chip" data-item="Water">💧 Water</button>
+                <button type="button" class="mock-chip" data-item="Coat">🧥 Coat</button>
+              </div>
+
+              <!-- Grace Buffers -->
+              <div class="mock-grace-row">
+                <button type="button" class="mock-grace-btn" id="mockGrace2Btn">
+                  +2 min buffer 🧘
+                </button>
+                <button type="button" class="mock-grace-btn" id="mockGrace5Btn">
+                  +5 min buffer 🏃
+                </button>
+              </div>
+
+              <!-- Big Out Button -->
+              <button type="button" class="mock-out-btn" id="mockOutBtn">🚀 I'M OUT!</button>
+
+              <!-- Celebratory Result Modal -->
+              <div class="mock-result-modal" id="mockResultModal">
+                <div class="modal-kicker">YOU'RE OUT!</div>
+                <div class="modal-title">NAILED IT! ⭐</div>
+                <div class="modal-badge">Locked in Early Multiplier!</div>
+                <div class="modal-coins-box">
+                  <div class="modal-coins-val" id="modalEarnedCoins">+64 Coins</div>
+                  <div class="modal-coins-sub">Deposited to your Journey Total</div>
+                </div>
+                <p style="font-size: 12px; color: var(--muted); margin-bottom: 12px">
+                  Streak preserved: 5 Days 🔥<br />Next unlock: Suitcase 🧳
+                </p>
+                <button type="button" class="modal-reset-btn" id="mockResetBtn">
+                  Try Another Departure ↺
+                </button>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+      <p class="preview-hint">
+        👆 <strong>Live interactive preview</strong>: Tap grab chips, test the +2m buffer, or tap
+        "I'M OUT!" to feel the dopamine reward loop!
+      </p>
+    </header>
 
-          <!-- Live Clock -->
-          <div class="mock-countdown" id="mockCountdown">04:32</div>
-
-          <!-- Interactive Grab List -->
-          <div class="mock-grab-label">Tap to check off essentials</div>
-          <div class="mock-chips" id="mockChipsContainer">
-            <button type="button" class="mock-chip" data-item="Keys">🔑 Keys</button>
-            <button type="button" class="mock-chip" data-item="Phone">📱 Phone</button>
-            <button type="button" class="mock-chip" data-item="Wallet">👛 Wallet</button>
-            <button type="button" class="mock-chip" data-item="Meds">💊 Meds</button>
-            <button type="button" class="mock-chip" data-item="Water">💧 Water</button>
-            <button type="button" class="mock-chip" data-item="Coat">🧥 Coat</button>
+    <!-- ── Contrast Section: Panic vs Dopamine ──────────────────────── -->
+    <section class="contrast-section" id="contrast">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-pill">
+            <span class="dot"></span>
+            <span>The ADHD Difference</span>
           </div>
+          <h2 class="section-title">Why Traditional Alarms Fail the ADHD Brain</h2>
+          <p class="section-subtitle">
+            Cortisol triggers paralysis and rebellion. Dopamine generates focus, urgency, and
+            momentum.
+          </p>
+        </div>
 
-          <!-- Grace Buffers -->
-          <div class="mock-grace-row">
-            <button type="button" class="mock-grace-btn" id="mockGrace2Btn">+2 min buffer 🧘</button>
-            <button type="button" class="mock-grace-btn" id="mockGrace5Btn">+5 min buffer 🏃</button>
-          </div>
-
-          <!-- Big Out Button -->
-          <button type="button" class="mock-out-btn" id="mockOutBtn">🚀 I'M OUT!</button>
-
-          <!-- Celebratory Result Modal -->
-          <div class="mock-result-modal" id="mockResultModal">
-            <div class="modal-kicker">YOU'RE OUT!</div>
-            <div class="modal-title">NAILED IT! ⭐</div>
-            <div class="modal-badge">Locked in Early Multiplier!</div>
-            <div class="modal-coins-box">
-              <div class="modal-coins-val" id="modalEarnedCoins">+64 Coins</div>
-              <div class="modal-coins-sub">Deposited to your Journey Total</div>
-            </div>
-            <p style="font-size: 12px; color: var(--muted); margin-bottom: 12px;">
-              Streak preserved: 5 Days 🔥<br>Next unlock: Suitcase 🧳
+        <div class="contrast-grid">
+          <!-- Traditional Alarm Card -->
+          <div class="contrast-card card-trap">
+            <span class="contrast-badge badge-trap">The Traditional Trap</span>
+            <h3>Panic, Snoozing & Guilt</h3>
+            <p class="card-intro">
+              Standard alarms treat departures like unexpected emergencies, triggering executive
+              dysfunction loops.
             </p>
-            <button type="button" class="modal-reset-btn" id="mockResetBtn">Try Another Departure ↺</button>
+            <ul class="contrast-list">
+              <li class="contrast-item">
+                <span class="icon">🚨</span>
+                <div>
+                  <strong>Cortisol Shock</strong>
+                  <span class="desc"
+                    >Blaring sirens spike anxiety without providing a structured bridge to
+                    transition activities.</span
+                  >
+                </div>
+              </li>
+              <li class="contrast-item">
+                <span class="icon">🔄</span>
+                <div>
+                  <strong>The Snooze Spiral</strong>
+                  <span class="desc"
+                    >Hitting snooze distorts time perception, feeding time blindness until you are
+                    catastrophically late.</span
+                  >
+                </div>
+              </li>
+              <li class="contrast-item">
+                <span class="icon">⏳</span>
+                <div>
+                  <strong>"Just One Quick Thing"</strong>
+                  <span class="desc"
+                    >Hyperfocus locks onto an unrelated task 3 minutes before you need to
+                    leave.</span
+                  >
+                </div>
+              </li>
+              <li class="contrast-item">
+                <span class="icon">🔑</span>
+                <div>
+                  <strong>The Threshold Scramble</strong>
+                  <span class="desc"
+                    >Missing keys, phone, or wallet right at the door causes panic and delayed
+                    departures.</span
+                  >
+                </div>
+              </li>
+              <li class="contrast-item">
+                <span class="icon">💔</span>
+                <div>
+                  <strong>Shame & Abandonment</strong>
+                  <span class="desc"
+                    >Being 2 minutes late ruins your streak and triggers self-criticism, causing you
+                    to quit tracking.</span
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Departure Alarm Card -->
+          <div class="contrast-card card-solution">
+            <span class="contrast-badge badge-solution">The Departure Alarm Protocol</span>
+            <h3>Positive Urgency & Grace</h3>
+            <p class="card-intro">
+              A gamified launchpad tailored to working memory limits and dopamine-driven motivation.
+            </p>
+            <ul class="contrast-list">
+              <li class="contrast-item">
+                <span class="icon">🔔</span>
+                <div>
+                  <strong>5-Minute Pre-Departure Buzzer</strong>
+                  <span class="desc"
+                    >A gentle audio heads-up gives your brain time to disengage from hyperfocus
+                    smoothly.</span
+                  >
+                </div>
+              </li>
+              <li class="contrast-item">
+                <span class="icon">⏱️</span>
+                <div>
+                  <strong>Live Ticking Countdown Bounty</strong>
+                  <span class="desc"
+                    >Bonus points visibly tick down second by second, sparking a fun race against
+                    the clock.</span
+                  >
+                </div>
+              </li>
+              <li class="contrast-item">
+                <span class="icon">🧘</span>
+                <div>
+                  <strong>No-Shame Grace Buffers</strong>
+                  <span class="desc"
+                    >Knotted laces? Tap +2 min or +5 min to extend your window cleanly without
+                    broken streaks.</span
+                  >
+                </div>
+              </li>
+              <li class="contrast-item">
+                <span class="icon">🎒</span>
+                <div>
+                  <strong>One-Tap Grab Checklist</strong>
+                  <span class="desc"
+                    >Quick chips for Keys, Phone, Wallet, and Meds keep your essentials verified in
+                    advance.</span
+                  >
+                </div>
+              </li>
+              <li class="contrast-item">
+                <span class="icon">🌟</span>
+                <div>
+                  <strong>Stepped Forgiving Rewards</strong>
+                  <span class="desc"
+                    >Early earns up to 100 coins. On time earns 40. Even late departures earn coins.
+                    You always win.</span
+                  >
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <p class="preview-hint">
-    👆 <strong>Live interactive preview</strong>: Tap grab chips, test the +2m buffer, or tap "I'M OUT!" to feel the dopamine reward loop!
-  </p>
-</header>
+    </section>
 
-<!-- ── Contrast Section: Panic vs Dopamine ──────────────────────── -->
-<section class="contrast-section" id="contrast">
-  <div class="container">
-    <div class="section-header">
-      <div class="badge-pill">
-        <span class="dot"></span>
-        <span>The ADHD Difference</span>
-      </div>
-      <h2 class="section-title">Why Traditional Alarms Fail the ADHD Brain</h2>
-      <p class="section-subtitle">
-        Cortisol triggers paralysis and rebellion. Dopamine generates focus, urgency, and momentum.
-      </p>
-    </div>
+    <!-- ── The 6 Core Mechanics Section ─────────────────────────────── -->
+    <section class="mechanics-section" id="mechanics">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-pill">
+            <span class="dot"></span>
+            <span>Engineered for Focus</span>
+          </div>
+          <h2 class="section-title">The 6 Core ADHD-Friendly Mechanics</h2>
+          <p class="section-subtitle">
+            Every interaction was intentionally designed around the neuroscience of executive
+            function.
+          </p>
+        </div>
 
-    <div class="contrast-grid">
-      <!-- Traditional Alarm Card -->
-      <div class="contrast-card card-trap">
-        <span class="contrast-badge badge-trap">The Traditional Trap</span>
-        <h3>Panic, Snoozing & Guilt</h3>
-        <p class="card-intro">
-          Standard alarms treat departures like unexpected emergencies, triggering executive dysfunction loops.
-        </p>
-        <ul class="contrast-list">
-          <li class="contrast-item">
-            <span class="icon">🚨</span>
-            <div>
-              <strong>Cortisol Shock</strong>
-              <span class="desc">Blaring sirens spike anxiety without providing a structured bridge to transition activities.</span>
-            </div>
-          </li>
-          <li class="contrast-item">
-            <span class="icon">🔄</span>
-            <div>
-              <strong>The Snooze Spiral</strong>
-              <span class="desc">Hitting snooze distorts time perception, feeding time blindness until you are catastrophically late.</span>
-            </div>
-          </li>
-          <li class="contrast-item">
-            <span class="icon">⏳</span>
-            <div>
-              <strong>"Just One Quick Thing"</strong>
-              <span class="desc">Hyperfocus locks onto an unrelated task 3 minutes before you need to leave.</span>
-            </div>
-          </li>
-          <li class="contrast-item">
-            <span class="icon">🔑</span>
-            <div>
-              <strong>The Threshold Scramble</strong>
-              <span class="desc">Missing keys, phone, or wallet right at the door causes panic and delayed departures.</span>
-            </div>
-          </li>
-          <li class="contrast-item">
-            <span class="icon">💔</span>
-            <div>
-              <strong>Shame & Abandonment</strong>
-              <span class="desc">Being 2 minutes late ruins your streak and triggers self-criticism, causing you to quit tracking.</span>
-            </div>
-          </li>
-        </ul>
-      </div>
+        <div class="mechanics-grid">
+          <!-- Mechanic 1 -->
+          <div class="mech-card">
+            <div class="mech-icon-wrap">🔔</div>
+            <span class="mech-pill">Transition Bridge</span>
+            <h3>Pre-Departure Buzzer</h3>
+            <p>
+              Task-switching is notoriously exhausting for ADHD minds. Departure Alarm fires a
+              gentle chime exactly 5 minutes before your departure time, allowing you to wrap up
+              your current thoughts instead of suffering an abrupt jolt.
+            </p>
+          </div>
 
-      <!-- Departure Alarm Card -->
-      <div class="contrast-card card-solution">
-        <span class="contrast-badge badge-solution">The Departure Alarm Protocol</span>
-        <h3>Positive Urgency & Grace</h3>
-        <p class="card-intro">
-          A gamified launchpad tailored to working memory limits and dopamine-driven motivation.
-        </p>
-        <ul class="contrast-list">
-          <li class="contrast-item">
-            <span class="icon">🔔</span>
-            <div>
-              <strong>5-Minute Pre-Departure Buzzer</strong>
-              <span class="desc">A gentle audio heads-up gives your brain time to disengage from hyperfocus smoothly.</span>
-            </div>
-          </li>
-          <li class="contrast-item">
-            <span class="icon">⏱️</span>
-            <div>
-              <strong>Live Ticking Countdown Bounty</strong>
-              <span class="desc">Bonus points visibly tick down second by second, sparking a fun race against the clock.</span>
-            </div>
-          </li>
-          <li class="contrast-item">
-            <span class="icon">🧘</span>
-            <div>
-              <strong>No-Shame Grace Buffers</strong>
-              <span class="desc">Knotted laces? Tap +2 min or +5 min to extend your window cleanly without broken streaks.</span>
-            </div>
-          </li>
-          <li class="contrast-item">
-            <span class="icon">🎒</span>
-            <div>
-              <strong>One-Tap Grab Checklist</strong>
-              <span class="desc">Quick chips for Keys, Phone, Wallet, and Meds keep your essentials verified in advance.</span>
-            </div>
-          </li>
-          <li class="contrast-item">
-            <span class="icon">🌟</span>
-            <div>
-              <strong>Stepped Forgiving Rewards</strong>
-              <span class="desc">Early earns up to 100 coins. On time earns 40. Even late departures earn coins. You always win.</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+          <!-- Mechanic 2 -->
+          <div class="mech-card">
+            <div class="mech-icon-wrap">⏱️</div>
+            <span class="mech-pill">Active Dopamine Loop</span>
+            <h3>Ticking Countdown Bounty</h3>
+            <p>
+              Time blindness makes deadlines feel either "now" or "not now". Watching bonus points
+              drop live on screen transforms abstract minutes into immediate visual stakes,
+              triggering an irresistible urge to grab your coat early.
+            </p>
+          </div>
 
-<!-- ── The 6 Core Mechanics Section ─────────────────────────────── -->
-<section class="mechanics-section" id="mechanics">
-  <div class="container">
-    <div class="section-header">
-      <div class="badge-pill">
-        <span class="dot"></span>
-        <span>Engineered for Focus</span>
-      </div>
-      <h2 class="section-title">The 6 Core ADHD-Friendly Mechanics</h2>
-      <p class="section-subtitle">
-        Every interaction was intentionally designed around the neuroscience of executive function.
-      </p>
-    </div>
+          <!-- Mechanic 3 -->
+          <div class="mech-card">
+            <div class="mech-icon-wrap">🌟</div>
+            <span class="mech-pill">Zero Shame Guarantee</span>
+            <h3>Stepped Forgiving Tiers</h3>
+            <p>
+              Perfectionism is a habit killer. Leaving on time earns 40 coins (up to 100 early). Up
+              to 5 minutes late still awards 20 coins, and over 5 minutes late awards 10 coins. You
+              never lose a streak or face a penalty screen.
+            </p>
+          </div>
 
-    <div class="mechanics-grid">
-      <!-- Mechanic 1 -->
-      <div class="mech-card">
-        <div class="mech-icon-wrap">🔔</div>
-        <span class="mech-pill">Transition Bridge</span>
-        <h3>Pre-Departure Buzzer</h3>
-        <p>
-          Task-switching is notoriously exhausting for ADHD minds. Departure Alarm fires a gentle chime exactly 5 minutes before your departure time, allowing you to wrap up your current thoughts instead of suffering an abrupt jolt.
-        </p>
-      </div>
+          <!-- Mechanic 4 -->
+          <div class="mech-card">
+            <div class="mech-icon-wrap">🧘</div>
+            <span class="mech-pill">Adaptive Safety Net</span>
+            <h3>Grace Buffer Buttons</h3>
+            <p>
+              Real life happens: finding a missing shoe or brushing teeth takes unexpected minutes.
+              One tap on "+2 min buffer 🧘" or "+5 min buffer 🏃" cleanly recalculates your
+              departure target with zero guilt or shame.
+            </p>
+          </div>
 
-      <!-- Mechanic 2 -->
-      <div class="mech-card">
-        <div class="mech-icon-wrap">⏱️</div>
-        <span class="mech-pill">Active Dopamine Loop</span>
-        <h3>Ticking Countdown Bounty</h3>
-        <p>
-          Time blindness makes deadlines feel either "now" or "not now". Watching bonus points drop live on screen transforms abstract minutes into immediate visual stakes, triggering an irresistible urge to grab your coat early.
-        </p>
-      </div>
+          <!-- Mechanic 5 -->
+          <div class="mech-card">
+            <div class="mech-icon-wrap">🔑</div>
+            <span class="mech-pill">Working Memory Relief</span>
+            <h3>One-Tap Grab Checklist</h3>
+            <p>
+              Do not waste working memory trying to recall if you packed your essentials. Fast
+              toggle chips for Keys, Phone, Wallet, Meds, Water, and Coat let you check items off in
+              a single tap right on the departure screen.
+            </p>
+          </div>
 
-      <!-- Mechanic 3 -->
-      <div class="mech-card">
-        <div class="mech-icon-wrap">🌟</div>
-        <span class="mech-pill">Zero Shame Guarantee</span>
-        <h3>Stepped Forgiving Tiers</h3>
-        <p>
-          Perfectionism is a habit killer. Leaving on time earns 40 coins (up to 100 early). Up to 5 minutes late still awards 20 coins, and over 5 minutes late awards 10 coins. You never lose a streak or face a penalty screen.
-        </p>
-      </div>
-
-      <!-- Mechanic 4 -->
-      <div class="mech-card">
-        <div class="mech-icon-wrap">🧘</div>
-        <span class="mech-pill">Adaptive Safety Net</span>
-        <h3>Grace Buffer Buttons</h3>
-        <p>
-          Real life happens: finding a missing shoe or brushing teeth takes unexpected minutes. One tap on "+2 min buffer 🧘" or "+5 min buffer 🏃" cleanly recalculates your departure target with zero guilt or shame.
-        </p>
-      </div>
-
-      <!-- Mechanic 5 -->
-      <div class="mech-card">
-        <div class="mech-icon-wrap">🔑</div>
-        <span class="mech-pill">Working Memory Relief</span>
-        <h3>One-Tap Grab Checklist</h3>
-        <p>
-          Do not waste working memory trying to recall if you packed your essentials. Fast toggle chips for Keys, Phone, Wallet, Meds, Water, and Coat let you check items off in a single tap right on the departure screen.
-        </p>
-      </div>
-
-      <!-- Mechanic 6 -->
-      <div class="mech-card">
-        <div class="mech-icon-wrap">🚀</div>
-        <span class="mech-pill">Long-Term Motivation</span>
-        <h3>18 Journey Milestones</h3>
-        <p>
-          Every departure deposits coins toward a grand lifetime voyage. Unlock 18 progressive travel badges starting from Walking Shoes and Local Bus tickets up to Boarding Passes, Private Jets, and the Moon Landing.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Journey Progression Section ──────────────────────────────── -->
-<section class="journey-section" id="journey">
-  <div class="container">
-    <div class="section-header">
-      <div class="badge-pill">
-        <span class="dot"></span>
-        <span>18 Travel Unlocks</span>
-      </div>
-      <h2 class="section-title">Your Journey from Home to the Moon</h2>
-      <p class="section-subtitle">
-        Turn everyday consistency into an exciting progression path. No resets, no expired coins.
-      </p>
-    </div>
-
-    <div class="journey-track-wrapper">
-      <div class="journey-summary">
-        <div class="journey-stat">
-          <span class="lbl">Starting Point</span>
-          <strong>🏠 Home</strong>
-        </div>
-        <div class="journey-stat">
-          <span class="lbl">Ultimate Destination</span>
-          <strong>🌕 Moon Landing</strong>
-        </div>
-        <div class="journey-stat">
-          <span class="lbl">Milestones Total</span>
-          <strong>18 Unlocks</strong>
-        </div>
-        <div class="journey-stat">
-          <span class="lbl">On-Time Reward</span>
-          <strong>40 to 100 Coins</strong>
-        </div>
-      </div>
-
-      <div class="milestones-strip">
-        <div class="milestone-item">
-          <span class="milestone-icon">🏠</span>
-          <div class="milestone-name">Home</div>
-          <div class="milestone-coins">0 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">👟</span>
-          <div class="milestone-name">Walking shoes</div>
-          <div class="milestone-coins">100 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🎒</span>
-          <div class="milestone-name">Backpack</div>
-          <div class="milestone-coins">250 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🧳</span>
-          <div class="milestone-name">Suitcase</div>
-          <div class="milestone-coins">500 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🚌</span>
-          <div class="milestone-name">Local bus ticket</div>
-          <div class="milestone-coins">800 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🚂</span>
-          <div class="milestone-name">Train ticket</div>
-          <div class="milestone-coins">1,200 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">⚓</span>
-          <div class="milestone-name">Port arrival</div>
-          <div class="milestone-coins">1,800 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">⛴️</span>
-          <div class="milestone-name">Ferry</div>
-          <div class="milestone-coins">2,500 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🚢</span>
-          <div class="milestone-name">Cruise ship</div>
-          <div class="milestone-coins">3,500 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🛂</span>
-          <div class="milestone-name">Passport</div>
-          <div class="milestone-coins">5,000 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🎫</span>
-          <div class="milestone-name">Boarding pass</div>
-          <div class="milestone-coins">7,500 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">✈️</span>
-          <div class="milestone-name">Plane</div>
-          <div class="milestone-coins">10,000 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🌴</span>
-          <div class="milestone-name">First destination</div>
-          <div class="milestone-coins">15,000 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🥂</span>
-          <div class="milestone-name">Business upgrade</div>
-          <div class="milestone-coins">25,000 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🛩️</span>
-          <div class="milestone-name">Private jet</div>
-          <div class="milestone-coins">40,000 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🏝️</span>
-          <div class="milestone-name">Private island</div>
-          <div class="milestone-coins">60,000 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🚀</span>
-          <div class="milestone-name">Space launch</div>
-          <div class="milestone-coins">100,000 coins</div>
-        </div>
-        <div class="milestone-item">
-          <span class="milestone-icon">🌕</span>
-          <div class="milestone-name">Moon landing</div>
-          <div class="milestone-coins">150,000 coins</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 100% Private & Local-First Section ───────────────────────── -->
-<section class="privacy-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="badge-pill">
-        <span class="dot"></span>
-        <span>Local-First Architecture</span>
-      </div>
-      <h2 class="section-title">100% Private. No Accounts. No Cloud Sync.</h2>
-      <p class="section-subtitle">
-        Your routine belongs to you. Departure Alarm runs completely inside your browser with zero remote dependencies.
-      </p>
-    </div>
-
-    <div class="privacy-grid">
-      <div class="privacy-card">
-        <span class="privacy-icon">🔒</span>
-        <h4>No Accounts or Passwords</h4>
-        <p>
-          Zero onboarding friction. Open the URL and immediately set your departure time. No email confirmations, no marketing newsletters, and no passwords to remember.
-        </p>
-      </div>
-
-      <div class="privacy-card">
-        <span class="privacy-icon">💾</span>
-        <h4>On-Device Storage</h4>
-        <p>
-          Your coin balance, departure history, streaks, and custom grab lists are saved directly in your browser's local storage. Nothing ever leaves your device.
-        </p>
-      </div>
-
-      <div class="privacy-card">
-        <span class="privacy-icon">✈️</span>
-        <h4>Full Offline Functionality</h4>
-        <p>
-          In the subway or on airplane mode? Departure Alarm keeps counting down, buzzing, and awarding coins without requiring an active internet connection.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Add to Home Screen (PWA Guide) ───────────────────────────── -->
-<section class="install-section" id="install">
-  <div class="container">
-    <div class="section-header">
-      <div class="badge-pill">
-        <span class="dot"></span>
-        <span>Install in 5 Seconds</span>
-      </div>
-      <h2 class="section-title">Add Departure Alarm to Your Home Screen</h2>
-      <p class="section-subtitle">
-        Enjoy full-screen standalone app performance without ever visiting an app store.
-      </p>
-    </div>
-
-    <div class="install-grid">
-      <!-- iPhone Safari -->
-      <div class="install-card">
-        <div class="install-header">
-          <div class="platform-icon">🍏</div>
-          <div>
-            <h3>iPhone (Safari)</h3>
-            <span style="font-size: 13px; color: var(--muted-soft);">Works seamlessly in iOS</span>
+          <!-- Mechanic 6 -->
+          <div class="mech-card">
+            <div class="mech-icon-wrap">🚀</div>
+            <span class="mech-pill">Long-Term Motivation</span>
+            <h3>18 Journey Milestones</h3>
+            <p>
+              Every departure deposits coins toward a grand lifetime voyage. Unlock 18 progressive
+              travel badges starting from Walking Shoes and Local Bus tickets up to Boarding Passes,
+              Private Jets, and the Moon Landing.
+            </p>
           </div>
         </div>
-        <ul class="install-steps">
-          <li class="install-step">
-            <span class="step-num">1</span>
-            <span class="text">Open <strong>https://webuildforgood.com/departure-alarm/</strong> in Safari.</span>
-          </li>
-          <li class="install-step">
-            <span class="step-num">2</span>
-            <span class="text">Tap the <strong>Share button</strong> (the square icon with the upward arrow at the bottom of the screen).</span>
-          </li>
-          <li class="install-step">
-            <span class="step-num">3</span>
-            <span class="text">Scroll down the share menu and tap <strong>"Add to Home Screen"</strong>.</span>
-          </li>
-          <li class="install-step">
-            <span class="step-num">4</span>
-            <span class="text">Tap <strong>"Add"</strong> in the top right. Departure Alarm will appear on your home screen ready in one tap!</span>
-          </li>
-        </ul>
       </div>
+    </section>
 
-      <!-- Android Chrome -->
-      <div class="install-card">
-        <div class="install-header">
-          <div class="platform-icon">🤖</div>
-          <div>
-            <h3>Android (Chrome)</h3>
-            <span style="font-size: 13px; color: var(--muted-soft);">Works across Android devices</span>
+    <!-- ── Journey Progression Section ──────────────────────────────── -->
+    <section class="journey-section" id="journey">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-pill">
+            <span class="dot"></span>
+            <span>18 Travel Unlocks</span>
+          </div>
+          <h2 class="section-title">Your Journey from Home to the Moon</h2>
+          <p class="section-subtitle">
+            Turn everyday consistency into an exciting progression path. No resets, no expired
+            coins.
+          </p>
+        </div>
+
+        <div class="journey-track-wrapper">
+          <div class="journey-summary">
+            <div class="journey-stat">
+              <span class="lbl">Starting Point</span>
+              <strong>🏠 Home</strong>
+            </div>
+            <div class="journey-stat">
+              <span class="lbl">Ultimate Destination</span>
+              <strong>🌕 Moon Landing</strong>
+            </div>
+            <div class="journey-stat">
+              <span class="lbl">Milestones Total</span>
+              <strong>18 Unlocks</strong>
+            </div>
+            <div class="journey-stat">
+              <span class="lbl">On-Time Reward</span>
+              <strong>40 to 100 Coins</strong>
+            </div>
+          </div>
+
+          <div class="milestones-strip">
+            <div class="milestone-item">
+              <span class="milestone-icon">🏠</span>
+              <div class="milestone-name">Home</div>
+              <div class="milestone-coins">0 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">👟</span>
+              <div class="milestone-name">Walking shoes</div>
+              <div class="milestone-coins">100 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🎒</span>
+              <div class="milestone-name">Backpack</div>
+              <div class="milestone-coins">250 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🧳</span>
+              <div class="milestone-name">Suitcase</div>
+              <div class="milestone-coins">500 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🚌</span>
+              <div class="milestone-name">Local bus ticket</div>
+              <div class="milestone-coins">800 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🚂</span>
+              <div class="milestone-name">Train ticket</div>
+              <div class="milestone-coins">1,200 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">⚓</span>
+              <div class="milestone-name">Port arrival</div>
+              <div class="milestone-coins">1,800 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">⛴️</span>
+              <div class="milestone-name">Ferry</div>
+              <div class="milestone-coins">2,500 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🚢</span>
+              <div class="milestone-name">Cruise ship</div>
+              <div class="milestone-coins">3,500 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🛂</span>
+              <div class="milestone-name">Passport</div>
+              <div class="milestone-coins">5,000 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🎫</span>
+              <div class="milestone-name">Boarding pass</div>
+              <div class="milestone-coins">7,500 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">✈️</span>
+              <div class="milestone-name">Plane</div>
+              <div class="milestone-coins">10,000 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🌴</span>
+              <div class="milestone-name">First destination</div>
+              <div class="milestone-coins">15,000 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🥂</span>
+              <div class="milestone-name">Business upgrade</div>
+              <div class="milestone-coins">25,000 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🛩️</span>
+              <div class="milestone-name">Private jet</div>
+              <div class="milestone-coins">40,000 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🏝️</span>
+              <div class="milestone-name">Private island</div>
+              <div class="milestone-coins">60,000 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🚀</span>
+              <div class="milestone-name">Space launch</div>
+              <div class="milestone-coins">100,000 coins</div>
+            </div>
+            <div class="milestone-item">
+              <span class="milestone-icon">🌕</span>
+              <div class="milestone-name">Moon landing</div>
+              <div class="milestone-coins">150,000 coins</div>
+            </div>
           </div>
         </div>
-        <ul class="install-steps">
-          <li class="install-step">
-            <span class="step-num">1</span>
-            <span class="text">Open <strong>https://webuildforgood.com/departure-alarm/</strong> in Google Chrome.</span>
+      </div>
+    </section>
+
+    <!-- ── 100% Private & Local-First Section ───────────────────────── -->
+    <section class="privacy-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-pill">
+            <span class="dot"></span>
+            <span>Local-First Architecture</span>
+          </div>
+          <h2 class="section-title">100% Private. No Accounts. No Cloud Sync.</h2>
+          <p class="section-subtitle">
+            Your routine belongs to you. Departure Alarm runs completely inside your browser with
+            zero remote dependencies.
+          </p>
+        </div>
+
+        <div class="privacy-grid">
+          <div class="privacy-card">
+            <span class="privacy-icon">🔒</span>
+            <h4>No Accounts or Passwords</h4>
+            <p>
+              Zero onboarding friction. Open the URL and immediately set your departure time. No
+              email confirmations, no marketing newsletters, and no passwords to remember.
+            </p>
+          </div>
+
+          <div class="privacy-card">
+            <span class="privacy-icon">💾</span>
+            <h4>On-Device Storage</h4>
+            <p>
+              Your coin balance, departure history, streaks, and custom grab lists are saved
+              directly in your browser's local storage. Nothing ever leaves your device.
+            </p>
+          </div>
+
+          <div class="privacy-card">
+            <span class="privacy-icon">✈️</span>
+            <h4>Full Offline Functionality</h4>
+            <p>
+              In the subway or on airplane mode? Departure Alarm keeps counting down, buzzing, and
+              awarding coins without requiring an active internet connection.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Add to Home Screen (PWA Guide) ───────────────────────────── -->
+    <section class="install-section" id="install">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-pill">
+            <span class="dot"></span>
+            <span>Install in 5 Seconds</span>
+          </div>
+          <h2 class="section-title">Add Departure Alarm to Your Home Screen</h2>
+          <p class="section-subtitle">
+            Enjoy full-screen standalone app performance without ever visiting an app store.
+          </p>
+        </div>
+
+        <div class="install-grid">
+          <!-- iPhone Safari -->
+          <div class="install-card">
+            <div class="install-header">
+              <div class="platform-icon">🍏</div>
+              <div>
+                <h3>iPhone (Safari)</h3>
+                <span style="font-size: 13px; color: var(--muted-soft)"
+                  >Works seamlessly in iOS</span
+                >
+              </div>
+            </div>
+            <ul class="install-steps">
+              <li class="install-step">
+                <span class="step-num">1</span>
+                <span class="text"
+                  >Open <strong>https://webuildforgood.com/departure-alarm/</strong> in
+                  Safari.</span
+                >
+              </li>
+              <li class="install-step">
+                <span class="step-num">2</span>
+                <span class="text"
+                  >Tap the <strong>Share button</strong> (the square icon with the upward arrow at
+                  the bottom of the screen).</span
+                >
+              </li>
+              <li class="install-step">
+                <span class="step-num">3</span>
+                <span class="text"
+                  >Scroll down the share menu and tap <strong>"Add to Home Screen"</strong>.</span
+                >
+              </li>
+              <li class="install-step">
+                <span class="step-num">4</span>
+                <span class="text"
+                  >Tap <strong>"Add"</strong> in the top right. Departure Alarm will appear on your
+                  home screen ready in one tap!</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Android Chrome -->
+          <div class="install-card">
+            <div class="install-header">
+              <div class="platform-icon">🤖</div>
+              <div>
+                <h3>Android (Chrome)</h3>
+                <span style="font-size: 13px; color: var(--muted-soft)"
+                  >Works across Android devices</span
+                >
+              </div>
+            </div>
+            <ul class="install-steps">
+              <li class="install-step">
+                <span class="step-num">1</span>
+                <span class="text"
+                  >Open <strong>https://webuildforgood.com/departure-alarm/</strong> in Google
+                  Chrome.</span
+                >
+              </li>
+              <li class="install-step">
+                <span class="step-num">2</span>
+                <span class="text"
+                  >Tap the <strong>three vertical dots</strong> menu in the upper-right
+                  corner.</span
+                >
+              </li>
+              <li class="install-step">
+                <span class="step-num">3</span>
+                <span class="text"
+                  >Tap <strong>"Install app"</strong> (or "Add to Home screen").</span
+                >
+              </li>
+              <li class="install-step">
+                <span class="step-num">4</span>
+                <span class="text"
+                  >Tap <strong>"Install"</strong> to confirm. The app will launch in standalone
+                  full-screen mode anytime!</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ Section ──────────────────────────────────────────────── -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-pill">
+            <span class="dot"></span>
+            <span>Common Questions</span>
+          </div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Everything you need to know about setting departures and beating time blindness.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4><span class="q">Q:</span> Does it keep my phone screen awake?</h4>
+            <p>
+              Yes! During an active departure countdown on the challenge screen, Departure Alarm
+              activates the Screen Wake Lock API to prevent your phone from sleeping so your timer
+              remains in view.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h4><span class="q">Q:</span> What happens if I am late?</h4>
+            <p>
+              You are never penalized with broken streaks or shame messages. Departing up to 5
+              minutes late still awards 20 coins, and departures beyond 5 minutes still award 10
+              coins. Every departure counts!
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h4><span class="q">Q:</span> How do the grace buffer buttons work?</h4>
+            <p>
+              If putting shoes or a jacket on takes longer than planned, tap "+2 min buffer 🧘" or
+              "+5 min buffer 🏃". The app smoothly extends your departure target time without
+              resetting your progress.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h4><span class="q">Q:</span> Is Departure Alarm completely free?</h4>
+            <p>
+              Yes, 100% free with zero in-app purchases, zero paywalls, zero ads, and zero sponsored
+              popups.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Final Call to Action ─────────────────────────────────────── -->
+    <section class="final-cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Leave on time without the panic.</h2>
+          <p>
+            Replace morning cortisol rushes with dopamine-driven game mechanics. Try Departure Alarm
+            right now in your browser.
+          </p>
+          <a href="index.html" class="btn-3d btn-green" style="font-size: 20px; padding: 18px 36px">
+            <span>Launch Departure Alarm</span>
+            <span aria-hidden="true">🚀</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ───────────────────────────────────────────────────── -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <p class="footer-copy">© Departure Alarm. Built with joy for ADHD brains.</p>
+        <ul class="footer-links">
+          <li><a href="index.html">Open App</a></li>
+          <li><a href="#install">Installation Guide</a></li>
+          <li>
+            <a href="https://github.com/drlizlondon/departure-alarm" target="_blank" rel="noopener"
+              >GitHub</a
+            >
           </li>
-          <li class="install-step">
-            <span class="step-num">2</span>
-            <span class="text">Tap the <strong>three vertical dots</strong> menu in the upper-right corner.</span>
-          </li>
-          <li class="install-step">
-            <span class="step-num">3</span>
-            <span class="text">Tap <strong>"Install app"</strong> (or "Add to Home screen").</span>
-          </li>
-          <li class="install-step">
-            <span class="step-num">4</span>
-            <span class="text">Tap <strong>"Install"</strong> to confirm. The app will launch in standalone full-screen mode anytime!</span>
-          </li>
+          <li><a href="index.html#privacy-choices">Privacy Choices</a></li>
+          <li><a href="#demo">Back to Top ↑</a></li>
         </ul>
       </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<!-- ── FAQ Section ──────────────────────────────────────────────── -->
-<section class="faq-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="badge-pill">
-        <span class="dot"></span>
-        <span>Common Questions</span>
-      </div>
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <p class="section-subtitle">
-        Everything you need to know about setting departures and beating time blindness.
-      </p>
-    </div>
-
-    <div class="faq-grid">
-      <div class="faq-item">
-        <h4><span class="q">Q:</span> Does it keep my phone screen awake?</h4>
-        <p>
-          Yes! During an active departure countdown on the challenge screen, Departure Alarm activates the Screen Wake Lock API to prevent your phone from sleeping so your timer remains in view.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <h4><span class="q">Q:</span> What happens if I am late?</h4>
-        <p>
-          You are never penalized with broken streaks or shame messages. Departing up to 5 minutes late still awards 20 coins, and departures beyond 5 minutes still award 10 coins. Every departure counts!
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <h4><span class="q">Q:</span> How do the grace buffer buttons work?</h4>
-        <p>
-          If putting shoes or a jacket on takes longer than planned, tap "+2 min buffer 🧘" or "+5 min buffer 🏃". The app smoothly extends your departure target time without resetting your progress.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <h4><span class="q">Q:</span> Is Departure Alarm completely free?</h4>
-        <p>
-          Yes, 100% free with zero in-app purchases, zero paywalls, zero ads, and zero sponsored popups.
-        </p>
+    <!-- ── Mobile Sticky Bar ────────────────────────────────────────── -->
+    <div class="sticky-bar">
+      <div class="sticky-bar-inner">
+        <div class="sticky-bar-info">
+          <span class="sticky-bar-title">Departure Alarm</span>
+          <span class="sticky-bar-sub">Leave on time without panic</span>
+        </div>
+        <a href="index.html" class="btn-3d btn-green sticky-bar-btn">Launch App 🚀</a>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ── Final Call to Action ─────────────────────────────────────── -->
-<section class="final-cta">
-  <div class="container">
-    <div class="cta-box">
-      <h2>Leave on time without the panic.</h2>
-      <p>
-        Replace morning cortisol rushes with dopamine-driven game mechanics. Try Departure Alarm right now in your browser.
-      </p>
-      <a href="index.html" class="btn-3d btn-green" style="font-size: 20px; padding: 18px 36px;">
-        <span>Launch Departure Alarm</span>
-        <span aria-hidden="true">🚀</span>
-      </a>
-    </div>
-  </div>
-</section>
+    <!-- ── Interactive Phone Simulator Script ───────────────────────── -->
+    <script>
+      (function () {
+        "use strict";
 
-<!-- ── Footer ───────────────────────────────────────────────────── -->
-<footer class="footer">
-  <div class="container footer-container">
-    <p class="footer-copy">
-      © Departure Alarm. Built with joy for ADHD brains.
-    </p>
-    <ul class="footer-links">
-      <li><a href="index.html">Open App</a></li>
-      <li><a href="#install">Installation Guide</a></li>
-      <li><a href="https://github.com/We-Build-For-Good" target="_blank" rel="noopener">GitHub</a></li>
-      <li><a href="index.html#privacy-choices">Privacy Choices</a></li>
-      <li><a href="#demo">Back to Top ↑</a></li>
-    </ul>
-  </div>
-</footer>
+        // State for the interactive phone mockup
+        var remainingSeconds = 272; // 04:32 initial
+        var bonusPoints = 2400;
+        var timerInterval = null;
+        var coinsTotal = 1420;
 
-<!-- ── Mobile Sticky Bar ────────────────────────────────────────── -->
-<div class="sticky-bar">
-  <div class="sticky-bar-inner">
-    <div class="sticky-bar-info">
-      <span class="sticky-bar-title">Departure Alarm</span>
-      <span class="sticky-bar-sub">Leave on time without panic</span>
-    </div>
-    <a href="index.html" class="btn-3d btn-green sticky-bar-btn">Launch App 🚀</a>
-  </div>
-</div>
+        var elCountdown = document.getElementById("mockCountdown");
+        var elBonus = document.getElementById("mockBonusNow");
+        var elSumLine = document.getElementById("mockSumLine");
+        var elPhasePill = document.getElementById("mockPhasePill");
+        var elRing = document.getElementById("mockRing");
+        var elModal = document.getElementById("mockResultModal");
+        var elToast = document.getElementById("mockToast");
+        var elCoinsTotal = document.getElementById("mockCoinTotal");
+        var elEarnedCoins = document.getElementById("modalEarnedCoins");
 
-<!-- ── Interactive Phone Simulator Script ───────────────────────── -->
-<script>
-(function() {
-  'use strict';
+        function formatTime(totalSec) {
+          var abs = Math.abs(totalSec);
+          var m = Math.floor(abs / 60);
+          var s = abs % 60;
+          var str = (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+          return totalSec >= 0 ? str : "−" + str;
+        }
 
-  // State for the interactive phone mockup
-  var remainingSeconds = 272; // 04:32 initial
-  var bonusPoints = 2400;
-  var timerInterval = null;
-  var coinsTotal = 1420;
+        function calculateReward(sec) {
+          if (sec < 0) {
+            return -sec <= 300 ? 20 : 10;
+          }
+          if (sec >= 600) return 90;
+          if (sec >= 300) return Math.round(80 + ((sec - 300) / 300) * 10);
+          return Math.round(40 + (sec / 300) * 40);
+        }
 
-  var elCountdown = document.getElementById('mockCountdown');
-  var elBonus = document.getElementById('mockBonusNow');
-  var elSumLine = document.getElementById('mockSumLine');
-  var elPhasePill = document.getElementById('mockPhasePill');
-  var elRing = document.getElementById('mockRing');
-  var elModal = document.getElementById('mockResultModal');
-  var elToast = document.getElementById('mockToast');
-  var elCoinsTotal = document.getElementById('mockCoinTotal');
-  var elEarnedCoins = document.getElementById('modalEarnedCoins');
+        function updateMockDisplay() {
+          if (elCountdown) {
+            elCountdown.textContent = formatTime(remainingSeconds);
+            elCountdown.style.color = remainingSeconds >= 0 ? "#ffffff" : "#ff5a80";
+          }
 
-  function formatTime(totalSec) {
-    var abs = Math.abs(totalSec);
-    var m = Math.floor(abs / 60);
-    var s = abs % 60;
-    var str = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-    return totalSec >= 0 ? str : '−' + str;
-  }
+          var coins = calculateReward(remainingSeconds);
+          var bonus = Math.max(0, (coins - 40) * 100);
 
-  function calculateReward(sec) {
-    if (sec < 0) {
-      return (-sec <= 300) ? 20 : 10;
-    }
-    if (sec >= 600) return 90;
-    if (sec >= 300) return Math.round(80 + ((sec - 300) / 300) * 10);
-    return Math.round(40 + (sec / 300) * 40);
-  }
+          if (elBonus) {
+            elBonus.textContent =
+              remainingSeconds >= 0 ? "+" + bonus.toLocaleString("en-US") : "+0";
+          }
 
-  function updateMockDisplay() {
-    if (elCountdown) {
-      elCountdown.textContent = formatTime(remainingSeconds);
-      elCountdown.style.color = remainingSeconds >= 0 ? '#ffffff' : '#ff5a80';
-    }
+          if (elSumLine) {
+            elSumLine.textContent = "= " + coins + " coins if you leave now";
+          }
 
-    var coins = calculateReward(remainingSeconds);
-    var bonus = Math.max(0, (coins - 40) * 100);
+          if (elPhasePill) {
+            if (remainingSeconds > 0) {
+              elPhasePill.textContent = "⚡ BONUS ACTIVE · +" + coins + " COINS";
+              elPhasePill.style.color = "#fff3a5";
+            } else if (remainingSeconds >= -300) {
+              elPhasePill.textContent = "🏃 GRACE WINDOW · +" + coins + " COINS";
+              elPhasePill.style.color = "#ffd84c";
+            } else {
+              elPhasePill.textContent = "💪 JUST GOING · +" + coins + " COINS";
+              elPhasePill.style.color = "#ff8097";
+            }
+          }
 
-    if (elBonus) {
-      elBonus.textContent = remainingSeconds >= 0 ? '+' + bonus.toLocaleString('en-US') : '+0';
-    }
+          if (elRing) {
+            var progress = Math.max(0, Math.min(100, (remainingSeconds / 360) * 100));
+            elRing.style.setProperty("--mock-progress", progress + "%");
+          }
+        }
 
-    if (elSumLine) {
-      elSumLine.textContent = '= ' + coins + ' coins if you leave now';
-    }
+        function tick() {
+          remainingSeconds--;
+          updateMockDisplay();
+        }
 
-    if (elPhasePill) {
-      if (remainingSeconds > 0) {
-        elPhasePill.textContent = '⚡ BONUS ACTIVE · +' + coins + ' COINS';
-        elPhasePill.style.color = '#fff3a5';
-      } else if (remainingSeconds >= -300) {
-        elPhasePill.textContent = '🏃 GRACE WINDOW · +' + coins + ' COINS';
-        elPhasePill.style.color = '#ffd84c';
-      } else {
-        elPhasePill.textContent = '💪 JUST GOING · +' + coins + ' COINS';
-        elPhasePill.style.color = '#ff8097';
-      }
-    }
+        timerInterval = setInterval(tick, 1000);
+        updateMockDisplay();
 
-    if (elRing) {
-      var progress = Math.max(0, Math.min(100, (remainingSeconds / 360) * 100));
-      elRing.style.setProperty('--mock-progress', progress + '%');
-    }
-  }
+        // Grab list toggle chips
+        var chipsContainer = document.getElementById("mockChipsContainer");
+        if (chipsContainer) {
+          chipsContainer.addEventListener("click", function (e) {
+            var target = e.target.closest(".mock-chip");
+            if (!target) return;
+            target.classList.toggle("checked");
+            var item = target.getAttribute("data-item");
+            if (target.classList.contains("checked")) {
+              target.innerHTML = "✓ " + target.innerHTML.replace("✓ ", "");
+            } else {
+              target.innerHTML = target.innerHTML.replace("✓ ", "");
+            }
+          });
+        }
 
-  function tick() {
-    remainingSeconds--;
-    updateMockDisplay();
-  }
+        // Grace buffer button handlers
+        function showToast(msg) {
+          if (!elToast) return;
+          elToast.textContent = msg;
+          elToast.classList.add("visible");
+          setTimeout(function () {
+            elToast.classList.remove("visible");
+          }, 2400);
+        }
 
-  timerInterval = setInterval(tick, 1000);
-  updateMockDisplay();
+        var btnGrace2 = document.getElementById("mockGrace2Btn");
+        if (btnGrace2) {
+          btnGrace2.addEventListener("click", function () {
+            remainingSeconds += 120;
+            updateMockDisplay();
+            showToast("+2 min buffer added! Take a breath: you're doing great.");
+          });
+        }
 
-  // Grab list toggle chips
-  var chipsContainer = document.getElementById('mockChipsContainer');
-  if (chipsContainer) {
-    chipsContainer.addEventListener('click', function(e) {
-      var target = e.target.closest('.mock-chip');
-      if (!target) return;
-      target.classList.toggle('checked');
-      var item = target.getAttribute('data-item');
-      if (target.classList.contains('checked')) {
-        target.innerHTML = '✓ ' + target.innerHTML.replace('✓ ', '');
-      } else {
-        target.innerHTML = target.innerHTML.replace('✓ ', '');
-      }
-    });
-  }
+        var btnGrace5 = document.getElementById("mockGrace5Btn");
+        if (btnGrace5) {
+          btnGrace5.addEventListener("click", function () {
+            remainingSeconds += 300;
+            updateMockDisplay();
+            showToast("+5 min buffer added! Plenty of time: no stress.");
+          });
+        }
 
-  // Grace buffer button handlers
-  function showToast(msg) {
-    if (!elToast) return;
-    elToast.textContent = msg;
-    elToast.classList.add('visible');
-    setTimeout(function() {
-      elToast.classList.remove('visible');
-    }, 2400);
-  }
+        // I'm Out action
+        var btnOut = document.getElementById("mockOutBtn");
+        if (btnOut) {
+          btnOut.addEventListener("click", function () {
+            var earned = calculateReward(remainingSeconds);
+            coinsTotal += earned;
+            if (elCoinsTotal) elCoinsTotal.textContent = coinsTotal.toLocaleString("en-US");
+            if (elEarnedCoins) elEarnedCoins.textContent = "+" + earned + " Coins";
+            if (elModal) elModal.classList.add("active");
+          });
+        }
 
-  var btnGrace2 = document.getElementById('mockGrace2Btn');
-  if (btnGrace2) {
-    btnGrace2.addEventListener('click', function() {
-      remainingSeconds += 120;
-      updateMockDisplay();
-      showToast('+2 min buffer added! Take a breath: you\'re doing great.');
-    });
-  }
-
-  var btnGrace5 = document.getElementById('mockGrace5Btn');
-  if (btnGrace5) {
-    btnGrace5.addEventListener('click', function() {
-      remainingSeconds += 300;
-      updateMockDisplay();
-      showToast('+5 min buffer added! Plenty of time: no stress.');
-    });
-  }
-
-  // I'm Out action
-  var btnOut = document.getElementById('mockOutBtn');
-  if (btnOut) {
-    btnOut.addEventListener('click', function() {
-      var earned = calculateReward(remainingSeconds);
-      coinsTotal += earned;
-      if (elCoinsTotal) elCoinsTotal.textContent = coinsTotal.toLocaleString('en-US');
-      if (elEarnedCoins) elEarnedCoins.textContent = '+' + earned + ' Coins';
-      if (elModal) elModal.classList.add('active');
-    });
-  }
-
-  // Reset modal action
-  var btnReset = document.getElementById('mockResetBtn');
-  if (btnReset) {
-    btnReset.addEventListener('click', function() {
-      if (elModal) elModal.classList.remove('active');
-      remainingSeconds = 272;
-      updateMockDisplay();
-    });
-  }
-})();
-</script>
-
-</body>
+        // Reset modal action
+        var btnReset = document.getElementById("mockResetBtn");
+        if (btnReset) {
+          btnReset.addEventListener("click", function () {
+            if (elModal) elModal.classList.remove("active");
+            remainingSeconds = 272;
+            updateMockDisplay();
+          });
+        }
+      })();
+    </script>
+  </body>
 </html>
