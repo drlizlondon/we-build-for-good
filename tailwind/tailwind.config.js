@@ -3,7 +3,7 @@
 //   npx tailwindcss@3.4.17 -c tailwind/tailwind.config.js -i tailwind/input.css -o assets/tailwind.css --minify
 const path = require('path');
 module.exports = {
-  content: [path.join(__dirname, '..', 'index.html')],
+  content: [path.join(__dirname, '..', 'index.html'), path.join(__dirname, '..', 'agents', 'index.html')],
   theme: { extend: {} },
   plugins: [],
 };
