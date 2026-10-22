@@ -43,9 +43,6 @@
     if (q < best) { best = q; dNear = d; }
   }
 
-  const tick = $("tick");
-  const tickLen = tick.getTotalLength();
-  tick.style.strokeDasharray = tickLen;
 
   const BX = 247, BY0 = 140, DROP = 100;  // bucket rope end at rest, and how far it descends
   const PULLEY_R = 18, GA = 27, GB = 21, GC = 13;
@@ -106,10 +103,6 @@
     $("lid").setAttribute("x2", 190 + Math.cos(rad) * 48);
     $("lid").setAttribute("y2", 298 + Math.sin(rad) * 48);
 
-    // tick draws, then fades
-    const draw = seg(t, landAt + 0.6, landAt + 1.05);
-    tick.style.strokeDashoffset = tickLen * (1 - draw);
-    tick.style.opacity = 1 - seg(t, 8.3, 8.6);
 
     // ball
     const ball = $("ball");
@@ -156,7 +149,7 @@
   };
 
   if (reduce) {
-    render(8.1); // still drawing: ball delivered, lid shut, tick shown
+    render(8.1); // still drawing: ball delivered, lid shut (the success)
   } else {
     render(0);
     const loop = (now) => {
