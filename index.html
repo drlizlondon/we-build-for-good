@@ -3028,7 +3028,9 @@
             window.scrollTo({ top: 0, behavior: scrollBehavior });
           } else {
             const header = document.getElementById('site-header');
-            const headerHeight = header ? header.offsetHeight : 64;
+            // Measure the bar row only: the section menu is still collapsing at click time and would inflate the offset.
+            const headerBar = header ? header.firstElementChild : null;
+            const headerHeight = headerBar ? headerBar.offsetHeight : (header ? header.offsetHeight : 64);
             const targetPosition = Math.max(0, targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight);
             window.scrollTo({ top: targetPosition, behavior: scrollBehavior });
           }
