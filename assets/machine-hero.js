@@ -138,29 +138,54 @@
 
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const machine = $("machine");
+  const headline = document.getElementById("hero-headline-block");
+
+  // The headline opens lower down the page and glides up into place. The machine
+  // stays hidden until that glide has finished (and again whenever the opening
+  // replays), so the two never overlap. Under reduced motion the headline never
+  // moves, so the machine shows at once.
+  const GLIDE_MS = 1500;
+  let ready = reduce || !headline;
+  let start = null, visible = true, raf = 0, readyTimer = 0;
+
+  const fade = () => {
+    const k = clamp((window.scrollY - 10) / (window.innerHeight * 0.4));
+    machine.style.opacity = ready ? (1 - k).toFixed(3) : "0";
+    machine.style.visibility = ready ? "" : "hidden";
+    machine.style.transform = `translateY(${(-k * 16).toFixed(1)}px)`;
+  };
 
   if (reduce) {
     render(8.1); // still drawing: ball delivered, lid shut, tick shown
   } else {
-    let start = null, visible = true, raf = 0;
+    render(0);
     const loop = (now) => {
       if (start === null) start = now;
       render(((now - start) / 1000) % T);
-      raf = visible ? requestAnimationFrame(loop) : 0;
+      raf = visible && ready ? requestAnimationFrame(loop) : 0;
     };
-    raf = requestAnimationFrame(loop);
-    new IntersectionObserver(([e]) => {
-      visible = e.isIntersecting;
-      if (visible && !raf) { start = null; raf = requestAnimationFrame(loop); }
-    }).observe(machine);
+    const run = () => { if (!raf && visible && ready) { start = null; raf = requestAnimationFrame(loop); } };
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; run(); }).observe(machine);
+    if (headline) {
+      const sync = () => {
+        clearTimeout(readyTimer);
+        if (headline.classList.contains("is-lifted")) {
+          readyTimer = setTimeout(() => {
+            ready = true;
+            machine.style.transition = "opacity 0.6s ease";
+            fade(); run();
+            setTimeout(() => { machine.style.transition = ""; }, 650);
+          }, GLIDE_MS);
+        } else {
+          ready = false; render(0); fade();
+        }
+      };
+      new MutationObserver(sync).observe(headline, { attributes: true, attributeFilter: ["class"] });
+      sync();
+    }
+    run();
   }
 
-  // fade out as the rest of the page comes into view
-  const fade = () => {
-    const k = clamp((window.scrollY - 10) / (window.innerHeight * 0.4));
-    machine.style.opacity = (1 - k).toFixed(3);
-    machine.style.transform = `translateY(${(-k * 16).toFixed(1)}px)`;
-  };
   window.addEventListener("scroll", fade, { passive: true });
   fade();
 })();
