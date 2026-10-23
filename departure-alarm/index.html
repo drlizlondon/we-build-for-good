@@ -1787,6 +1787,70 @@
         font-size: 18px;
         padding: 12px 18px;
       }
+      .set-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 12px 4px;
+        text-align: left;
+        border-top: 1px solid var(--line);
+        cursor: pointer;
+      }
+      .set-row span {
+        display: grid;
+        gap: 2px;
+      }
+      .set-row strong {
+        font-size: 17px;
+        font-weight: 900;
+      }
+      .set-row small {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .set-row input {
+        appearance: none;
+        -webkit-appearance: none;
+        flex: 0 0 auto;
+        position: relative;
+        width: 52px;
+        height: 32px;
+        margin: 0;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.22);
+        cursor: pointer;
+        transition: background 0.15s;
+      }
+      .set-row input::after {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: #fff;
+        transition: transform 0.15s;
+      }
+      .set-row input:checked {
+        background: var(--green);
+      }
+      .set-row input:checked::after {
+        transform: translateX(20px);
+      }
+      .set-row input:focus-visible {
+        outline: 3px solid var(--yellow);
+        outline-offset: 2px;
+      }
+      .set-note {
+        margin: 4px 0 12px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .set-done {
+        margin-top: 10px;
+      }
       .sheet-stop {
         margin-top: 14px;
         padding: 12px;
@@ -2083,6 +2147,31 @@
       </div>
     </div>
 
+    <!-- Sound settings: saved on this device with the rest of the app's data -->
+    <div
+      id="soundSheet"
+      class="sheet"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="soundTitle"
+      hidden
+    >
+      <div class="sheet-card">
+        <h2 id="soundTitle" class="sheet-title">Sound</h2>
+        <label class="set-row">
+          <span><strong>Alarm</strong><small>Warning at 5 minutes, then time to go</small></span>
+          <input id="setAlarm" type="checkbox" role="switch" />
+        </label>
+        <label class="set-row">
+          <span><strong>Ticking</strong><small>A soft tick each second on the countdown</small></span>
+          <input id="setTick" type="checkbox" role="switch" />
+        </label>
+        <p class="set-note">Saved on this device.</p>
+        <button id="soundTest" class="mini-btn sheet-btn" type="button">Test sounds</button>
+        <button id="soundDone" class="btn-3d btn-green sheet-btn set-done" type="button">Done</button>
+      </div>
+    </div>
+
     <!-- Persistent bar: shown on journey/stats screens when alarm is active -->
     <div id="alarmBar" class="alarm-bar" hidden>
       <div class="ab-info">
@@ -2101,8 +2190,8 @@
             <button
               id="soundBtn"
               class="round-btn"
-              aria-label="Test alarm sounds"
-              title="Test alarm sounds"
+              aria-label="Sound settings"
+              title="Sound settings"
             >
               ♪
             </button>
@@ -2479,12 +2568,16 @@
           lastDepartureDay: null,
           rewardedIds: [],
           tipDismissed: false,
+          // Sound settings: alarm on, ticking off unless the person turns it on.
+          settings: { alarm: true, tick: false },
         };
       }
 
       function load() {
         try {
-          return Object.assign(defaultState(), JSON.parse(localStorage.getItem(KEY) || "{}"));
+          const saved = Object.assign(defaultState(), JSON.parse(localStorage.getItem(KEY) || "{}"));
+          saved.settings = Object.assign({ alarm: true, tick: false }, saved.settings);
+          return saved;
         } catch {
           return defaultState();
         }
@@ -3443,6 +3536,15 @@
           }
         }
 
+        // Ticking (opt-in): once a second while the countdown is on screen, until it's time to go
+        if (state.settings.tick && now < target && $("challenge").classList.contains("active")) {
+          const second = Math.floor(now.getTime() / 1000);
+          if (second !== lastTickSecond) {
+            lastTickSecond = second;
+            playTick(target - now <= 60000);
+          }
+        }
+
         // Live updates while challenge is on screen
         if ($("challenge").classList.contains("active")) updateChallenge();
 
@@ -3477,7 +3579,8 @@
       //  AUDIO
       // ═══════════════════════════════════════════════════════════════════
       let audioCtx = null,
-        soundOn = true;
+        soundOn = true,
+        lastTickSecond = null;
 
       function enableAudio() {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -3504,19 +3607,27 @@
         enableAudio();
         [620, 820, 1020].forEach((f, i) => playTone(f, 0.16, i * 0.11, 0.2, "triangle"));
       }
-      function playFiveMinuteAlarm() {
+      function playFiveMinuteAlarm(force) {
+        if (!force && !state.settings.alarm) return;
         enableAudio();
         [660, 880, 660, 990].forEach((f, i) => playTone(f, 0.24, i * 0.22, 0.32, "triangle"));
       }
-      function playDepartureAlarm() {
+      function playDepartureAlarm(force) {
+        if (!force && !state.settings.alarm) return;
         enableAudio();
         [440, 440, 620, 820].forEach((f, i) =>
           playTone(f, 0.3, i * 0.28, 0.38, i < 2 ? "square" : "triangle"),
         );
       }
-      function playReminderChime() {
+      function playReminderChime(force) {
+        if (!force && !state.settings.alarm) return;
         enableAudio();
         [580, 780].forEach((f, i) => playTone(f, 0.2, i * 0.16, 0.26, "triangle"));
+      }
+      // A short, soft tick. Higher in the last minute so the end of the countdown feels near.
+      function playTick(lastMinute) {
+        enableAudio();
+        playTone(lastMinute ? 1500 : 1200, 0.035, 0, lastMinute ? 0.12 : 0.08, "square");
       }
       function playCoinCascade() {
         enableAudio();
@@ -3648,14 +3759,41 @@
         b.onclick = () => show(b.dataset.back);
       });
 
-      // Sound test button
+      // Sound settings sheet
       $("soundBtn").onclick = () => {
+        enableAudio();
+        $("setAlarm").checked = state.settings.alarm;
+        $("setTick").checked = state.settings.tick;
+        $("soundSheet").hidden = false;
+        $("soundDone").focus();
+      };
+      $("setAlarm").onchange = (e) => {
+        state.settings.alarm = e.target.checked;
+        save();
+      };
+      $("setTick").onchange = (e) => {
+        state.settings.tick = e.target.checked;
+        save();
+        if (e.target.checked) playTick(false);
+      };
+      $("soundTest").onclick = () => {
         soundOn = true;
         enableAudio();
-        playFiveMinuteAlarm();
-        setTimeout(playDepartureAlarm, 1200);
-        toast("Testing alarm sounds ♪");
+        if (state.settings.tick) [0, 1, 2].forEach((i) => setTimeout(() => playTick(false), i * 1000));
+        const delay = state.settings.tick ? 3200 : 0;
+        setTimeout(() => playFiveMinuteAlarm(true), delay);
+        setTimeout(() => playDepartureAlarm(true), delay + 1200);
+        if (!state.settings.alarm) toast("Alarm is off: this is how it would sound ♪");
       };
+      $("soundDone").onclick = () => {
+        $("soundSheet").hidden = true;
+      };
+      $("soundSheet").onclick = (e) => {
+        if (e.target === $("soundSheet")) $("soundSheet").hidden = true;
+      };
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !$("soundSheet").hidden) $("soundSheet").hidden = true;
+      });
 
       // ═══════════════════════════════════════════════════════════════════
       //  DA-16: safety net so no app screen ever scrolls the page. The CSS tiers fit every
