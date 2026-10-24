@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <script src="da-consent.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
     <meta name="google-site-verification" content="gLzZGRgkNx9hlpm-raiKStSxMtkIuWhh4RQ1_HU-78s" />
     <meta name="theme-color" content="#5a0b77" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,8 +35,8 @@
     <title>Departure Alarm: Leave on time without the panic</title>
     <style>
       :root {
+        color-scheme: dark;
         font-family:
-          Inter,
           ui-rounded,
           "SF Pro Rounded",
           system-ui,
@@ -2193,7 +2194,7 @@
               aria-label="Sound settings"
               title="Sound settings"
             >
-              ♪
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
             </button>
             <button
               id="statsBtn"
@@ -2201,7 +2202,7 @@
               aria-label="View progress"
               title="View progress"
             >
-              ▥
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>
             </button>
             <a
               id="aboutLink"
@@ -2209,7 +2210,7 @@
               class="round-btn"
               aria-label="Why it works: landing page guide"
               title="Why it works"
-              >?</a
+              ><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7"/><path d="M12 17h.01"/></svg></a
             >
           </div>
           <div id="a2hsTip" class="a2hs-tip" hidden>
@@ -2223,7 +2224,7 @@
           <!-- SETUP VIEW: shown when no alarm is set -->
           <div id="setupView">
             <h1 class="question">When do you need to leave?</h1>
-            <p class="subcopy">Tap a quick option: or set an exact time below.</p>
+            <p class="subcopy">Tap a quick option or set an exact time below.</p>
 
             <!-- Quick-set: the primary action for most use cases -->
             <p class="quick-label">I need to leave in…</p>
@@ -2369,7 +2370,7 @@
           </div>
           <div id="countdown" class="countdown-sm">05:00</div>
           <div id="wakeNote" class="wake-note" hidden>
-            Keep this screen open: we'll keep it awake.
+            Keep this screen open. We'll keep it awake.
           </div>
         </div>
         <!-- Before-I-leave reminder on challenge screen -->

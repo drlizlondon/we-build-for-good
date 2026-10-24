@@ -1,5 +1,5 @@
 // Departure Alarm service worker. All paths are relative (served from a sub-path).
-const CACHE = 'da-v14';
+const CACHE = 'da-v15';
 const ASSETS = [
   './', 'index.html', 'manifest.json', 'icon.svg',
   'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png', 'da-consent.js'
