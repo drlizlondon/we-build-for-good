@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <script src="da-consent.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#5a0b77" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -32,6 +33,7 @@
     <title>Departure Alarm: Leave on time without the panic</title>
     <style>
       :root {
+        color-scheme: dark;
         --ink: #ffffff;
         --muted: #ead8f3;
         --muted-soft: #cbb4db;
@@ -49,7 +51,7 @@
         --glass: rgba(255, 255, 255, 0.08);
         --glass-border: rgba(255, 255, 255, 0.22);
         --font:
-          Inter, ui-rounded, "SF Pro Rounded", system-ui, -apple-system, BlinkMacSystemFont,
+          ui-rounded, "SF Pro Rounded", system-ui, -apple-system, BlinkMacSystemFont,
           "Segoe UI", sans-serif;
       }
 
@@ -116,9 +118,7 @@
       }
 
       .gradient-text {
-        background: linear-gradient(135deg, #ffffff 0%, #ffd84c 50%, #ff5bb2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #ffd84c;
         display: inline;
       }
 
@@ -967,12 +967,13 @@
         align-items: flex-start;
         font-size: 14.5px;
         line-height: 1.45;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 16px;
       }
 
-      .contrast-item .icon {
-        font-size: 18px;
-        flex-shrink: 0;
-        margin-top: 2px;
+      .contrast-item:first-child {
+        border-top: 0;
+        padding-top: 0;
       }
 
       .contrast-item strong {
@@ -1434,10 +1435,23 @@
         .hero-grid {
           grid-template-columns: 1fr;
           text-align: center;
-          gap: 40px;
+          gap: 24px;
         }
         .hero-copy {
-          margin: 0 auto;
+          display: contents;
+        }
+        .hero-copy > * {
+          order: 2;
+          max-width: 620px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .hero-copy > .badge-pill,
+        .hero-copy > .hero-title {
+          order: 0;
+        }
+        .phone-wrapper {
+          order: 1;
         }
         .hero-ctas {
           justify-content: center;
@@ -1552,10 +1566,8 @@
             The gamified, forgiving departure timer built for ADHD executive function.
           </p>
           <p class="hero-description">
-            Traditional alarms create cortisol spikes, snooze spirals, and shame. Departure Alarm
-            transforms leaving into a satisfying game with live ticking countdown bounties, a
-            5-minute pre-departure buzzer, instant grace buffers, and forgiving stepped rewards
-            where you never lose a streak.
+            Set when you need to leave. A buzzer sounds 5 minutes before. The earlier you leave, the
+            more coins you earn. Run late and you still earn coins.
           </p>
           <div class="hero-ctas">
             <a href="index.html" class="btn-3d btn-green">
@@ -1569,14 +1581,14 @@
           </div>
           <div class="trust-row">
             <div class="trust-item">
-              <span class="icon">🔒</span><span>100% Private & Local</span>
+              <span>Private &amp; Local</span>
             </div>
             <div class="trust-item">
-              <span class="icon">🧘</span><span>Zero Shame Guarantee</span>
+              <span>Zero Shame Guarantee</span>
             </div>
-            <div class="trust-item"><span class="icon">⚡</span><span>No Account Needed</span></div>
+            <div class="trust-item"><span>No Account Needed</span></div>
             <div class="trust-item">
-              <span class="icon">✈️</span><span>Works Fully Offline</span>
+              <span>Works Fully Offline</span>
             </div>
           </div>
         </div>
@@ -1672,11 +1684,11 @@
       </div>
       <p class="preview-hint">
         👆 <strong>Live interactive preview</strong>: Tap grab chips, test the +2m buffer, or tap
-        "I'M OUT!" to feel the dopamine reward loop!
+        "I'M OUT!" to see what leaving on time feels like.
       </p>
     </header>
 
-    <!-- ── Contrast Section: Panic vs Dopamine ──────────────────────── -->
+    <!-- ── Contrast Section: Panic vs Play ──────────────────────── -->
     <section class="contrast-section" id="contrast">
       <div class="container">
         <div class="section-header">
@@ -1685,10 +1697,6 @@
             <span>The ADHD Difference</span>
           </div>
           <h2 class="section-title">Why Traditional Alarms Fail the ADHD Brain</h2>
-          <p class="section-subtitle">
-            Cortisol triggers paralysis and rebellion. Dopamine generates focus, urgency, and
-            momentum.
-          </p>
         </div>
 
         <div class="contrast-grid">
@@ -1702,9 +1710,8 @@
             </p>
             <ul class="contrast-list">
               <li class="contrast-item">
-                <span class="icon">🚨</span>
                 <div>
-                  <strong>Cortisol Shock</strong>
+                  <strong>Alarm Shock</strong>
                   <span class="desc"
                     >Blaring sirens spike anxiety without providing a structured bridge to
                     transition activities.</span
@@ -1712,7 +1719,6 @@
                 </div>
               </li>
               <li class="contrast-item">
-                <span class="icon">🔄</span>
                 <div>
                   <strong>The Snooze Spiral</strong>
                   <span class="desc"
@@ -1722,7 +1728,6 @@
                 </div>
               </li>
               <li class="contrast-item">
-                <span class="icon">⏳</span>
                 <div>
                   <strong>"Just One Quick Thing"</strong>
                   <span class="desc"
@@ -1732,7 +1737,6 @@
                 </div>
               </li>
               <li class="contrast-item">
-                <span class="icon">🔑</span>
                 <div>
                   <strong>The Threshold Scramble</strong>
                   <span class="desc"
@@ -1742,7 +1746,6 @@
                 </div>
               </li>
               <li class="contrast-item">
-                <span class="icon">💔</span>
                 <div>
                   <strong>Shame & Abandonment</strong>
                   <span class="desc"
@@ -1759,11 +1762,10 @@
             <span class="contrast-badge badge-solution">The Departure Alarm Protocol</span>
             <h3>Positive Urgency & Grace</h3>
             <p class="card-intro">
-              A gamified launchpad tailored to working memory limits and dopamine-driven motivation.
+              A game-like countdown built for people who lose track of time.
             </p>
             <ul class="contrast-list">
               <li class="contrast-item">
-                <span class="icon">🔔</span>
                 <div>
                   <strong>5-Minute Pre-Departure Buzzer</strong>
                   <span class="desc"
@@ -1773,7 +1775,6 @@
                 </div>
               </li>
               <li class="contrast-item">
-                <span class="icon">⏱️</span>
                 <div>
                   <strong>Live Ticking Countdown Bounty</strong>
                   <span class="desc"
@@ -1783,7 +1784,6 @@
                 </div>
               </li>
               <li class="contrast-item">
-                <span class="icon">🧘</span>
                 <div>
                   <strong>No-Shame Grace Buffers</strong>
                   <span class="desc"
@@ -1793,7 +1793,6 @@
                 </div>
               </li>
               <li class="contrast-item">
-                <span class="icon">🎒</span>
                 <div>
                   <strong>One-Tap Grab Checklist</strong>
                   <span class="desc"
@@ -1803,7 +1802,6 @@
                 </div>
               </li>
               <li class="contrast-item">
-                <span class="icon">🌟</span>
                 <div>
                   <strong>Stepped Forgiving Rewards</strong>
                   <span class="desc"
@@ -1849,7 +1847,7 @@
           <!-- Mechanic 2 -->
           <div class="mech-card">
             <div class="mech-icon-wrap">⏱️</div>
-            <span class="mech-pill">Active Dopamine Loop</span>
+            <span class="mech-pill">Reward for leaving early</span>
             <h3>Ticking Countdown Bounty</h3>
             <p>
               Time blindness makes deadlines feel either "now" or "not now". Watching bonus points
@@ -2048,10 +2046,10 @@
             <span class="dot"></span>
             <span>Local-First Architecture</span>
           </div>
-          <h2 class="section-title">100% Private. No Accounts. No Cloud Sync.</h2>
+          <h2 class="section-title">Private. No Accounts. No Cloud Sync.</h2>
           <p class="section-subtitle">
-            Your routine belongs to you. Departure Alarm runs completely inside your browser with
-            zero remote dependencies.
+            Your routine belongs to you. Departure Alarm runs inside your browser and your routine
+            stays on your device. Analytics only runs if you say yes.
           </p>
         </div>
 
@@ -2247,7 +2245,7 @@
         <div class="cta-box">
           <h2>Leave on time without the panic.</h2>
           <p>
-            Replace morning cortisol rushes with dopamine-driven game mechanics. Try Departure Alarm
+            Swap the morning panic for a game you can win. Try Departure Alarm
             right now in your browser.
           </p>
           <a href="index.html" class="btn-3d btn-green" style="font-size: 20px; padding: 18px 36px">
