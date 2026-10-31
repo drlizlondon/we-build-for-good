@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://webuildforgood.com/sitemap.xml
+Sitemap: https://webuildforgood.com/departure-alarm/sitemap.xml
+Sitemap: https://webuildforgood.com/frcem100/sitemap.xml
