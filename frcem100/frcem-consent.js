@@ -89,9 +89,9 @@
       '<div class="frcem-consent-content">' +
         '<div class="frcem-consent-dot"></div>' +
         '<div class="frcem-consent-body">' +
-          '<div class="frcem-consent-title">Privacy &amp; Analytics</div>' +
+          '<div class="frcem-consent-title">Analytics</div>' +
           '<p class="frcem-consent-desc">' +
-            'We use privacy-first analytics to understand how FRCEM100 revision tools are used. Zero tracking requests fire without your consent.' +
+            'May we use Google Analytics to see how FRCEM100 is used? Nothing is sent unless you accept.' +
           '</p>' +
           '<div class="frcem-consent-actions">' +
             '<button type="button" class="frcem-consent-btn frcem-consent-accept" data-consent="granted">Accept</button>' +
